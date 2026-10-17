@@ -1370,10 +1370,6 @@ if (!state.customMandatory.overrides) state.customMandatory.overrides = {};
 if (!state.customMandatory.hidden) state.customMandatory.hidden = [];
 if (!state.customMandatory.customTasks) state.customMandatory.customTasks = [];
 
-function saveState() {
-  localStorage.setItem('shami_v3', JSON.stringify(state));
-}
-
 function todayKey() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -3539,6 +3535,10 @@ setInterval(() => { if (document.getElementById('page-today').classList.contains
       if (!state.weeklyGeneralTasks) state.weeklyGeneralTasks = DEFAULT_WEEKLY_GENERAL.map(t => ({ ...t }));
       if (!state.weeklyAssign) state.weeklyAssign = {};
       if (!state.customQuotes) state.customQuotes = [];
+      if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [], customTasks: [] };
+      if (!state.customMandatory.overrides) state.customMandatory.overrides = {};
+      if (!state.customMandatory.hidden) state.customMandatory.hidden = [];
+      if (!state.customMandatory.customTasks) state.customMandatory.customTasks = [];
     }
   }
   renderAll();
