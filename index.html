@@ -1119,10 +1119,16 @@ function getDayTasks() {
     .filter(t => !hidden.includes(t.id))
     .map(t => overrides[t.id] ? { ...t, ...overrides[t.id] } : t);
 
-  // Inject custom tasks for today
+  // Inject bonus custom tasks for today
   const dayKey = day === 5 ? 'friday' : day === 6 ? 'saturday' : 'weekdays';
   const custom = (state.customTasks||[]).filter(t => (t.days||[]).includes(dayKey));
-  return [...modifiedBase, ...custom];
+
+  // Inject mandatory custom tasks added via the editor
+  const mandatoryCustom = ((cm.customTasks)||[])
+    .filter(t => t.dayKey === dayKey)
+    .map(t => ({ ...t, points: t.points || 10, mandatory: true }));
+
+  return [...modifiedBase, ...mandatoryCustom, ...custom];
 }
 
 function getDayLabel() {
@@ -1359,9 +1365,10 @@ if (!state.parentMessages) state.parentMessages = [];
 if (!state.oneTimeTasks) state.oneTimeTasks = [];
 if (!state.familyChallenge) state.familyChallenge = { goal: 30, reward: 'יציאה לפיצה 🍕', active: true };
 if (!state.familyChallengeCount) state.familyChallengeCount = {};
-if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [] };
+if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [], customTasks: [] };
 if (!state.customMandatory.overrides) state.customMandatory.overrides = {};
 if (!state.customMandatory.hidden) state.customMandatory.hidden = [];
+if (!state.customMandatory.customTasks) state.customMandatory.customTasks = [];
 
 function saveState() {
   localStorage.setItem('shami_v3', JSON.stringify(state));
@@ -2816,7 +2823,9 @@ function renderMandatoryEditor(el) {
 
   const GROUP_LABELS = { morning: '🌅 בוקר', afternoon: '🌤️ צהריים', evening: '🌙 ערב' };
 
-  let html = `<p style="font-size:0.8rem;color:var(--text2);margin-bottom:14px;">ערוך, הסתר ושחזר משימות חובה מובנות</p>`;
+  let html = `<p style="font-size:0.8rem;color:var(--text2);margin-bottom:14px;">ערוך, הסתר ושחזר משימות חובה מובנות, והוסף משימות חדשות</p>`;
+
+  const customMandatoryTasks = cm.customTasks || [];
 
   DAY_SETS.forEach(ds => {
     html += `<div style="background:var(--card);border-radius:14px;padding:12px 14px;margin-bottom:16px;box-shadow:var(--shadow);border:1.5px solid var(--border);">
@@ -2842,6 +2851,37 @@ function renderMandatoryEditor(el) {
           </div>`;
       });
     });
+
+    // Custom tasks added for this dayKey
+    const dayCustom = customMandatoryTasks.filter(t => t.dayKey === ds.key);
+    if (dayCustom.length) {
+      html += `<div style="font-size:0.78rem;font-weight:700;color:var(--text2);margin:10px 0 4px;">➕ משימות שהוספת</div>`;
+      dayCustom.forEach(t => {
+        html += `
+          <div style="display:flex;align-items:center;gap:8px;padding:7px 4px;border-bottom:1px solid var(--border);">
+            <span style="font-size:1.1rem;width:32px;text-align:center;">${t.icon}</span>
+            <span style="flex:1;font-size:0.85rem;">${t.name}</span>
+            <span style="font-size:0.72rem;color:var(--text2);background:var(--card2);border-radius:6px;padding:2px 6px;">${GROUP_LABELS[t.group]||t.group}</span>
+            <button onclick="deleteMandatoryCustomTask('${t.id}')" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:0.72rem;color:#E74C3C;white-space:nowrap;">🗑️</button>
+          </div>`;
+      });
+    }
+
+    // Add new task form
+    html += `
+      <div style="margin-top:10px;padding-top:10px;border-top:1.5px dashed var(--border);">
+        <div style="font-size:0.78rem;font-weight:700;color:var(--shami);margin-bottom:6px;">+ הוסף משימה ל${ds.label.replace(/^[^\s]+\s/,'')}</div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+          <input id="new-icon-${ds.key}" placeholder="🌟" style="width:44px;padding:4px;border:1.5px solid var(--border);border-radius:8px;font-size:1rem;text-align:center;background:var(--card2);" />
+          <input id="new-name-${ds.key}" placeholder="שם המשימה" style="flex:1;min-width:120px;padding:5px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;background:var(--card2);" />
+          <select id="new-group-${ds.key}" style="padding:5px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;background:var(--card2);font-family:'Heebo',sans-serif;">
+            <option value="morning">🌅 בוקר</option>
+            <option value="afternoon">🌤️ צהריים</option>
+            <option value="evening">🌙 ערב</option>
+          </select>
+          <button onclick="addMandatoryCustomTask('${ds.key}')" style="background:var(--shami);color:white;border:none;border-radius:8px;padding:6px 12px;cursor:pointer;font-size:0.82rem;font-family:'Heebo',sans-serif;font-weight:700;white-space:nowrap;">+ הוסף</button>
+        </div>
+      </div>`;
 
     html += `</div>`;
   });
@@ -2899,6 +2939,30 @@ function toggleMandatoryHidden(taskId) {
   const idx = h.indexOf(taskId);
   if (idx === -1) h.push(taskId);
   else h.splice(idx, 1);
+  saveState();
+  renderMandatoryEditor(document.getElementById('settings-tab-content'));
+}
+
+function addMandatoryCustomTask(dayKey) {
+  const iconEl = document.getElementById('new-icon-' + dayKey);
+  const nameEl = document.getElementById('new-name-' + dayKey);
+  const groupEl = document.getElementById('new-group-' + dayKey);
+  if (!iconEl || !nameEl || !groupEl) return;
+  const icon = iconEl.value.trim() || '✅';
+  const name = nameEl.value.trim();
+  if (!name) { nameEl.focus(); return; }
+  const group = groupEl.value;
+  if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [], customTasks: [] };
+  if (!state.customMandatory.customTasks) state.customMandatory.customTasks = [];
+  const id = 'cm_' + Date.now();
+  state.customMandatory.customTasks.push({ id, icon, name, group, dayKey });
+  saveState();
+  renderMandatoryEditor(document.getElementById('settings-tab-content'));
+}
+
+function deleteMandatoryCustomTask(taskId) {
+  if (!state.customMandatory || !state.customMandatory.customTasks) return;
+  state.customMandatory.customTasks = state.customMandatory.customTasks.filter(t => t.id !== taskId);
   saveState();
   renderMandatoryEditor(document.getElementById('settings-tab-content'));
 }
@@ -3199,9 +3263,10 @@ if (!state.parentMessages) state.parentMessages = [];
 if (!state.oneTimeTasks) state.oneTimeTasks = [];
 if (!state.familyChallenge) state.familyChallenge = { goal: 30, reward: 'יציאה לפיצה 🍕', active: true };
 if (!state.familyChallengeCount) state.familyChallengeCount = {};
-if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [] };
+if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [], customTasks: [] };
 if (!state.customMandatory.overrides) state.customMandatory.overrides = {};
 if (!state.customMandatory.hidden) state.customMandatory.hidden = [];
+if (!state.customMandatory.customTasks) state.customMandatory.customTasks = [];
   state.customQuotes.push({ text, author });
   saveState();
   document.getElementById('new-quote-text').value = '';
