@@ -1,0 +1,3361 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מערכת שמי׳ז 💰</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Heebo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --hilel: #FF6B9D;
+  --mitar: #9B59B6;
+  --yagel: #00B4D8;
+  --gold: #F4C430;
+  --shami: #2ECC71;
+  --bg: #F7F3ED;
+  --card: #FFFFFF;
+  --card2: #F0EBE3;
+  --text: #2C1810;
+  --text2: #7A6A5A;
+  --border: #E8DDD0;
+  --mandatory: #E8F4FD;
+  --mandatory-border: #AED6F1;
+  --bonus: #FEF9E7;
+  --bonus-border: #F9E79F;
+  --danger: #E74C3C;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Heebo', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* HEADER */
+.app-header {
+  background: var(--text);
+  color: #FFF;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+.logo {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.date-display {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  text-align: left;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  background: rgba(0,0,0,0.2);
+}
+.tab {
+  flex: 1;
+  padding: 10px 4px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
+}
+.tab:hover { color: rgba(255,255,255,0.8); }
+.tab.active { color: var(--gold); border-bottom-color: var(--gold); background: rgba(255,255,255,0.05); }
+
+/* CONTAINER */
+.container { max-width: 700px; margin: 0 auto; padding: 16px; }
+
+/* PAGES */
+.page { display: none; }
+.page.active { display: block; }
+
+/* KID SELECTOR */
+.kid-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: var(--card);
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: var(--shadow);
+}
+.kid-btn {
+  flex: 1;
+  padding: 10px 8px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text2);
+  transition: all 0.2s;
+  text-align: center;
+}
+.kid-btn .kid-emoji { font-size: 1.4rem; display: block; margin-bottom: 2px; }
+.kid-btn .kid-bal { font-family: 'Fredoka One', cursive; font-size: 0.8rem; display: block; }
+.kid-btn.active { background: var(--kid-color); color: white; border-color: var(--kid-color); }
+.kid-btn:not(.active):hover { background: var(--card2); }
+
+/* WALLET CARD */
+.wallet-card {
+  background: var(--text);
+  border-radius: 20px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.wallet-card::before {
+  content: '💰';
+  position: absolute;
+  font-size: 8rem;
+  right: -20px;
+  top: -20px;
+  opacity: 0.06;
+}
+.wallet-name { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+.wallet-balance { font-family: 'Fredoka One', cursive; font-size: 2.8rem; color: var(--gold); line-height: 1; }
+.wallet-unit { font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+.wallet-stats { display: flex; gap: 20px; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+.w-stat { }
+.w-stat-val { font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: var(--shami); }
+.w-stat-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+.nis-rate { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 12px; font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 12px; display: inline-block; }
+
+/* BONUS BANNER */
+.bonus-banner {
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow);
+}
+.bonus-banner.complete { background: #D5F5E3; border: 2px solid #2ECC71; }
+.bonus-banner.incomplete { background: var(--mandatory); border: 2px solid var(--mandatory-border); }
+.bb-icon { font-size: 2rem; flex-shrink: 0; }
+.bb-text { flex: 1; }
+.bb-title { font-weight: 700; font-size: 0.9rem; }
+.bb-desc { font-size: 0.78rem; color: var(--text2); margin-top: 2px; }
+.bb-progress { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.bb-bar { flex: 1; height: 6px; background: rgba(0,0,0,0.1); border-radius: 6px; overflow: hidden; }
+.bb-fill { height: 100%; background: #2ECC71; border-radius: 6px; transition: width 0.5s ease; }
+.bb-count { font-family: 'Fredoka One', cursive; font-size: 0.85rem; color: var(--text2); white-space: nowrap; }
+
+/* SECTION HEADER */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.section-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+}
+.badge-mandatory { background: var(--mandatory); color: #2980B9; border: 1px solid var(--mandatory-border); }
+.badge-bonus { background: var(--bonus); color: #D4AC0D; border: 1px solid var(--bonus-border); }
+.section-title-text { font-family: 'Fredoka One', cursive; font-size: 1.1rem; }
+
+/* TASK LIST */
+.task-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+
+.task-item {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--border);
+  transition: all 0.15s;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.task-item:active { transform: scale(0.98); }
+.task-item.mandatory-item { border-right: 4px solid #AED6F1; }
+.task-item.bonus-item { border-right: 4px solid #F9E79F; }
+.task-item.done { opacity: 0.55; }
+.task-item.done .task-name { text-decoration: line-through; }
+
+.task-check {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid #DDD;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  background: white;
+}
+.task-item.done .task-check { background: #2ECC71; border-color: #2ECC71; color: white; }
+.task-item.mandatory-item .task-check { border-color: #AED6F1; }
+.task-item.bonus-item .task-check { border-color: #F9E79F; }
+
+.task-icon { font-size: 1.4rem; flex-shrink: 0; }
+.task-info { flex: 1; }
+.task-name { font-weight: 700; font-size: 0.9rem; line-height: 1.3; }
+.task-sub { font-size: 0.72rem; color: var(--text2); margin-top: 1px; }
+
+.task-reward {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 50px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.reward-mandatory { background: var(--mandatory); color: #2980B9; }
+.reward-bonus { background: #FDEBD0; color: #D35400; }
+
+/* WEEKLY ASSIGNMENT */
+.weekly-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--border);
+}
+.weekly-title { font-family: 'Fredoka One', cursive; font-size: 1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.assignment-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.assignment-row:last-child { border-bottom: none; }
+.ar-task { flex: 1; font-weight: 600; font-size: 0.85rem; }
+.ar-task-icon { font-size: 1.1rem; }
+.ar-reward { font-family: 'Fredoka One', cursive; color: #D35400; font-size: 0.85rem; width: 55px; text-align: center; }
+.ar-select {
+  background: var(--card2);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  width: 90px;
+}
+.ar-select:focus { border-color: var(--gold); }
+
+/* SETTINGS */
+.settings-section { margin-bottom: 24px; }
+.settings-title { font-family: 'Fredoka One', cursive; font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.setting-row {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--border);
+}
+.sr-icon { font-size: 1.2rem; flex-shrink: 0; }
+.sr-info { flex: 1; }
+.sr-name { font-weight: 700; font-size: 0.88rem; }
+.sr-sub { font-size: 0.72rem; color: var(--text2); margin-top: 1px; }
+.sr-val {
+  background: var(--card2);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.95rem;
+  color: var(--text);
+  width: 70px;
+  text-align: center;
+  outline: none;
+}
+.sr-val:focus { border-color: var(--gold); }
+
+.btn-save {
+  background: var(--text);
+  color: var(--gold);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+  transition: opacity 0.2s;
+}
+.btn-save:hover { opacity: 0.85; }
+
+/* HISTORY */
+.history-item {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--border);
+}
+.hi-icon { font-size: 1.2rem; }
+.hi-info { flex: 1; }
+.hi-name { font-weight: 700; font-size: 0.85rem; }
+.hi-meta { font-size: 0.72rem; color: var(--text2); margin-top: 1px; }
+.hi-amount { font-family: 'Fredoka One', cursive; color: #27AE60; font-size: 0.95rem; }
+
+/* LEADERBOARD */
+.lb-card {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+.lb-header-row {
+  background: var(--text);
+  padding: 14px 20px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lb-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.lb-row:last-child { border-bottom: none; }
+.lb-rank { font-family: 'Fredoka One', cursive; font-size: 1.4rem; width: 32px; text-align: center; }
+.lb-avatar { font-size: 1.8rem; }
+.lb-name { flex: 1; }
+.lb-name-text { font-weight: 700; font-size: 0.95rem; }
+.lb-level { font-size: 0.72rem; color: var(--text2); }
+.lb-balance { font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: #D35400; }
+.lb-total { font-size: 0.72rem; color: var(--text2); text-align: left; }
+
+/* CELEBRATION */
+.celebration {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 200;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.celebration.show { opacity: 1; pointer-events: all; }
+.cel-box {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 36px 28px;
+  text-align: center;
+  max-width: 320px;
+  width: 90%;
+  animation: popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+@keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.cel-emoji { font-size: 4rem; display: block; animation: bounce 0.6s ease infinite alternate; margin-bottom: 10px; }
+@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-12px); } }
+.cel-title { font-family: 'Fredoka One', cursive; font-size: 1.6rem; margin-bottom: 6px; }
+.cel-sub { font-size: 0.9rem; color: var(--text2); margin-bottom: 6px; }
+.cel-amount { font-family: 'Fredoka One', cursive; font-size: 2rem; color: #D35400; margin-bottom: 20px; }
+.cel-btn {
+  background: var(--text);
+  color: var(--gold);
+  border: none; border-radius: 50px;
+  padding: 12px 32px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.bonus-complete-box {
+  background: #D5F5E3;
+  border: 2px solid #2ECC71;
+  border-radius: 14px;
+  padding: 14px 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.bcb-title { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #1A8A4A; }
+.bcb-sub { font-size: 0.85rem; color: #2E7D32; margin-top: 4px; }
+
+/* CONFETTI */
+.confetti-piece {
+  position: fixed; width: 9px; height: 9px;
+  animation: confetti-fall 2.2s ease forwards;
+  z-index: 300; pointer-events: none;
+  border-radius: 2px;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* RESET BTN */
+.reset-btn {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text2);
+  cursor: pointer;
+  margin-top: 8px;
+  width: 100%;
+  transition: all 0.2s;
+}
+.reset-btn:hover { background: #FDE8E8; border-color: var(--danger); color: var(--danger); }
+
+/* ADD TASK FORM */
+.add-form {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: var(--shadow);
+  border: 1.5px dashed var(--border);
+}
+.add-form-title { font-family: 'Fredoka One', cursive; font-size: 1rem; margin-bottom: 12px; }
+.form-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.f-input {
+  flex: 1; min-width: 130px;
+  background: var(--card2);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text);
+  outline: none;
+}
+.f-input:focus { border-color: var(--gold); }
+.f-input::placeholder { color: var(--text2); }
+select.f-input option { background: white; }
+.btn-add {
+  background: var(--text);
+  color: var(--gold);
+  border: none;
+  border-radius: 10px;
+  padding: 9px 20px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.btn-add:hover { opacity: 0.85; }
+
+/* SHOP */
+.shop-cat-header {
+  display: flex; align-items: center; gap: 10px;
+  margin: 20px 0 10px;
+}
+.shop-cat-emoji { font-size: 1.4rem; }
+.shop-cat-label { font-family: 'Fredoka One', cursive; font-size: 1.1rem; }
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.shop-card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 18px 14px;
+  text-align: center;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.18s;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.shop-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); border-color: var(--gold); }
+.shop-card:active { transform: scale(0.97); }
+.shop-card.affordable { border-color: #F4C430; }
+.shop-card.unaffordable { opacity: 0.5; cursor: not-allowed; }
+
+.shop-item-icon { font-size: 2.4rem; display: block; margin-bottom: 8px; }
+.shop-item-name { font-weight: 700; font-size: 0.85rem; line-height: 1.3; margin-bottom: 6px; }
+.shop-item-desc { font-size: 0.72rem; color: var(--text2); margin-bottom: 10px; line-height: 1.4; }
+.shop-item-cost {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--text);
+  color: var(--gold);
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem;
+  border-radius: 50px;
+  padding: 4px 12px;
+}
+.shop-balance-bar {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--border);
+}
+.sbb-name { font-weight: 700; font-size: 0.9rem; }
+.sbb-balance { font-family: 'Fredoka One', cursive; font-size: 1.4rem; color: #D35400; }
+.sbb-label { font-size: 0.72rem; color: var(--text2); }
+
+/* CONFIRM MODAL */
+.confirm-modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex; align-items: flex-end; justify-content: center;
+  z-index: 150;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s;
+}
+.confirm-modal.show { opacity: 1; pointer-events: all; }
+.confirm-box {
+  background: var(--card);
+  border-radius: 24px 24px 0 0;
+  padding: 28px 24px 36px;
+  width: 100%; max-width: 500px;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.confirm-icon { font-size: 3rem; text-align: center; display: block; margin-bottom: 10px; }
+.confirm-title { font-family: 'Fredoka One', cursive; font-size: 1.3rem; text-align: center; margin-bottom: 6px; }
+.confirm-desc { font-size: 0.85rem; color: var(--text2); text-align: center; margin-bottom: 6px; }
+.confirm-cost { font-family: 'Fredoka One', cursive; font-size: 1.5rem; color: #D35400; text-align: center; margin-bottom: 20px; }
+.confirm-btns { display: flex; gap: 10px; }
+.btn-confirm {
+  flex: 1; background: var(--text); color: var(--gold);
+  border: none; border-radius: 12px; padding: 13px;
+  font-family: 'Fredoka One', cursive; font-size: 1rem;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.btn-confirm:hover { opacity: 0.85; }
+.btn-cancel {
+  flex: 1; background: var(--card2); color: var(--text2);
+  border: 1.5px solid var(--border); border-radius: 12px; padding: 13px;
+  font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 0.9rem;
+  cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .shop-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+
+/* STREAK CARDS */
+.streak-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.streak-card {
+  border-radius: 14px;
+  padding: 10px 8px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: var(--shadow);
+}
+.streak-card:active { transform: scale(0.97); }
+.streak-card.cold  { background: var(--card); border: 1.5px solid var(--border); }
+.streak-card.warm  { background: #FFF5E6; border: 2px solid #FF9A3C; }
+.streak-card.hot   { background: linear-gradient(135deg, #FFF3CD, #FFE066); border: 2px solid #F4C430; animation: streak-pulse 1.5s ease infinite; }
+
+@keyframes streak-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(244,196,48,0.4); }
+  50%      { box-shadow: 0 0 0 8px rgba(244,196,48,0); }
+}
+
+.streak-emoji { font-size: 1.3rem; display: block; margin-bottom: 2px; }
+.streak-name  { font-family: 'Fredoka One', cursive; font-size: 0.88rem; margin-bottom: 4px; }
+.streak-dots  { display: flex; justify-content: center; gap: 4px; margin-bottom: 6px; }
+.streak-dot   { width: 11px; height: 11px; border-radius: 50%; border: 2px solid #DDD; background: white; transition: all 0.3s; }
+.streak-dot.filled.cold { background: #BDC3C7; border-color: #95A5A6; }
+.streak-dot.filled.warm { background: #FF9A3C; border-color: #E67E22; }
+.streak-dot.filled.hot  { background: #F4C430; border-color: #D4A017; box-shadow: 0 0 6px rgba(244,196,48,0.6); }
+.streak-count { font-family: 'Fredoka One', cursive; font-size: 1.3rem; line-height: 1; }
+.streak-label { font-size: 0.65rem; color: var(--text2); margin-bottom: 6px; }
+.streak-msg   { font-size: 0.68rem; font-weight: 700; border-radius: 50px; padding: 3px 10px; display: inline-block; }
+.streak-msg.cold { background: #F0F0F0; color: #888; }
+.streak-msg.warm { background: #FFE0B2; color: #E65100; }
+.streak-msg.hot  { background: #F4C430; color: #5D4037; }
+
+/* STREAK POPUP */
+.streak-popup {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 180;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.streak-popup.show { opacity: 1; pointer-events: all; }
+.streak-popup-box {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 28px 24px;
+  max-width: 320px; width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: popIn 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+.sp-emoji  { font-size: 3.5rem; display: block; margin-bottom: 8px; }
+.sp-title  { font-family: 'Fredoka One', cursive; font-size: 1.4rem; margin-bottom: 6px; }
+.sp-sub    { font-size: 0.85rem; color: var(--text2); margin-bottom: 14px; }
+.sp-record { background: var(--card2); border-radius: 12px; padding: 10px; margin-bottom: 14px; }
+.sp-record-val { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: #D35400; }
+.sp-record-lbl { font-size: 0.72rem; color: var(--text2); }
+.sp-close  { background: var(--text); color: var(--gold); border: none; border-radius: 50px; padding: 10px 28px; font-family: 'Fredoka One', cursive; font-size: 0.95rem; cursor: pointer; }
+
+@media (max-width:480px) {
+  .streak-card { padding: 10px 8px; }
+  .streak-count { font-size: 1.3rem; }
+  .streak-dot { width: 11px; height: 11px; }
+}
+
+.empty { text-align: center; padding: 30px; color: var(--text2); font-size: 0.9rem; }
+.empty-icon { font-size: 2.5rem; margin-bottom: 8px; }
+/* TODAY HEADER */
+.today-hero {
+  background: var(--text);
+  border-radius: 20px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  margin-top: 4px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.today-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(244,196,48,0.15), rgba(46,204,113,0.1));
+  pointer-events: none;
+}
+.today-greeting { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: var(--gold); margin-bottom: 2px; }
+.today-datetime { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-bottom: 12px; }
+.today-quote {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+  font-style: italic;
+  line-height: 1.5;
+  border-right: 3px solid var(--gold);
+  padding-right: 10px;
+}
+.today-quote-attr { font-size: 0.7rem; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+/* ALL KIDS GRID */
+.all-kids-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.kid-column {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--border);
+}
+.kid-col-header {
+  padding: 10px 10px 8px;
+  text-align: center;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.kid-col-emoji { font-size: 1.6rem; display: block; }
+.kid-col-name { font-family: 'Fredoka One', cursive; font-size: 1rem; }
+.kid-col-balance { font-size: 0.7rem; color: var(--text2); margin-top: 1px; }
+.kid-col-bonus-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 50px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.kid-col-body { padding: 8px 6px; }
+
+.mini-group-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 8px 0 4px 0;
+  padding-right: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.mini-group-done { color: #27AE60; }
+
+.mini-task {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-bottom: 3px;
+  border: 1px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px; /* tablet touch target */
+}
+.mini-task:hover { background: var(--card2); }
+.mini-task:active { transform: scale(0.97); }
+.mini-task.done { opacity: 0.45; }
+.mini-task.done .mini-task-name { text-decoration: line-through; }
+
+.mini-check {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 2px solid #CCC;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  transition: all 0.15s;
+  background: white;
+}
+.mini-task.done .mini-check { background: #2ECC71; border-color: #2ECC71; color: white; }
+.mini-task-icon { font-size: 0.9rem; flex-shrink: 0; }
+.mini-task-name { font-size: 0.72rem; font-weight: 600; line-height: 1.2; flex: 1; }
+
+/* Day complete banner */
+.day-done-banner {
+  background: linear-gradient(135deg, #1E8449, #2ECC71);
+  color: white;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin: 6px 4px 4px;
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.82rem;
+  box-shadow: 0 2px 8px rgba(46,204,113,0.45);
+  animation: dayDonePulse 2s ease-in-out infinite;
+}
+@keyframes dayDonePulse {
+  0%, 100% { box-shadow: 0 2px 8px rgba(46,204,113,0.45); }
+  50% { box-shadow: 0 4px 16px rgba(46,204,113,0.7); }
+}
+
+/* Undo button */
+.undo-btn {
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 50px;
+  padding: 6px 12px;
+  color: white;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s;
+  min-height: 36px;
+}
+.undo-btn:hover { background: rgba(255,255,255,0.22); }
+.undo-btn:active { transform: scale(0.96); }
+.undo-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* Energy task in mini view */
+.mini-task.energy {
+  background: #FFFBEA;
+  border-color: #F4C430;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+.mini-task.energy .mini-check { border-color: #F4C430; }
+.mini-task.energy.done .mini-check { background: #F4C430; border-color: #F4C430; }
+
+/* Weekly general mini */
+.mini-task.weekly-gen { background: #F0FFF4; border-color: #9AE6B4; }
+
+.mini-progress {
+  height: 3px;
+  background: var(--border);
+  border-radius: 3px;
+  margin: 4px 0 2px;
+  overflow: hidden;
+}
+.mini-progress-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+
+@media (max-width: 600px) {
+  .all-kids-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .kid-col-name { font-size: 0.85rem; }
+  .mini-task-name { font-size: 0.65rem; }
+  .mini-task-icon { font-size: 0.8rem; }
+  .kid-col-emoji { font-size: 1.3rem; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <div class="header-top">
+    <div class="logo">💰 מערכת שמי׳ז</div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span id="sync-indicator" style="font-size:0.68rem;color:rgba(255,255,255,0.75);transition:opacity 0.5s;opacity:0;white-space:nowrap;"></span>
+      <button class="undo-btn" id="undo-btn" onclick="undoLastAction()" title="בטל פעולה אחרונה">↩️ בטל</button>
+      <button onclick="showParentMessages()" style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:50px;padding:6px 14px;color:white;font-family:'Heebo',sans-serif;font-weight:700;font-size:0.78rem;cursor:pointer;display:flex;align-items:center;gap:5px;" id="parent-msg-btn">
+        📨 הורים
+        <span id="msg-badge" style="display:none;background:#E74C3C;border-radius:50%;width:16px;height:16px;font-size:0.65rem;display:flex;align-items:center;justify-content:center;"></span>
+      </button>
+      <div class="date-display" id="date-display"></div>
+    </div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="showPage('today',this)">📋 היום</button>
+    <button class="tab" onclick="showPage('bonus-tasks',this)">⭐ בונוס</button>
+    <button class="tab" onclick="showPage('shop',this)">🛍️ חנות</button>
+    <button class="tab" onclick="showPage('wallet',this)">💰 ארנק</button>
+    <button class="tab" onclick="showPage('graph',this)">📊 גרף</button>
+    <button class="tab" onclick="showPage('weekly',this)">📅 שיבוץ</button>
+    <button class="tab" onclick="showPage('settings',this)">⚙️ הגדרות</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TODAY PAGE -->
+  <div class="page active" id="page-today">
+    <div id="today-header"></div>
+    <div id="streak-cards"></div>
+    <div id="all-kids-today"></div>
+  </div>
+
+  <!-- BONUS TASKS PAGE -->
+  <div class="page" id="page-bonus-tasks">
+    <div style="margin-bottom:14px;margin-top:4px;">
+      <div class="kid-selector" id="bonus-kid-selector"></div>
+    </div>
+    <div id="bonus-list"></div>
+    <div class="add-form">
+      <div class="add-form-title">➕ הוסף משימת בונוס</div>
+      <div class="form-row">
+        <input class="f-input" id="new-task-name" placeholder="שם המשימה..." />
+        <input class="f-input" id="new-task-icon" placeholder="אייקון 🧹" style="max-width:80px;" />
+      </div>
+      <div class="form-row">
+        <input class="f-input" id="new-task-reward" type="number" placeholder="שטרות שמי׳ז" />
+        <button class="btn-add" onclick="addBonusTask()">הוסף</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WALLET PAGE -->
+  <div class="page" id="page-wallet">
+    <div style="margin-bottom:14px;margin-top:4px;">
+      <div class="kid-selector" id="wallet-kid-selector"></div>
+    </div>
+    <div id="wallet-content"></div>
+  </div>
+
+  <!-- WEEKLY ASSIGNMENT -->
+  <div class="page" id="page-weekly">
+    <div style="margin-top:4px;" id="weekly-content"></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="page" id="page-settings">
+    <div style="margin-top:8px;" id="settings-content"></div>
+  </div>
+
+  <!-- GRAPH PAGE -->
+  <div class="page" id="page-graph">
+    <div style="margin-top:4px;" id="graph-content"></div>
+  </div>
+
+  <!-- SHOP PAGE -->
+  <div class="page" id="page-shop">
+    <div style="margin-bottom:14px;margin-top:4px;">
+      <div class="kid-selector" id="shop-kid-selector"></div>
+    </div>
+    <div id="shop-content"></div>
+  </div>
+
+</div>
+
+<!-- CONFIRM PURCHASE MODAL -->
+<div class="confirm-modal" id="confirm-modal">
+  <div class="confirm-box">
+    <span class="confirm-icon" id="confirm-icon">🎁</span>
+    <div class="confirm-title" id="confirm-title"></div>
+    <div class="confirm-desc" id="confirm-desc"></div>
+    <div class="confirm-cost" id="confirm-cost"></div>
+    <div class="confirm-btns">
+      <button class="btn-cancel" onclick="closeConfirm()">ביטול</button>
+      <button class="btn-confirm" id="confirm-btn" onclick="confirmPurchase()">מממש! 🎉</button>
+    </div>
+  </div>
+</div>
+<!-- STREAK POPUP -->
+<div class="streak-popup" id="streak-popup" onclick="closeStreakPopup()">
+  <div class="streak-popup-box" onclick="event.stopPropagation()">
+    <span class="sp-emoji" id="sp-emoji">🔥</span>
+    <div class="sp-title" id="sp-title"></div>
+    <div class="sp-sub" id="sp-sub"></div>
+    <div class="sp-record">
+      <div class="sp-record-val" id="sp-record-val"></div>
+      <div class="sp-record-lbl">שיא אישי 🏆</div>
+    </div>
+    <div id="sp-next" style="font-size:0.82rem;color:var(--text2);margin-bottom:14px;"></div>
+    <button class="sp-close" onclick="closeStreakPopup()">סגור</button>
+  </div>
+</div>
+
+<!-- PARENT MESSAGE MODAL -->
+<div class="celebration" id="parent-msg-modal" onclick="closeParentMessages()" style="z-index:150;">
+  <div class="cel-box" onclick="event.stopPropagation()" style="max-width:380px;">
+    <div style="font-family:'Fredoka One',cursive;font-size:1.3rem;margin-bottom:12px;">📨 הודעות מההורים</div>
+    <div id="parent-msg-list" style="max-height:300px;overflow-y:auto;text-align:right;"></div>
+    <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px;">
+      <textarea id="parent-msg-input" placeholder="כתוב הודעה לילדים..." class="f-input" style="width:100%;min-height:60px;resize:none;margin-bottom:8px;"></textarea>
+      <button class="cel-btn" onclick="sendParentMessage()" style="width:100%;">שלח 💌</button>
+    </div>
+    <button onclick="closeParentMessages()" style="margin-top:10px;background:none;border:none;color:var(--text2);cursor:pointer;font-size:0.85rem;">סגור</button>
+  </div>
+</div>
+
+<div class="celebration" id="celebration" onclick="closeCelebration()">
+  <div class="cel-box" onclick="event.stopPropagation()">
+    <span class="cel-emoji" id="cel-emoji">🌟</span>
+    <div class="cel-title" id="cel-title">כל הכבוד!</div>
+    <div class="cel-sub" id="cel-sub"></div>
+    <div class="cel-amount" id="cel-amount"></div>
+    <button class="cel-btn" onclick="closeCelebration()">המשך! 🚀</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const KIDS = {
+  hilel: { name: 'הלל', age: 9, emoji: '👧', color: '#FF6B9D' },
+  mitar: { name: 'מיתר', age: 8, emoji: '👧', color: '#9B59B6' },
+  yagel: { name: 'יגל', age: 7, emoji: '👦', color: '#00B4D8' }
+};
+
+// Tasks grouped by time-of-day. Each group has a bonus on completion.
+const GROUPS = [
+  { id: 'morning',    label: 'בוקר',          emoji: '🌅', bonus: 10 },
+  { id: 'afternoon',  label: 'צהריים',    emoji: '🏠', bonus: 10 },
+  { id: 'evening',    label: 'ערב',            emoji: '🌙', bonus: 10 },
+];
+
+const DEFAULT_MANDATORY = [
+  // MORNING — regular tasks
+  { id: 'm1', icon: '🦷', name: 'צחצוח שיניים', group: 'morning' },
+  { id: 'm2', icon: '👕', name: 'לבוש עצמאי',   group: 'morning' },
+  { id: 'm3', icon: '🛏️', name: 'סידור המיטה',  group: 'morning' },
+  // MORNING — energy bonus (standalone, separate bonus)
+  { id: 'm_energy',   icon: '😊', name: 'אנרגיה טובה',       group: 'morning', energyBonus: true },
+  { id: 'm_cats_mor', icon: '🐱', name: 'ריענון מים לחתולים', group: 'morning', energyBonus: true, bonusOverride: 10 },
+  // AFTERNOON
+  { id: 'm5', icon: '🎒', name: 'הנחת תיק במקום',        group: 'afternoon' },
+  { id: 'm6', icon: '📚', name: 'שיעורי בית במלואם',      group: 'afternoon' },
+  // AFTERNOON — optional bonuses (like energy in morning)
+  { id: 'm_matikip',  icon: '🧮', name: 'מאטיקיפ 30 דקות',        group: 'afternoon', afternoonBonus: true, bonusAmount: 30 },
+  { id: 'm_buka',     icon: '🎵', name: 'בוקה ווקה 30 דקות',      group: 'afternoon', afternoonBonus: true, bonusAmount: 30 },
+  { id: 'm_cats_aft', icon: '🐱', name: 'ריענון מים לחתולים',      group: 'afternoon', afternoonBonus: true, bonusAmount: 10 },
+  { id: 'm_read2',    icon: '📖', name: 'קריאת 2 פרקים בספר',      group: 'afternoon', afternoonBonus: true, bonusAmount: 30 },
+  // EVENING
+  { id: 'm11', icon: '🎒', name: 'סידור תיק לבית הספר',   group: 'evening' },
+  { id: 'm14', icon: '👟', name: 'איסוף נעליים',           group: 'evening' },
+  { id: 'm15', icon: '🧸', name: 'סידור צעצועים',          group: 'evening' },
+  { id: 'm16', icon: '👔', name: 'בגדים לתוך סל הכביסה',  group: 'evening' },
+  { id: 'm9',  icon: '🍽️', name: 'פינוי הצלחת לכיור',     group: 'evening' },
+  { id: 'm17', icon: '🦷', name: 'צחצוח שיניים',           group: 'evening' },
+  { id: 'm18', icon: '📖', name: 'בחירת ספר לקריאה',       group: 'evening' },
+  { id: 'm20', icon: '✏️', name: 'כתיבה ביומן — דבר טוב, מצחיק, או חדש שלמדתי', group: 'evening' },
+  { id: 'm19', icon: '🌙', name: 'כניסה למיטה עד 20:00',   group: 'evening' },
+  // EVENING — optional bonuses
+  { id: 'm_sweep',   icon: '🧹', name: 'טיטוא הסלון',          group: 'evening', eveningBonus: true, bonusAmount: 10 },
+  { id: 'm_dishes',  icon: '🍳', name: 'שטיפת כלים',           group: 'evening', eveningBonus: true, bonusAmount: 30 },
+  { id: 'm_shower',  icon: '🚿', name: 'מקלחת גוף',             group: 'evening', eveningBonus: true, bonusAmount: 10 },
+  { id: 'm_shower2', icon: '🚿', name: 'מקלחת עם ראש',          group: 'evening', eveningBonus: true, bonusAmount: 30 },
+];
+
+// Energy bonus is separate — not counted in group completion
+const ENERGY_BONUS = 20;
+
+// Weekly general tasks — each completion earns shami'z, no need to finish all
+const DEFAULT_WEEKLY_GENERAL = [
+  { id: 'w1', icon: '🛒', name: 'עזרה בהרמת הקניות מהאוטו',           reward: 10 },
+  { id: 'w2', icon: '🗄️', name: 'עזרה בארגון קניות בארונות ומקרר',    reward: 10 },
+  { id: 'w3', icon: '👔', name: 'הכנסת בגדים מקופלים לארון',           reward: 10 },
+];
+
+// ============================================================
+// FRIDAY TASKS
+// ============================================================
+const FRIDAY_MANDATORY = [
+  // MORNING
+  { id: 'f1',  icon: '🦷', name: 'צחצוח שיניים',                   group: 'morning' },
+  { id: 'f2',  icon: '👕', name: 'לבוש עצמאי',                     group: 'morning' },
+  { id: 'f3',  icon: '🛏️', name: 'סידור המיטה',                    group: 'morning' },
+  { id: 'f_energy', icon: '😊', name: 'אנרגיה טובה',               group: 'morning', energyBonus: true },
+  { id: 'f_cats_m', icon: '🐱', name: 'ריענון מים לחתולים',         group: 'morning', energyBonus: true, bonusOverride: 10 },
+  // AFTERNOON
+  { id: 'f5',  icon: '🎒', name: 'הנחת תיק במקום',                 group: 'afternoon' },
+  { id: 'f6',  icon: '🧹', name: 'השתתפות בניקיון הבית לפני שבת',  group: 'afternoon' },
+  { id: 'f7',  icon: '🕯️', name: 'השתתפות בהכנות שולחן שבת',       group: 'afternoon' },
+  { id: 'f8',  icon: '✏️', name: 'כתיבה ביומן',                    group: 'afternoon' },
+  { id: 'f_matikip', icon: '🧮', name: 'מאטיקיפ 30 דקות',          group: 'afternoon', afternoonBonus: true, bonusAmount: 30 },
+  { id: 'f_buka',    icon: '🎵', name: 'בוקה ווקה 30 דקות',        group: 'afternoon', afternoonBonus: true, bonusAmount: 30 },
+  { id: 'f_cats_a',  icon: '🐱', name: 'ריענון מים לחתולים',        group: 'afternoon', afternoonBonus: true, bonusAmount: 10 },
+  // EVENING
+  { id: 'f9',  icon: '🛁', name: 'אמבטיה/מקלחת שבת',               group: 'evening' },
+  { id: 'f10', icon: '👔', name: 'בגדים לתוך סל הכביסה',            group: 'evening' },
+  { id: 'f11', icon: '🌅', name: 'להגיד שבת שלום לכל בני הבית',     group: 'evening' },
+  { id: 'f12', icon: '🍽️', name: 'השתתפות בפינוי שולחן השבת',      group: 'evening' },
+  { id: 'f13', icon: '📖', name: 'קריאה לשבת',                     group: 'evening', note: 'הלל: פרק מספר | יגל ומיתר: ב״ס' },
+  { id: 'f14', icon: '🌙', name: 'כניסה למיטה עד 22:00',            group: 'evening' },
+  // EVENING BONUSES
+  { id: 'f_dishes',  icon: '🍽️', name: 'שטיפת כלים ארוחת ערב',     group: 'evening', eveningBonus: true, bonusAmount: 30 },
+  { id: 'f_shalom',  icon: '🍽️', name: 'להשתתף בשלום עליכם',       group: 'evening', eveningBonus: true, bonusAmount: 20 },
+  { id: 'f_shirshabat', icon: '🍽️', name: 'להשתתף בשיר שבת',       group: 'evening', eveningBonus: true, bonusAmount: 20 },
+  { id: 'f_bracha',  icon: '🍽️', name: 'להשתתף בברכת המזון',       group: 'evening', eveningBonus: true, bonusAmount: 20 },
+];
+
+// ============================================================
+// SATURDAY TASKS
+// ============================================================
+const SATURDAY_MANDATORY = [
+  // MORNING
+  { id: 's1',  icon: '🦷', name: 'צחצוח שיניים',                   group: 'morning' },
+  { id: 's2',  icon: '👕', name: 'לבוש עצמאי',                     group: 'morning' },
+  { id: 's3',  icon: '🛏️', name: 'סידור המיטה',                    group: 'morning' },
+  { id: 's4',  icon: '🍽️', name: 'לשמור על שולחן אוכל נקי',        group: 'morning' },
+  { id: 's5',  icon: '🍽️', name: 'לשמור על שולחן סלון נקי',        group: 'morning' },
+  { id: 's6',  icon: '📖', name: 'קריאה לשבת',                     group: 'morning', note: 'הלל: פרק מספר | יגל ומיתר: ב״ס' },
+  { id: 's_energy', icon: '😊', name: 'אנרגיה טובה',               group: 'morning', energyBonus: true },
+  { id: 's_cats_m', icon: '🐱', name: 'ריענון מים לחתולים',         group: 'morning', energyBonus: true, bonusOverride: 10 },
+  { id: 's_salon',  icon: '📖', name: 'לשמור על סלון מסודר',        group: 'morning', energyBonus: true, bonusOverride: 20 },
+  { id: 's_kiddush',icon: '🍽️', name: 'השתתפות בשיר בקידוש היום',  group: 'morning', energyBonus: true, bonusOverride: 20 },
+  // AFTERNOON
+  { id: 's7',  icon: '🍽️', name: 'השתתפות בהכנות שולחן צהריים',    group: 'afternoon' },
+  { id: 's8',  icon: '🍽️', name: 'השתתפות בפינוי שולחן צהריים',    group: 'afternoon' },
+  { id: 's_dishes2', icon: '🍽️', name: 'שטיפת כלים ארוחת צהריים',  group: 'afternoon', afternoonBonus: true, bonusAmount: 30 },
+  { id: 's_cats_a',  icon: '🐱', name: 'ריענון מים לחתולים',        group: 'afternoon', afternoonBonus: true, bonusAmount: 10 },
+  // EVENING
+  { id: 's9',  icon: '🦷', name: 'צחצוח שיניים',                   group: 'evening' },
+  { id: 's10', icon: '✏️', name: 'כתיבה ביומן',                    group: 'evening' },
+  { id: 's11', icon: '🌙', name: 'כניסה למיטה עד 20:00',            group: 'evening' },
+];
+
+function getDayTasks() {
+  const day = new Date().getDay(); // 0=Sunday, 5=Friday, 6=Saturday
+  let base;
+  if (day === 5) base = FRIDAY_MANDATORY;
+  else if (day === 6) base = SATURDAY_MANDATORY;
+  else base = DEFAULT_MANDATORY;
+
+  // Inject custom tasks for today
+  const dayKey = day === 5 ? 'friday' : day === 6 ? 'saturday' : 'weekdays';
+  const custom = (state.customTasks||[]).filter(t => (t.days||[]).includes(dayKey));
+  return [...base, ...custom];
+}
+
+function getDayLabel() {
+  const day = new Date().getDay();
+  if (day === 5) return { label: 'שישי', emoji: '🕍', color: '#9B59B6' };
+  if (day === 6) return { label: 'שבת', emoji: '☀️', color: '#F4C430' };
+  return null;
+}
+
+
+const DEFAULT_BONUS_TASKS = [
+  // ניקיון
+  { id: 'b5',  icon: '🧹',  name: 'טיאטוא כל הבית',             defaultReward: 30,  category: 'ניקיון' },
+  { id: 'b6',  icon: '🫧',  name: 'העברת סמרטוט בבית',          defaultReward: 30,  category: 'ניקיון' },
+  { id: 'b14', icon: '🧹',  name: 'ניקוי אבק (פסנתר, טלסקופ, תופים)', defaultReward: 10, category: 'ניקיון' },
+  { id: 'b9',  icon: '🗑️', name: 'הוצאת שקיות זבל לפח',        defaultReward: 10,  category: 'ניקיון' },
+  // כביסה
+  { id: 'b1',  icon: '🫧',  name: 'הפעלת מכונת כביסה',          defaultReward: 10,  category: 'כביסה' },
+  { id: 'b2',  icon: '👗',  name: 'תליית כביסה לייבוש',          defaultReward: 30,  category: 'כביסה' },
+  { id: 'b3',  icon: '🧺',  name: 'קיפול כביסה',                 defaultReward: 30,  category: 'כביסה' },
+  // גינה
+  { id: 'b7',  icon: '🌿',  name: 'ניקוש עשבים',                defaultReward: 30,  category: 'גינה' },
+  { id: 'b8',  icon: '🌱',  name: 'השקיית עציצים',               defaultReward: 10,  category: 'גינה' },
+  // פיתוח אישי
+  { id: 'b13', icon: '🎤',  name: 'הרצאת "המומחה הצעיר"',       defaultReward: 100, category: 'פיתוח אישי' },
+];
+
+const SHOP_CATEGORIES = [
+  {
+    id: 'time', label: 'זמן ופנאי', emoji: '🎮',
+    items: [
+      { id: 's1', icon: '📺', name: 'פרק נוסף אחרי 18:00', cost: 100, desc: 'פרק אחד נוסף לאחר השעה 18:00' },
+      { id: 's2', icon: '🌙', name: 'כניסה למיטה ב-20:30', cost: 100, desc: 'חצי שעה נוספת ערים!' },
+    ]
+  },
+  {
+    id: 'food', label: 'אוכל ופינוקים', emoji: '🍬',
+    items: [
+      { id: 's3', icon: '🍿', name: 'חטיף נוסף בשבת', cost: 50, desc: 'חטיף מיוחד ביום שבת' },
+      { id: 's4', icon: '🍨', name: 'מעדן נוסף בסוף שבוע', cost: 50, desc: 'גלידה / יוגורט / מעדן לבחירה' },
+    ]
+  },
+  {
+    id: 'experience', label: 'חוויות', emoji: '🎡',
+    items: [
+      { id: 's5', icon: '🎡', name: 'גן שעשועים', cost: 50, desc: 'יציאה לגן שעשועים' },
+      { id: 's6', icon: '⛳', name: 'מיני פיץ׳', cost: 50, desc: 'יציאה למגרש מיני גולף' },
+      { id: 's7', icon: '🫶', name: 'זמן לבד עם אמא או אבא', cost: 50, desc: 'שעה מיוחדת עם הורה לבחירה' },
+      { id: 's8', icon: '🎲', name: 'ערב משחקי קופסה', cost: 40, desc: 'ערב משפחתי עם משחק לבחירתך' },
+      { id: 's9', icon: '🗺️', name: 'בחירת פעילות סוף שבוע', cost: 80, desc: 'אתה/את בוחר/ת מה עושים!' },
+    ]
+  },
+];
+
+
+const NIS_RATE = 10; // 10 shami = 1 NIS
+
+// ============================================================
+// SHOP CATEGORIES — merged view (built-ins + custom edits)
+// ============================================================
+function getShopCategories() {
+  const cs = state.customShop || { categories: [], removedBuiltins: [], removedItems: [] };
+  const removedCats  = cs.removedBuiltins || [];
+  const removedItems = cs.removedItems    || [];
+
+  // Start with built-in categories (minus removed ones, minus removed items)
+  const pricedItems = cs.pricedItems || {};
+  const addedItems  = cs.addedItems  || [];
+  const result = SHOP_CATEGORIES
+    .filter(cat => !removedCats.includes(cat.id))
+    .map(cat => ({
+      ...cat,
+      items: [
+        ...cat.items
+          .filter(item => !removedItems.includes(item.id))
+          .map(item => pricedItems[item.id] ? { ...item, cost: pricedItems[item.id] } : item),
+        ...addedItems.filter(i => i.catId === cat.id).map(i => { const { catId, ...rest } = i; return rest; })
+      ]
+    }));
+
+  // Append custom categories
+  (cs.categories || []).forEach(cat => {
+    result.push({ ...cat, items: [...(cat.items || [])] });
+  });
+
+  return result;
+}
+
+// ============================================================
+// GOOGLE SHEETS SYNC
+// ============================================================
+// הכנס כאן את ה-URL של ה-Apps Script Web App שלך אחרי ה-deploy:
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz7BAHolDvH_ay9MhNfSKMB_oB78hhUXe0719iJSPBX6nYgw2fTUgTeIh-aNJgDfyX8Lw/exec';   // Google Apps Script Web App URL
+
+let _syncPending = false;
+let _syncTimer   = null;
+
+// שמירה ל-localStorage מיד + שליחה לגוגל בעיכוב קצר (debounce 1.5s)
+function saveState() {
+  localStorage.setItem('shami_v3', JSON.stringify(state));
+  if (!SCRIPT_URL) return;
+  if (_syncTimer) clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(_pushToSheet, 1500);
+}
+
+function _pushToSheet() {
+  if (!SCRIPT_URL) return;
+  _syncPending = true;
+  _showSyncIndicator('שומר...');
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(state),
+  })
+  .then(r => r.json())
+  .then(d => {
+    _syncPending = false;
+    if (d.ok) _showSyncIndicator('✓ סונכרן', 2000);
+    else _showSyncIndicator('⚠️ שגיאת שמירה', 3000);
+  })
+  .catch(() => {
+    _syncPending = false;
+    _showSyncIndicator('⚠️ אין חיבור', 3000);
+  });
+}
+
+function _showSyncIndicator(msg, hideAfter) {
+  let el = document.getElementById('sync-indicator');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.opacity = '1';
+  if (hideAfter) setTimeout(() => { el.style.opacity = '0'; }, hideAfter);
+}
+
+// טעינה: מנסה קודם מגוגל, fallback ל-localStorage
+async function loadStateFromCloud() {
+  if (!SCRIPT_URL) return null;
+  try {
+    _showSyncIndicator('טוען...');
+    const r = await fetch(SCRIPT_URL);
+    const data = await r.json();
+    if (data && data.kids) {
+      localStorage.setItem('shami_v3', JSON.stringify(data));
+      _showSyncIndicator('✓ נטען', 2000);
+      return data;
+    }
+  } catch(e) {
+    _showSyncIndicator('⚠️ טוען מקומי', 2000);
+  }
+  return null;
+}
+
+// ============================================================
+// STATE (localStorage)
+// ============================================================
+function loadState() {
+  try {
+    const s = localStorage.getItem('shami_v3');
+    if (s) return JSON.parse(s);
+  } catch(e) {}
+  return null;
+}
+
+function defaultState() {
+  const today = todayKey();
+  const state = {
+    kids: {},
+    bonusTasks: DEFAULT_BONUS_TASKS.map(t => ({ ...t, reward: t.defaultReward })),
+    weeklyGeneralTasks: DEFAULT_WEEKLY_GENERAL.map(t => ({ ...t })),
+    weeklyAssign: {},
+    history: [],
+    customQuotes: [],
+    actionLog: [],       // full action log
+    customTasks: [],     // user-defined tasks
+    streaks: {},        // { kidId: { count, lastDate } }
+    streakBonusGiven: {}, // { 'kidId-date': true }
+    parentMessages: [], // [{ text, date, read }]
+    oneTimeTasks: [],   // [{ id, icon, name, reward, kidId, done }]
+    familyChallenge: { goal: 30, reward: 'יציאה לפיצה 🍕', active: true },
+    familyChallengeCount: {}, // { weekKey: count }
+    taskChecks: {},      // { date: { kidId: { taskId: bool } } }
+    bonusChecks: {},     // { date: { kidId: { taskId: count } } }
+    weeklyChecks: {},    // { date: { kidId: { taskId: count } } }
+    groupBonusGiven: {}, // { date: { kidId: { groupId: bool } } }
+    customShop: { categories: [], removedBuiltins: [], removedItems: [] },
+  };
+  Object.keys(KIDS).forEach(k => {
+    state.kids[k] = { balance: 0, totalEarned: 0 };
+  });
+  return state;
+}
+
+let state = loadState() || defaultState();
+Object.keys(KIDS).forEach(k => {
+  if (!state.kids[k]) state.kids[k] = { balance: 0, totalEarned: 0 };
+});
+if (!state.customShop) state.customShop = { categories: [], removedBuiltins: [], removedItems: [] };
+if (!state.customShop.categories) state.customShop.categories = [];
+if (!state.customShop.removedBuiltins) state.customShop.removedBuiltins = [];
+if (!state.customShop.removedItems) state.customShop.removedItems = [];
+if (!state.bonusTasks) state.bonusTasks = DEFAULT_BONUS_TASKS.map(t => ({ ...t, reward: t.defaultReward }));
+// Merge new bonus tasks AND sync reward/name/category changes
+DEFAULT_BONUS_TASKS.forEach(dt => {
+  const existing = state.bonusTasks.find(t => t.id === dt.id);
+  if (existing) {
+    existing.reward = dt.defaultReward;
+    existing.name = dt.name;
+    existing.icon = dt.icon;
+    existing.category = dt.category;
+  } else {
+    state.bonusTasks.push({ ...dt, reward: dt.defaultReward });
+  }
+});
+// Remove bonus tasks no longer in DEFAULT_BONUS_TASKS
+state.bonusTasks = state.bonusTasks.filter(t => DEFAULT_BONUS_TASKS.find(dt => dt.id === t.id));
+if (!state.weeklyGeneralTasks) state.weeklyGeneralTasks = DEFAULT_WEEKLY_GENERAL.map(t => ({ ...t }));
+// Sync reward values from DEFAULT_WEEKLY_GENERAL (in case they changed)
+DEFAULT_WEEKLY_GENERAL.forEach(dt => {
+  const existing = state.weeklyGeneralTasks.find(t => t.id === dt.id);
+  if (existing) existing.reward = dt.reward;
+  else state.weeklyGeneralTasks.push({ ...dt });
+});
+if (!state.weeklyAssign) state.weeklyAssign = {};
+if (!state.taskChecks) state.taskChecks = {};
+if (!state.bonusChecks) state.bonusChecks = {};
+if (!state.weeklyChecks) state.weeklyChecks = {};
+if (!state.groupBonusGiven) state.groupBonusGiven = {};
+if (!state.customQuotes) state.customQuotes = [];
+if (!state.actionLog) state.actionLog = [];
+if (!state.customTasks) state.customTasks = [];
+if (!state.streaks) state.streaks = {};
+if (!state.streakBonusGiven) state.streakBonusGiven = {};
+if (!state.parentMessages) state.parentMessages = [];
+if (!state.oneTimeTasks) state.oneTimeTasks = [];
+if (!state.familyChallenge) state.familyChallenge = { goal: 30, reward: 'יציאה לפיצה 🍕', active: true };
+if (!state.familyChallengeCount) state.familyChallengeCount = {};
+
+function saveState() {
+  localStorage.setItem('shami_v3', JSON.stringify(state));
+}
+
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+// ============================================================
+// SELECTED KID STATE
+// ============================================================
+let selectedKid = 'hilel';
+let selectedBonusKid = 'hilel';
+let selectedWalletKid = 'hilel';
+
+// ============================================================
+// TASK CHECK HELPERS
+// ============================================================
+function getMandatoryChecks(kidId, date) {
+  date = date || todayKey();
+  if (!state.taskChecks[date]) state.taskChecks[date] = {};
+  if (!state.taskChecks[date][kidId]) state.taskChecks[date][kidId] = {};
+  return state.taskChecks[date][kidId];
+}
+
+function getBonusChecks(kidId, date) {
+  date = date || todayKey();
+  if (!state.bonusChecks[date]) state.bonusChecks[date] = {};
+  if (!state.bonusChecks[date][kidId]) state.bonusChecks[date][kidId] = {};
+  return state.bonusChecks[date][kidId];
+}
+
+function getWeeklyChecks(kidId, date) {
+  date = date || todayKey();
+  if (!state.weeklyChecks[date]) state.weeklyChecks[date] = {};
+  if (!state.weeklyChecks[date][kidId]) state.weeklyChecks[date][kidId] = {};
+  return state.weeklyChecks[date][kidId];
+}
+
+function isGroupBonusGiven(kidId, groupId) {
+  const d = todayKey();
+  return !!(state.groupBonusGiven[d] && state.groupBonusGiven[d][kidId] && state.groupBonusGiven[d][kidId][groupId]);
+}
+
+function markGroupBonus(kidId, groupId) {
+  const d = todayKey();
+  if (!state.groupBonusGiven[d]) state.groupBonusGiven[d] = {};
+  if (!state.groupBonusGiven[d][kidId]) state.groupBonusGiven[d][kidId] = {};
+  state.groupBonusGiven[d][kidId][groupId] = true;
+}
+
+// Non-bonus-only tasks for a group (exclude energy and afternoon/evening/morning bonuses)
+function groupTasks(groupId) {
+  return getDayTasks().filter(t =>
+    t.group === groupId &&
+    !t.energyBonus &&
+    !t.afternoonBonus &&
+    !t.eveningBonus &&
+    !t.morningBonus &&
+    !(t.type === 'bonus')  // custom bonus tasks
+  );
+}
+
+function allGroupDone(kidId, groupId) {
+  const checks = getMandatoryChecks(kidId);
+  return groupTasks(groupId).every(t => checks[t.id]);
+}
+
+function groupDoneCount(kidId, groupId) {
+  const checks = getMandatoryChecks(kidId);
+  return groupTasks(groupId).filter(t => checks[t.id]).length;
+}
+
+function allDayDone(kidId) {
+  const checks = getMandatoryChecks(kidId);
+  return getDayTasks().filter(t => !t.energyBonus && !t.afternoonBonus && !t.eveningBonus).every(t => checks[t.id]);
+}
+
+// ============================================================
+// STREAK LOGIC
+// ============================================================
+function updateStreak(kidId) {
+  const today = todayKey();
+  if (!state.streaks[kidId]) state.streaks[kidId] = { count: 0, lastDate: null };
+  const streak = state.streaks[kidId];
+  if (streak.lastDate === today) return; // already updated today
+
+  const yesterday = new Date(); yesterday.setDate(yesterday.getDate()-1);
+  const yKey = yesterday.toISOString().slice(0,10);
+
+  if (streak.lastDate === yKey) {
+    streak.count += 1;
+  } else if (streak.lastDate !== today) {
+    streak.count = 1;
+  }
+  streak.lastDate = today;
+  saveState();
+
+  // Track best
+  if (!streak.best || streak.count > streak.best) streak.best = streak.count;
+  saveState();
+
+  // Streak bonus every 6 days
+  const bonusKey = kidId + '-' + today + '-streak';
+  if (streak.count > 0 && streak.count % 7 === 0 && !state.streakBonusGiven[bonusKey]) {
+    state.streakBonusGiven[bonusKey] = true;
+    earnShami(kidId, 50, '🔥 בונוס רצף ' + streak.count + ' ימים!');
+    celebrateStreak(kidId, streak.count);
+    return;
+  }
+  renderStreakCards();
+  renderToday();
+}
+
+function celebrateStreak(kidId, days) {
+  const kid = KIDS[kidId];
+  document.getElementById('cel-emoji').textContent = '🔥';
+  document.getElementById('cel-title').textContent = kid.name + ' — רצף ' + days + ' ימים!';
+  document.getElementById('cel-sub').textContent = 'השלמת את כל המשימות ' + days + ' ימים ברצף!';
+  document.getElementById('cel-amount').textContent = '+50 שמי׳ז בונוס רצף 💰';
+  document.getElementById('celebration').classList.add('show');
+  launchConfetti(kid.color);
+  renderToday();
+}
+
+// ============================================================
+// FAMILY CHALLENGE
+// ============================================================
+function getWeekKey() {
+  const d = new Date();
+  const day = d.getDay();
+  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+  const mon = new Date(d.setDate(diff));
+  return mon.toISOString().slice(0,10);
+}
+
+function addFamilyChallengeCount() {
+  const wk = getWeekKey();
+  if (!state.familyChallengeCount[wk]) state.familyChallengeCount[wk] = 0;
+  state.familyChallengeCount[wk]++;
+  saveState();
+}
+
+function getFamilyChallengeCount() {
+  return state.familyChallengeCount[getWeekKey()] || 0;
+}
+
+// ============================================================
+// EARN
+// ============================================================
+function logAction(kidId, amount, action, balanceBefore, balanceAfter) {
+  if (!state.actionLog) state.actionLog = [];
+if (!state.customTasks) state.customTasks = [];
+  const now = new Date();
+  state.actionLog.push({
+    kidId, amount, action,
+    balanceBefore, balanceAfter,
+    date: now.toLocaleDateString('he-IL'),
+    time: now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
+    ts: now.getTime()
+  });
+  // Keep max 2000 entries
+  if (state.actionLog.length > 2000) state.actionLog = state.actionLog.slice(-2000);
+}
+
+function earnShami(kidId, amount, reason) {
+  const before = state.kids[kidId].balance;
+  state.kids[kidId].balance += amount;
+  state.kids[kidId].totalEarned += amount;
+  const after = state.kids[kidId].balance;
+  const now = new Date();
+  state.history.unshift({
+    kidId, amount, reason,
+    date: todayKey(),
+    time: now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
+  });
+  logAction(kidId, amount, reason, before, after);
+  // Auto daily backup
+  autoDailyBackup();
+  saveState();
+}
+
+function spendShami(kidId, amount, reason) {
+  const before = state.kids[kidId].balance;
+  state.kids[kidId].balance = Math.max(0, state.kids[kidId].balance - amount);
+  const after = state.kids[kidId].balance;
+  const now = new Date();
+  state.history.unshift({
+    kidId, amount: -amount, reason,
+    date: todayKey(),
+    time: now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
+  });
+  logAction(kidId, -amount, reason, before, after);
+  saveState();
+}
+
+// ============================================================
+// UNDO LAST ACTION
+// ============================================================
+function undoLastAction() {
+  if (!state.actionLog || !state.actionLog.length) return;
+  const last = state.actionLog[state.actionLog.length - 1];
+  if (!last) return;
+
+  const kidId = last.kidId;
+  if (!state.kids[kidId]) return;
+
+  // Reverse the balance change
+  const delta = last.amount; // positive = earn, negative = spend
+  state.kids[kidId].balance = Math.max(0, state.kids[kidId].balance - delta);
+  if (delta > 0) {
+    // Was an earn — reduce totalEarned too
+    state.kids[kidId].totalEarned = Math.max(0, (state.kids[kidId].totalEarned || 0) - delta);
+  }
+
+  // Remove last actionLog entry
+  state.actionLog.pop();
+
+  // Remove matching history entry (most recent for this kid)
+  const hIdx = state.history.findIndex(h => h.kidId === kidId && h.amount === delta);
+  if (hIdx !== -1) state.history.splice(hIdx, 1);
+
+  // Try to un-check the task if this was a mandatory task check or group bonus
+  // Action label is the reason text, e.g. "✅ צחצוח שיניים" or "🎯 בוקר הושלם!"
+  const reason = last.action || '';
+  const today = todayKey();
+  const checks = getMandatoryChecks(kidId, today);
+
+  // Try to find a matching task by name in reason
+  const allTasks = getDayTasks();
+  const matchedTask = allTasks.find(t => reason.includes(t.name));
+  if (matchedTask) {
+    checks[matchedTask.id] = false;
+    // Also un-mark group bonus if it was given for this group
+    if (matchedTask.group) {
+      const d = today;
+      if (state.groupBonusGiven[d] && state.groupBonusGiven[d][kidId]) {
+        state.groupBonusGiven[d][kidId][matchedTask.group] = false;
+      }
+    }
+  }
+
+  // If it was a group bonus action (reason includes "הושלם")
+  const groupMatch = reason.match(/(בוקר|צהריים|ערב) הושלם/);
+  if (groupMatch) {
+    const groupLabels = { 'בוקר': 'morning', 'צהריים': 'afternoon', 'ערב': 'evening' };
+    const gId = groupLabels[groupMatch[1]];
+    if (gId) {
+      const d = today;
+      if (state.groupBonusGiven[d] && state.groupBonusGiven[d][kidId]) {
+        state.groupBonusGiven[d][kidId][gId] = false;
+      }
+    }
+  }
+
+  saveState();
+  updateUndoBtn();
+  renderAll();
+}
+
+function updateUndoBtn() {
+  const btn = document.getElementById('undo-btn');
+  if (!btn) return;
+  const hasLog = state.actionLog && state.actionLog.length > 0;
+  btn.disabled = !hasLog;
+  if (hasLog) {
+    const last = state.actionLog[state.actionLog.length - 1];
+    const kidName = KIDS[last.kidId]?.name || '';
+    const sign = last.amount > 0 ? '+' : '';
+    btn.title = `בטל: ${kidName} ${sign}${last.amount} שמי׳ז`;
+  } else {
+    btn.title = 'אין פעולה לביטול';
+  }
+}
+
+// ============================================================
+// CUSTOM TASKS MANAGEMENT
+// ============================================================
+function toggleCustomTaskReward() {
+  const type = document.getElementById('ct-type')?.value;
+  const wrap = document.getElementById('ct-reward-wrap');
+  if (wrap) wrap.style.display = type === 'bonus' ? 'flex' : 'none';
+}
+
+function addCustomTask() {
+  const name = document.getElementById('ct-name')?.value.trim();
+  if (!name) { alert('יש להזין שם למשימה'); return; }
+  const icon    = document.getElementById('ct-icon')?.value.trim() || '📌';
+  const type    = document.getElementById('ct-type')?.value || 'mandatory';
+  const group   = document.getElementById('ct-group')?.value || 'morning';
+  const kidId   = document.getElementById('ct-kid')?.value || 'all';
+  const reward  = parseInt(document.getElementById('ct-reward')?.value) || 0;
+  const days    = ['weekdays','friday','saturday'].filter(d => document.getElementById('ct-day-'+d)?.checked);
+
+  if (!days.length) { alert('יש לבחור לפחות יום אחד'); return; }
+  if (type === 'bonus' && !reward) { alert('יש להזין כמות שמי׳ז לבונוס'); return; }
+
+  const task = {
+    id: 'ct-' + Date.now(),
+    name, icon, type, group, kidId, reward, days,
+    // flags for existing toggle logic
+    energyBonus:    false,
+    afternoonBonus: type === 'bonus' && group === 'afternoon',
+    eveningBonus:   type === 'bonus' && group === 'evening',
+    morningBonus:   type === 'bonus' && group === 'morning',
+    bonusAmount:    reward,
+  };
+
+  if (!state.customTasks) state.customTasks = [];
+  state.customTasks.push(task);
+  saveState();
+  renderSettingsTab();
+}
+
+function removeCustomTask(id) {
+  if (!confirm('להסיר את המשימה?')) return;
+  state.customTasks = (state.customTasks||[]).filter(t => t.id !== id);
+  saveState();
+  renderSettingsTab();
+}
+
+// Inject custom tasks into getDayTasks
+const _origGetDayTasks = getDayTasks;
+function getDayTasksWithCustom() {
+  const base = _origGetDayTasks();
+  const day = new Date().getDay(); // 0=Sun,5=Fri,6=Sat
+  const dayKey = day === 5 ? 'friday' : day === 6 ? 'saturday' : 'weekdays';
+  const custom = (state.customTasks||[]).filter(t => (t.days||[]).includes(dayKey));
+  return [...base, ...custom];
+}
+
+// ============================================================
+// BACKUP & RESTORE
+// ============================================================
+function autoDailyBackup() {
+  const key = 'shami_backup_' + todayKey();
+  if (!localStorage.getItem(key)) {
+    localStorage.setItem(key, JSON.stringify(state));
+    // Clean old backups (keep 7 days)
+    for (let i = 8; i <= 30; i++) {
+      const d = new Date(); d.setDate(d.getDate() - i);
+      localStorage.removeItem('shami_backup_' + d.toISOString().slice(0,10));
+    }
+  }
+}
+
+function exportLogCSV() {
+  const logs = (state.actionLog || []).slice().reverse();
+  const header = 'תאריך,שעה,ילד,פעולה,סכום,יתרה לפני,יתרה אחרי';
+  const rows = logs.map(e => {
+    const name = e.kidId === 'all' ? 'כולם' : KIDS[e.kidId]?.name || e.kidId;
+    return [e.date, e.time, name, '"' + (e.action||'').replace(/"/g,'""') + '"', e.amount, e.balanceBefore ?? '', e.balanceAfter ?? ''].join(',');
+  });
+  const csv = '﻿' + header + '\n' + rows.join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'shamiz-log-' + todayKey() + '.csv';
+  a.click();
+}
+
+function exportBackup() {
+  const backup = JSON.stringify(state, null, 2);
+  const blob = new Blob([backup], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'shamiz-backup-' + todayKey() + '.json';
+  a.click();
+}
+
+function restoreBackup(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const restored = JSON.parse(e.target.result);
+      if (!restored.kids) { alert('קובץ לא תקין'); return; }
+      if (!confirm('לשחזר מגיבוי? כל הנתונים הנוכחיים יוחלפו!')) return;
+      state = restored;
+      saveState();
+      renderAll();
+      alert('שוחזר בהצלחה! ✅');
+      switchSettingsTab('log');
+    } catch(err) {
+      alert('שגיאה בקריאת הקובץ: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  input.value = '';
+}
+
+function filterLog(kidId, btn) {
+  document.querySelectorAll('#log-filters button').forEach(b => {
+    b.style.background = 'transparent';
+    b.style.color = b.style.borderColor;
+  });
+  btn.style.background = btn.style.borderColor || 'var(--gold)';
+  btn.style.color = kidId === 'all' ? 'var(--text)' : 'white';
+
+  document.querySelectorAll('.log-entry').forEach(el => {
+    el.style.display = (kidId === 'all' || el.dataset.kid === kidId) ? '' : 'none';
+  });
+}
+
+// ============================================================
+// TOGGLE MANDATORY TASK
+// ============================================================
+function toggleMandatory(taskId, kidId) {
+  const checks = getMandatoryChecks(kidId);
+  const allTasks = [...DEFAULT_MANDATORY, ...FRIDAY_MANDATORY, ...SATURDAY_MANDATORY];
+  const task = getDayTasks().find(t => t.id === taskId) || allTasks.find(t => t.id === taskId);
+  if (!task) return;
+  const wasDone = !!checks[taskId];
+  checks[taskId] = !wasDone;
+  saveState();
+
+  // Energy bonus — standalone (supports bonusOverride for different amounts)
+  if (!wasDone && task.energyBonus) {
+    const amt = task.bonusOverride || ENERGY_BONUS;
+    earnShami(kidId, amt, task.icon + ' ' + task.name + ' — בונוס!');
+    celebrateGroupBonus(kidId, { label: task.name, emoji: task.icon }, amt);
+    return;
+  }
+
+  // Afternoon optional bonuses — standalone
+  if (!wasDone && task.afternoonBonus) {
+    earnShami(kidId, task.bonusAmount, task.icon + ' ' + task.name + ' — בונוס!');
+    celebrateGroupBonus(kidId, { label: task.name, emoji: task.icon }, task.bonusAmount);
+    return;
+  }
+
+  // Evening optional bonuses — standalone
+  if (!wasDone && task.eveningBonus) {
+    earnShami(kidId, task.bonusAmount, task.icon + ' ' + task.name + ' — בונוס!');
+    celebrateGroupBonus(kidId, { label: task.name, emoji: task.icon }, task.bonusAmount);
+    return;
+  }
+
+  // Morning optional bonuses (custom tasks)
+  if (!wasDone && task.morningBonus) {
+    earnShami(kidId, task.bonusAmount, task.icon + ' ' + task.name + ' — בונוס!');
+    celebrateGroupBonus(kidId, { label: task.name, emoji: task.icon }, task.bonusAmount);
+    return;
+  }
+
+  // Check group completion bonus
+  if (!wasDone && !task.energyBonus) {
+    const g = GROUPS.find(gr => gr.id === task.group);
+    if (g && allGroupDone(kidId, g.id) && !isGroupBonusGiven(kidId, g.id)) {
+      markGroupBonus(kidId, g.id);
+      earnShami(kidId, g.bonus, g.emoji + ' בונוס ' + g.label);
+      // Add to family challenge
+      addFamilyChallengeCount();
+      celebrateGroupBonus(kidId, g, g.bonus);
+      return;
+    }
+  }
+
+  // Check if entire day done → update streak
+  if (!wasDone && allDayDone(kidId)) {
+    updateStreak(kidId);
+    updateUndoBtn();
+    return;
+  }
+
+  renderToday();
+  updateUndoBtn();
+}
+
+// ============================================================
+// TOGGLE WEEKLY GENERAL TASK
+// ============================================================
+function toggleWeeklyGeneral(taskId, kidId) {
+  const checks = getWeeklyChecks(kidId);
+  const task = state.weeklyGeneralTasks.find(t => t.id === taskId);
+  if (!task) return;
+  checks[taskId] = (checks[taskId] || 0) + 1;
+  earnShami(kidId, task.reward, task.icon + ' ' + task.name);
+  celebrate(kidId, task);
+}
+
+// ============================================================
+// TOGGLE BONUS TASK
+// ============================================================
+function toggleBonus(taskId, kidId) {
+  const checks = getBonusChecks(kidId);
+  const task = state.bonusTasks.find(t => t.id === taskId);
+  if (!task) return;
+
+  if (!checks[taskId]) {
+    checks[taskId] = 1;
+    earnShami(kidId, task.reward, task.icon + ' ' + task.name);
+    celebrate(kidId, task);
+  } else {
+    // Already done — allow another (parent permission implied by the design)
+    checks[taskId] = (checks[taskId] || 0) + 1;
+    earnShami(kidId, task.reward, task.icon + ' ' + task.name + ' (נוסף)');
+    celebrate(kidId, task);
+  }
+}
+
+// ============================================================
+// RENDER KID SELECTOR
+// ============================================================
+function renderKidSelector(containerId, selectedKidVar, onSelect) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = Object.entries(KIDS).map(([k, kid]) => `
+    <button class="kid-btn ${k === selectedKidVar ? 'active' : ''}"
+      style="--kid-color:${kid.color}"
+      onclick="${onSelect}('${k}')">
+      <span class="kid-emoji">${kid.emoji}</span>
+      <span>${kid.name}</span>
+      <span class="kid-bal" style="color:${k === selectedKidVar ? 'rgba(255,255,255,0.8)' : '#D35400'}">${state.kids[k].balance} שמי׳ז</span>
+    </button>`).join('');
+}
+
+// ============================================================
+// QUOTES
+// ============================================================
+const DEFAULT_QUOTES = [
+  { text: "הצלחה היא סכום של מאמצים קטנים שחוזרים על עצמם יום אחרי יום.", author: "רוברט קולייר" },
+  { text: "לא משנה כמה לאט אתה הולך, כל עוד אתה לא עוצר.", author: "קונפוציוס" },
+  { text: "כל מסע מתחיל בצעד אחד.", author: "לאו דזה" },
+  { text: "הדרך הטובה ביותר לחזות את העתיד היא לצור אותו.", author: "אברהם לינקולן" },
+  { text: "התמדה היא המפתח. היא הופכת חלום למציאות.", author: "לא ידוע" },
+  { text: "אל תפחד מהאתגרים — הם מחזקים אותך.", author: "לא ידוע" },
+  { text: "כל יום הוא הזדמנות חדשה להיות הגרסה הטובה ביותר של עצמך.", author: "לא ידוע" },
+  { text: "המוח שלך חזק יותר ממה שאתה חושב.", author: "לא ידוע" },
+  { text: "אי אפשר לחזור לאתמול, אבל אפשר להתחיל מחר בצורה אחרת.", author: "לואיס קרול" },
+  { text: "הניסיון הוא לא מה שקורה לך — זה מה שאתה עושה עם מה שקורה לך.", author: "אולדוס האקסלי" },
+];
+
+function getTodayQuote() {
+  const quotes = state.customQuotes && state.customQuotes.length
+    ? [...DEFAULT_QUOTES, ...state.customQuotes]
+    : DEFAULT_QUOTES;
+  const dayIndex = new Date().getDate() % quotes.length;
+  return quotes[dayIndex];
+}
+
+// ============================================================
+// STREAK CARDS
+// ============================================================
+function getStreakLevel(count) {
+  if (count >= 6) return 'hot';
+  if (count >= 3) return 'warm';
+  return 'cold';
+}
+
+function renderStreakCards() {
+  const kidKeys = Object.keys(KIDS);
+  const STREAK_TARGET = 7;
+  const STREAK_BONUS = 50;
+
+  let html = '<div class="streak-grid">';
+  kidKeys.forEach(kidId => {
+    const kid = KIDS[kidId];
+    const streak = state.streaks[kidId] || { count: 0, best: 0 };
+    const count = streak.count || 0;
+    const level = getStreakLevel(count);
+    const remaining = STREAK_TARGET - (count % STREAK_TARGET);
+    const isAtTarget = count > 0 && count % STREAK_TARGET === 0;
+
+    // Dots — show position within current 6-cycle
+    const posInCycle = count % STREAK_TARGET;
+    const dotsHtml = Array.from({length: STREAK_TARGET}, (_,i) =>
+      `<div class="streak-dot ${i < posInCycle || isAtTarget ? 'filled ' + level : ''}"></div>`
+    ).join('');
+
+    let msg, msgClass;
+    if (isAtTarget && count > 0) {
+      msg = '🎯 קיבלת בונוס היום!'; msgClass = 'hot';
+    } else if (count === 0) {
+      msg = 'התחל היום! 💪'; msgClass = 'cold';
+    } else if (remaining === 1) {
+      msg = '🔥 עוד יום לבונוס!'; msgClass = level;
+    } else {
+      msg = `עוד ${remaining} ימים ← +${STREAK_BONUS} 💰`; msgClass = level;
+    }
+
+    let streakEmoji = '❄️';
+    if (level === 'warm') streakEmoji = '🔥';
+    if (level === 'hot')  streakEmoji = '⭐';
+
+    html += `<div class="streak-card ${level}" onclick="openStreakPopup('${kidId}')">
+      <span class="streak-emoji">${kid.emoji}</span>
+      <div class="streak-name" style="color:${kid.color}">${kid.name}</div>
+      <div class="streak-dots">${dotsHtml}</div>
+      <div class="streak-count" style="color:${level==='cold'?'var(--text2)':level==='warm'?'#E67E22':'#D4A017'}">${count} ${streakEmoji}</div>
+      <div class="streak-label">ימים ברצף</div>
+      <div class="streak-msg ${msgClass}">${msg}</div>
+    </div>`;
+  });
+  html += '</div>';
+
+  const el = document.getElementById('streak-cards');
+  if (el) el.innerHTML = html;
+}
+
+function openStreakPopup(kidId) {
+  const kid = KIDS[kidId];
+  const streak = state.streaks[kidId] || { count: 0, best: 0 };
+  const count = streak.count || 0;
+  const best = Math.max(streak.best || 0, count);
+  const level = getStreakLevel(count);
+  const STREAK_TARGET = 7;
+  const remaining = STREAK_TARGET - (count % STREAK_TARGET || STREAK_TARGET);
+
+  // Update best
+  if (!state.streaks[kidId]) state.streaks[kidId] = {};
+  state.streaks[kidId].best = best;
+  saveState();
+
+  document.getElementById('sp-emoji').textContent = level==='hot' ? '⭐' : level==='warm' ? '🔥' : '❄️';
+  document.getElementById('sp-title').textContent = kid.name + ' — ' + count + ' ימים!';
+  document.getElementById('sp-sub').textContent = count === 0
+    ? 'השלם את כל המשימות היום כדי להתחיל רצף!'
+    : `כל יום שמשלימים את כל החובות — הרצף גדל. אחרי 7 ימים ← 50 שמי׳ז!`;
+  document.getElementById('sp-record-val').textContent = best + ' ימים';
+  document.getElementById('sp-next').textContent = count > 0 && remaining > 0
+    ? `עוד ${remaining} ימים לבונוס הבא של 50 שמי׳ז 💰`
+    : count > 0 ? '🎯 בונוס מחכה לך היום!' : '';
+  document.getElementById('streak-popup').classList.add('show');
+}
+
+function closeStreakPopup() {
+  document.getElementById('streak-popup').classList.remove('show');
+}
+
+// ============================================================
+// RENDER TODAY HEADER
+// ============================================================
+function renderTodayHeader() {
+  const now = new Date();
+  const hour = now.getHours();
+  const days = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+  const dayName = days[now.getDay()];
+  const dateStr = now.toLocaleDateString('he-IL', { day: 'numeric', month: 'long', year: 'numeric' });
+  const timeStr = now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
+  const dayInfo = getDayLabel();
+
+  let greeting;
+  if (hour < 10) greeting = 'בוקר טוב למשפחת שמי';
+  else if (hour < 13) greeting = 'בוקר מקסים למשפחת שמי';
+  else if (hour < 17) greeting = 'צהריים טובים למשפחת שמי';
+  else if (hour < 20) greeting = 'ערב טוב למשפחת שמי';
+  else greeting = 'לילה טוב למשפחת שמי';
+
+  if (dayInfo) greeting = dayInfo.emoji + ' ' + greeting + ' — ' + dayInfo.label + '!';
+
+  const quote = getTodayQuote();
+
+  // Family challenge
+  const fc = state.familyChallenge;
+  const fcCount = getFamilyChallengeCount();
+  const fcPct = Math.min(100, Math.round(fcCount/fc.goal*100));
+
+  // Parent messages
+  const unread = (state.parentMessages||[]).filter(m=>!m.read);
+  const msgBadge = '';
+  // Update header badge
+  const badge = document.getElementById('msg-badge');
+  if (badge) {
+    if (unread.length) { badge.style.display='flex'; badge.textContent=unread.length; }
+    else { badge.style.display='none'; }
+  }
+
+  document.getElementById('today-header').innerHTML = `
+    <div class="today-hero">
+      <div style="margin-bottom:4px;">
+        <div class="today-greeting">${greeting} ✨</div>
+      </div>
+      <div class="today-datetime">יום ${dayName}, ${dateStr} · ${timeStr}</div>
+
+      <div style="margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:4px;">
+          <span>🏆 אתגר משפחתי: ${fc.reward}</span>
+          <span>${fcCount}/${fc.goal}</span>
+        </div>
+        <div style="height:5px;background:rgba(255,255,255,0.1);border-radius:5px;overflow:hidden;">
+          <div style="height:100%;width:${fcPct}%;background:var(--gold);border-radius:5px;transition:width 0.5s;"></div>
+        </div>
+        ${fcCount>=fc.goal?'<div style="font-size:0.75rem;color:var(--gold);margin-top:4px;font-weight:700;">🎉 השגתם את האתגר השבועי!</div>':''}
+      </div>
+      <div class="today-quote">${quote.text}</div>
+      <div class="today-quote-attr">— ${quote.author}</div>
+    </div>`;
+}
+
+// ============================================================
+// RENDER TODAY — ALL KIDS IN ONE SCREEN
+// ============================================================
+function renderToday() {
+  renderTodayHeader();
+  renderStreakCards();
+  const el = document.getElementById('all-kids-today');
+  const kidKeys = Object.keys(KIDS);
+
+  let html = '<div class="all-kids-grid">';
+
+  kidKeys.forEach(kidId => {
+    const kid = KIDS[kidId];
+    const kd = state.kids[kidId];
+    const checks = getMandatoryChecks(kidId);
+    const wChecks = getWeeklyChecks(kidId);
+
+    // Total done across all groups for header badge
+    const totalTasks = getDayTasks().filter(t => !t.energyBonus && !t.afternoonBonus && !t.eveningBonus).length;
+    const totalDone = getDayTasks().filter(t => !t.energyBonus && !t.afternoonBonus && !t.eveningBonus && checks[t.id]).length;
+    const allComplete = totalDone === totalTasks;
+
+    html += `<div class="kid-column" style="border-top: 3px solid ${kid.color}">
+      <div class="kid-col-header" style="background:${kid.color}11">
+        <span class="kid-col-emoji">${kid.emoji}</span>
+        <div class="kid-col-name" style="color:${kid.color}">${kid.name}</div>
+        <div class="kid-col-balance">${kd.balance} שמי׳ז</div>
+        <span class="kid-col-bonus-badge" style="background:#F0F0F0;color:#888">${totalDone}/${totalTasks}</span>
+      </div>
+      <div class="kid-col-body">
+        ${allComplete ? `<div class="day-done-banner">🎉 יום הושלם!</div>` : ''}`;
+
+    // Each group
+    GROUPS.forEach(g => {
+      const tasks = groupTasks(g.id);
+      // energyTasks handled below
+      const done = groupDoneCount(kidId, g.id);
+      const total = tasks.length;
+      const allDone = done === total;
+      const bonusGiven = isGroupBonusGiven(kidId, g.id);
+      const pct = total ? Math.round(done/total*100) : 0;
+
+      html += `<div class="mini-group-label ${allDone ? 'mini-group-done' : ''}">
+        ${g.emoji} ${g.label}
+        ${allDone && bonusGiven ? '<span style="color:#27AE60">+' + g.bonus + '✓</span>' : ''}
+      </div>
+      <div class="mini-progress"><div class="mini-progress-fill" style="width:${pct}%;background:${allDone?'#2ECC71':kid.color}"></div></div>`;
+
+      tasks.forEach(t => {
+        const isDone = !!checks[t.id];
+        html += `<div class="mini-task ${isDone ? 'done' : ''}" onclick="toggleMandatory('${t.id}','${kidId}')">
+          <div class="mini-check">${isDone ? '✓' : ''}</div>
+          <span class="mini-task-icon">${t.icon}</span>
+          <span class="mini-task-name">${t.name}</span>
+        </div>`;
+      });
+
+      // Energy bonus tasks (all of them for this group)
+      const energyTasks = DEFAULT_MANDATORY.filter(t => t.group === g.id && t.energyBonus);
+      energyTasks.forEach(et => {
+        const eDone = !!checks[et.id];
+        const eAmt = et.bonusOverride || ENERGY_BONUS;
+        html += `<div class="mini-task energy ${eDone ? 'done' : ''}" onclick="toggleMandatory('${et.id}','${kidId}')">
+          <div class="mini-check">${eDone ? '✓' : ''}</div>
+          <span class="mini-task-icon">${et.icon}</span>
+          <span class="mini-task-name">${et.name} +${eAmt}💰</span>
+        </div>`;
+      });
+
+      // Afternoon/morning optional bonus tasks (including custom)
+      const afternoonBonusTasks = getDayTasks().filter(t => t.group === g.id && (t.afternoonBonus || t.morningBonus || t.type === 'bonus'));
+      afternoonBonusTasks.forEach(abt => {
+        const abtDone = !!checks[abt.id];
+        const abtReward = abt.bonusAmount || abt.reward || 0;
+        html += `<div class="mini-task energy ${abtDone ? 'done' : ''}" onclick="toggleMandatory('${abt.id}','${kidId}')">
+          <div class="mini-check">${abtDone ? '✓' : ''}</div>
+          <span class="mini-task-icon">${abt.icon}</span>
+          <span class="mini-task-name">${abt.name} +${abtReward}💰</span>
+        </div>`;
+      });
+
+      // Evening optional bonus tasks
+      const eveningBonusTasks = getDayTasks().filter(t => t.group === g.id && t.eveningBonus);
+      eveningBonusTasks.forEach(ebt => {
+        const ebtDone = !!checks[ebt.id];
+        html += `<div class="mini-task energy ${ebtDone ? 'done' : ''}" onclick="toggleMandatory('${ebt.id}','${kidId}')">
+          <div class="mini-check">${ebtDone ? '✓' : ''}</div>
+          <span class="mini-task-icon">${ebt.icon}</span>
+          <span class="mini-task-name">${ebt.name} +${ebt.bonusAmount}💰</span>
+        </div>`;
+      });
+    });
+
+    // Weekly general
+    if (state.weeklyGeneralTasks.length && getDayTasks() === DEFAULT_MANDATORY) {
+      html += `<div class="mini-group-label">🛒 כללי</div>`;
+      state.weeklyGeneralTasks.forEach(t => {
+        const count = wChecks[t.id] || 0;
+        html += `<div class="mini-task weekly-gen" onclick="toggleWeeklyGeneral('${t.id}','${kidId}')">
+          <div class="mini-check" style="${count>0?'background:#2ECC71;border-color:#2ECC71;color:white;':'border-color:#9AE6B4;'}">${count > 0 ? count : ''}</div>
+          <span class="mini-task-icon">${t.icon}</span>
+          <span class="mini-task-name">${t.name} +${t.reward}💰</span>
+        </div>`;
+      });
+    }
+
+    html += `</div></div>`;
+  });
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function renderTodayKidSelector() {} // legacy stub — no longer needed
+function renderBonusBanner() {}      // legacy stub
+
+// ============================================================
+// RENDER BONUS PAGE
+// ============================================================
+function selectBonusKid(k) {
+  selectedBonusKid = k;
+  renderKidSelector('bonus-kid-selector', selectedBonusKid, 'selectBonusKid');
+  renderBonusList();
+}
+
+function renderBonusList() {
+  const checks = getBonusChecks(selectedBonusKid);
+  const assign = state.weeklyAssign;
+
+  const myTasks = state.bonusTasks.filter(t => { const a = assign[t.id]; return !a || a === selectedBonusKid; });
+  const otherTasks = state.bonusTasks.filter(t => { const a = assign[t.id]; return a && a !== selectedBonusKid; });
+
+  // Group myTasks by category
+  const categories = [];
+  const seen = new Set();
+  myTasks.forEach(t => {
+    const cat = t.category || 'כללי';
+    if (!seen.has(cat)) { seen.add(cat); categories.push(cat); }
+  });
+
+  let html = '';
+
+  if (!myTasks.length) {
+    html = `<div class="empty"><div class="empty-icon">📭</div>אין משימות בונוס משובצות</div>`;
+  } else {
+    categories.forEach(cat => {
+      const catTasks = myTasks.filter(t => (t.category || 'כללי') === cat);
+      html += `<div class="section-header" style="margin-top:14px;">
+        <span class="section-badge badge-bonus">⭐ ${cat}</span>
+      </div><div class="task-list">`;
+      catTasks.forEach(t => {
+        const count = checks[t.id] || 0;
+        html += `
+          <div class="task-item bonus-item" onclick="toggleBonus('${t.id}','${selectedBonusKid}')">
+            <div class="task-check">${count > 0 ? '✓' : ''}</div>
+            <div class="task-icon">${t.icon}</div>
+            <div class="task-info">
+              <div class="task-name">${t.name}</div>
+              <div class="task-sub">${count > 0 ? 'בוצע ' + count + ' פעם היום' : 'לחץ לסמן ביצוע'}</div>
+            </div>
+            <div class="task-reward reward-bonus">+${t.reward} 💰</div>
+          </div>`;
+      });
+      html += `</div>`;
+    });
+  }
+
+  if (otherTasks.length) {
+    html += `<div class="section-header" style="margin-top:16px;">
+      <span class="section-title-text" style="font-size:0.9rem;color:var(--text2)">משובץ לאחר השבוע</span>
+    </div><div class="task-list">`;
+    otherTasks.forEach(t => {
+      const assignedTo = KIDS[assign[t.id]]?.name || '';
+      html += `
+        <div class="task-item bonus-item" style="opacity:0.4;cursor:default;">
+          <div class="task-icon">${t.icon}</div>
+          <div class="task-info">
+            <div class="task-name">${t.name}</div>
+            <div class="task-sub">משובץ ל${assignedTo}</div>
+          </div>
+          <div class="task-reward reward-bonus">+${t.reward} 💰</div>
+        </div>`;
+    });
+    html += `</div>`;
+  }
+
+  document.getElementById('bonus-list').innerHTML = html;
+}
+
+function addBonusTask() {
+  const name = document.getElementById('new-task-name').value.trim();
+  const icon = document.getElementById('new-task-icon').value.trim() || '⭐';
+  const reward = parseInt(document.getElementById('new-task-reward').value) || 20;
+  if (!name) return;
+  const id = 'b' + Date.now();
+  state.bonusTasks.push({ id, icon, name, reward });
+  saveState();
+  document.getElementById('new-task-name').value = '';
+  document.getElementById('new-task-icon').value = '';
+  document.getElementById('new-task-reward').value = '';
+  renderBonusList();
+}
+
+// ============================================================
+// WALLET PAGE
+// ============================================================
+function selectWalletKid(k) {
+  selectedWalletKid = k;
+  renderKidSelector('wallet-kid-selector', selectedWalletKid, 'selectWalletKid');
+  renderWallet();
+}
+
+function renderWallet() {
+  const kid = KIDS[selectedWalletKid];
+  const kd = state.kids[selectedWalletKid];
+  const history = state.history.filter(h => h.kidId === selectedWalletKid).slice(0, 20);
+
+  const nisValue = Math.floor(kd.balance / (state.nisRate||NIS_RATE));
+  const todayEarned = state.history.filter(h => h.kidId === selectedWalletKid && h.date === todayKey() && h.amount > 0).reduce((s,h) => s + h.amount, 0);
+
+  let html = `
+    <div class="wallet-card">
+      <div class="wallet-name">${kid.emoji} ${kid.name}</div>
+      <div class="wallet-balance">${kd.balance}</div>
+      <div class="wallet-unit">שטרות שמי׳ז</div>
+      <div class="nis-rate">≈ ${nisValue} ₪ אמיתיים (${state.nisRate||NIS_RATE} שמי׳ז = 1 ₪)</div>
+      <div class="wallet-stats">
+        <div class="w-stat">
+          <div class="w-stat-val">+${todayEarned}</div>
+          <div class="w-stat-lbl">הרוויח היום</div>
+        </div>
+        <div class="w-stat">
+          <div class="w-stat-val">${kd.totalEarned}</div>
+          <div class="w-stat-lbl">סה"כ הרוויח</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-bottom:16px;">
+      <button class="btn-add" style="flex:1;background:#E74C3C;color:white;" onclick="redeemShami('${selectedWalletKid}')">💸 מימוש שטרות</button>
+      <button class="btn-add" style="flex:1;" onclick="addShami('${selectedWalletKid}')">➕ הוסף ידנית</button>
+    </div>
+
+    <div class="section-header"><span class="section-title-text">📜 היסטוריה</span></div>
+    <div class="task-list">`;
+
+  if (!history.length) {
+    html += `<div class="empty"><div class="empty-icon">📭</div>עוד אין היסטוריה</div>`;
+  } else {
+    history.forEach(h => {
+      html += `
+        <div class="history-item">
+          <div class="hi-icon">${h.amount > 0 ? '💰' : '💸'}</div>
+          <div class="hi-info">
+            <div class="hi-name">${h.reason}</div>
+            <div class="hi-meta">${h.date} · ${h.time}</div>
+          </div>
+          <div class="hi-amount" style="color:${h.amount > 0 ? '#27AE60' : '#E74C3C'}">${h.amount > 0 ? '+' : ''}${h.amount} שמי׳ז</div>
+        </div>`;
+    });
+  }
+  html += `</div>`;
+  document.getElementById('wallet-content').innerHTML = html;
+}
+
+function redeemShami(kidId) {
+  const amount = parseInt(prompt(`כמה שטרות שמי׳ז לממש עבור ${KIDS[kidId].name}? (יתרה: ${state.kids[kidId].balance})`));
+  if (!amount || isNaN(amount) || amount <= 0) return;
+  if (amount > state.kids[kidId].balance) { alert('אין מספיק שטרות!'); return; }
+  const reason = prompt('סיבת המימוש:') || 'מימוש';
+  spendShami(kidId, amount, '💸 ' + reason);
+  renderWallet();
+  renderKidSelector('wallet-kid-selector', selectedWalletKid, 'selectWalletKid');
+}
+
+function addShami(kidId) {
+  const amount = parseInt(prompt(`כמה שטרות שמי׳ז להוסיף ל${KIDS[kidId].name}?`));
+  if (!amount || isNaN(amount) || amount <= 0) return;
+  const reason = prompt('סיבה:') || 'הוספה ידנית';
+  earnShami(kidId, amount, '➕ ' + reason);
+  renderWallet();
+  renderKidSelector('wallet-kid-selector', selectedWalletKid, 'selectWalletKid');
+}
+
+// ============================================================
+// WEEKLY ASSIGNMENT
+// ============================================================
+function renderWeekly() {
+  let html = `
+    <div class="weekly-card">
+      <div class="weekly-title">📅 שיבוץ שבועי — משימות בונוס</div>
+      <p style="font-size:0.8rem;color:var(--text2);margin-bottom:14px;">שבצו כל משימה לילד אחד השבוע. ניתן גם להשאיר "לכולם".</p>`;
+
+  state.bonusTasks.forEach(t => {
+    const assigned = state.weeklyAssign[t.id] || 'all';
+    html += `
+      <div class="assignment-row">
+        <div class="ar-task-icon">${t.icon}</div>
+        <div class="ar-task">${t.name}</div>
+        <div class="ar-reward">+${t.reward} 💰</div>
+        <select class="ar-select" onchange="assignTask('${t.id}', this.value)">
+          <option value="all" ${assigned==='all'?'selected':''}>כולם</option>
+          ${Object.entries(KIDS).map(([k,kid]) => `<option value="${k}" ${assigned===k?'selected':''}>${kid.name}</option>`).join('')}
+        </select>
+      </div>`;
+  });
+
+  html += `</div>
+    <button class="btn-save" onclick="saveWeekly()">💾 שמור שיבוץ</button>`;
+  document.getElementById('weekly-content').innerHTML = html;
+}
+
+function assignTask(taskId, kidId) {
+  state.weeklyAssign[taskId] = kidId;
+}
+
+function saveWeekly() {
+  saveState();
+  alert('השיבוץ השבועי נשמר! ✅');
+  renderBonusList();
+}
+
+// ============================================================
+// SETTINGS
+// ============================================================
+// ============================================================
+// SETTINGS — sub-tab state
+// ============================================================
+let settingsTab = 'bonus';
+
+function renderSettings() {
+  const tabs = [
+    { id: 'bonus',   label: '💰 בונוס' },
+    { id: 'shop',    label: '🛍️ חנות' },
+    { id: 'general', label: '⚙️ כללי' },
+    { id: 'stats',   label: '📊 סטטיסטיקות' },
+    { id: 'quotes',  label: '💬 ציטוטים' },
+    { id: 'tasks',   label: '📋 משימות' },
+    { id: 'log',     label: '📜 לוג' },
+    { id: 'reset',   label: '🔄 איפוס' },
+  ];
+
+  let html = `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;margin-top:4px;">`;
+  tabs.forEach(t => {
+    html += `<button onclick="switchSettingsTab('${t.id}')" style="padding:7px 12px;border-radius:50px;border:1.5px solid ${settingsTab===t.id?'var(--text)':'var(--border)'};background:${settingsTab===t.id?'var(--text)':'var(--card)'};color:${settingsTab===t.id?'var(--gold)':'var(--text2)'};font-family:Heebo,sans-serif;font-weight:700;font-size:0.75rem;cursor:pointer;">${t.label}</button>`;
+  });
+  html += `</div><div id="settings-tab-content"></div>`;
+
+  document.getElementById('settings-content').innerHTML = html;
+  renderSettingsTab();
+}
+
+function switchSettingsTab(tab) {
+  settingsTab = tab;
+  renderSettings();
+}
+
+function renderSettingsTab() {
+  const el = document.getElementById('settings-tab-content');
+  if (!el) return;
+
+  if (settingsTab === 'bonus') {
+    // Group by category
+    const cats = [];
+    const seen = new Set();
+    state.bonusTasks.forEach(t => { const c = t.category||'כללי'; if(!seen.has(c)){seen.add(c);cats.push(c);} });
+    let html = '';
+    cats.forEach(cat => {
+      html += `<div class="settings-title" style="margin-top:16px;">⭐ ${cat}</div>`;
+      state.bonusTasks.filter(t=>(t.category||'כללי')===cat).forEach(t => {
+        html += `<div class="setting-row">
+          <div class="sr-icon">${t.icon}</div>
+          <div class="sr-info"><div class="sr-name">${t.name}</div></div>
+          <input class="sr-val" type="number" value="${t.reward}" id="sr-${t.id}" min="1" max="500" />
+          <span style="font-size:0.75rem;color:var(--text2);margin-right:4px;">שמי׳ז</span>
+        </div>`;
+      });
+    });
+    html += `<button class="btn-save" style="margin-top:12px;" onclick="saveRewards()">💾 שמור</button>`;
+    el.innerHTML = html;
+
+  } else if (settingsTab === 'shop') {
+    renderShopEditor(el);
+
+  } else if (settingsTab === 'general') {
+    el.innerHTML = `
+      <div class="settings-title" style="margin-top:8px;">💰 יחס המרה לכסף אמיתי</div>
+      <div class="setting-row">
+        <div class="sr-icon">₪</div>
+        <div class="sr-info"><div class="sr-name">כמה שמי׳ז שווים 1 ₪?</div><div class="sr-sub">כרגע: ${state.nisRate||NIS_RATE} שמי׳ז = 1 ₪</div></div>
+        <input class="sr-val" type="number" value="${state.nisRate||NIS_RATE}" id="sr-nis-rate" min="1" max="1000" />
+      </div>
+
+      <div class="settings-title" style="margin-top:16px;">🌅 בונוס קבוצת משימות</div>
+      ${GROUPS.map(g => `
+      <div class="setting-row">
+        <div class="sr-icon">${g.emoji}</div>
+        <div class="sr-info"><div class="sr-name">בונוס ${g.label}</div><div class="sr-sub">כרגע: ${g.bonus} שמי׳ז</div></div>
+        <input class="sr-val" type="number" value="${g.bonus}" id="sr-group-${g.id}" min="1" max="200" />
+      </div>`).join('')}
+
+      <div class="settings-title" style="margin-top:16px;">😊 בונוסים מיוחדים</div>
+      <div class="setting-row">
+        <div class="sr-icon">😊</div>
+        <div class="sr-info"><div class="sr-name">אנרגיה טובה</div><div class="sr-sub">כרגע: ${ENERGY_BONUS} שמי׳ז</div></div>
+        <input class="sr-val" type="number" value="${ENERGY_BONUS}" id="sr-energy" min="1" max="100" />
+      </div>
+
+      <div class="settings-title" style="margin-top:16px;">🏆 אתגר משפחתי שבועי</div>
+      <div class="setting-row">
+        <div class="sr-icon">🎯</div>
+        <div class="sr-info"><div class="sr-name">תיאור האתגר</div><div class="sr-sub">מה מקבלים אם מגיעים ליעד?</div></div>
+      </div>
+      <div style="padding:0 4px 8px;">
+        <input class="f-input" id="sr-fc-reward" value="${state.familyChallenge.reward}" placeholder="למשל: יציאה לפיצה 🍕" style="width:100%;margin-bottom:8px;" />
+      </div>
+      <div class="setting-row">
+        <div class="sr-icon">🔢</div>
+        <div class="sr-info"><div class="sr-name">יעד שבועי</div><div class="sr-sub">כמה קבוצות צריך להשלים השבוע?</div></div>
+        <input class="sr-val" type="number" value="${state.familyChallenge.goal}" id="sr-fc-goal" min="1" max="200" />
+      </div>
+      <div class="setting-row" style="background:var(--card2);">
+        <div class="sr-icon">📊</div>
+        <div class="sr-info"><div class="sr-name">התקדמות השבוע</div><div class="sr-sub">${getFamilyChallengeCount()} / ${state.familyChallenge.goal} קבוצות</div></div>
+        <button onclick="resetFamilyChallenge()" style="background:transparent;border:1.5px solid var(--border);border-radius:8px;padding:5px 10px;font-size:0.75rem;color:var(--text2);cursor:pointer;">אפס</button>
+      </div>
+
+      <button class="btn-save" style="margin-top:12px;" onclick="saveGeneralSettings()">💾 שמור</button>`;
+
+  } else if (settingsTab === 'stats') {
+    const allHistory = state.history || [];
+    const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate()-7);
+    const weekKey = weekAgo.toISOString().slice(0,10);
+
+    let html = `<div class="settings-title" style="margin-top:8px;">📊 סיכום כללי</div>`;
+
+    // Per kid stats
+    Object.entries(KIDS).forEach(([k, kid]) => {
+      const kd = state.kids[k];
+      const weekEarned = allHistory.filter(h => h.kidId===k && h.amount>0 && h.date>=weekKey).reduce((s,h)=>s+h.amount,0);
+      const monthEarned = allHistory.filter(h => h.kidId===k && h.amount>0).reduce((s,h)=>s+h.amount,0);
+      html += `<div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:4px;padding:14px 16px;">
+        <div style="font-family:'Fredoka One',cursive;font-size:1rem;color:${kid.color}">${kid.emoji} ${kid.name}</div>
+        <div style="display:flex;gap:20px;margin-top:6px;">
+          <div><div style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:#D35400">${kd.balance}</div><div style="font-size:0.7rem;color:var(--text2)">יתרה</div></div>
+          <div><div style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:#27AE60">+${weekEarned}</div><div style="font-size:0.7rem;color:var(--text2)">השבוע</div></div>
+          <div><div style="font-family:'Fredoka One',cursive;font-size:1.3rem">${kd.totalEarned}</div><div style="font-size:0.7rem;color:var(--text2)">סה"כ</div></div>
+          <div><div style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:#9B59B6">${Math.floor((kd.balance)/(state.nisRate||NIS_RATE))}</div><div style="font-size:0.7rem;color:var(--text2)">≈ ₪</div></div>
+        </div>
+      </div>`;
+    });
+
+    // Top tasks
+    const taskCounts = {};
+    allHistory.filter(h=>h.amount>0).forEach(h => {
+      taskCounts[h.reason] = (taskCounts[h.reason]||0)+1;
+    });
+    const topTasks = Object.entries(taskCounts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    if (topTasks.length) {
+      html += `<div class="settings-title" style="margin-top:16px;">🏆 משימות הכי פופולריות</div>`;
+      topTasks.forEach(([name, count], i) => {
+        html += `<div class="setting-row">
+          <div class="sr-icon">${['🥇','🥈','🥉','4️⃣','5️⃣'][i]}</div>
+          <div class="sr-info"><div class="sr-name">${name}</div></div>
+          <div style="font-family:'Fredoka One',cursive;color:#D35400">${count}x</div>
+        </div>`;
+      });
+    }
+    el.innerHTML = html;
+
+  } else if (settingsTab === 'quotes') {
+    el.innerHTML = `
+      <p style="font-size:0.8rem;color:var(--text2);margin-bottom:12px;">הציטוטים מוצגים במסך הבית. כל יום מוצג ציטוט אחר.</p>
+      <div id="quotes-list"></div>
+      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:8px;margin-top:8px;">
+        <textarea id="new-quote-text" placeholder="הכנס ציטוט חדש..." class="f-input" style="width:100%;min-height:60px;resize:vertical;"></textarea>
+        <input id="new-quote-author" placeholder="— מחבר (לא חובה)" class="f-input" style="width:100%;" />
+        <button class="btn-add" onclick="addQuote()" style="width:100%;">➕ הוסף ציטוט</button>
+      </div>`;
+    renderQuotesList();
+
+  } else if (settingsTab === 'tasks') {
+    const DAY_OPTIONS = [
+      { id: 'weekdays', label: 'ימי חול' },
+      { id: 'friday',   label: 'שישי' },
+      { id: 'saturday', label: 'שבת' },
+    ];
+    const GROUP_OPTIONS = [
+      { id: 'morning',   label: '🌅 בוקר' },
+      { id: 'afternoon', label: '🌤️ צהריים' },
+      { id: 'evening',   label: '🌙 ערב' },
+    ];
+    const KID_OPTIONS = [
+      { id: 'all', label: 'כל הילדים' },
+      ...Object.entries(KIDS).map(([k,kid]) => ({ id: k, label: kid.emoji + ' ' + kid.name }))
+    ];
+    const TYPE_OPTIONS = [
+      { id: 'mandatory', label: 'חובה' },
+      { id: 'bonus',     label: 'בונוס' },
+    ];
+
+    const customTasks = state.customTasks || [];
+
+    let html = `
+      <div class="settings-title" style="margin-top:8px;">📋 משימות מותאמות אישית</div>
+      <p style="font-size:0.78rem;color:var(--text2);margin-bottom:12px;">משימות שתוסיף כאן יופיעו ביום ובקבוצה שתבחר, לכל הילדים או לילד ספציפי.</p>`;
+
+    if (!customTasks.length) {
+      html += `<div class="empty" style="padding:20px;"><div class="empty-icon">📝</div>עוד לא הוספת משימות</div>`;
+    } else {
+      // Group by day
+      const dayLabels = { weekdays: 'ימי חול', friday: 'שישי 🕍', saturday: 'שבת ☀️' };
+      ['weekdays','friday','saturday'].forEach(dayId => {
+        const dayTasks = customTasks.filter(t => (t.days||[]).includes(dayId));
+        if (!dayTasks.length) return;
+        html += `<div class="settings-title" style="font-size:0.9rem;margin-top:12px;">${dayLabels[dayId]}</div>`;
+        dayTasks.forEach(t => {
+          const kidLabel = t.kidId === 'all' ? 'כולם' : KIDS[t.kidId]?.name || t.kidId;
+          const groupLabel = GROUP_OPTIONS.find(g=>g.id===t.group)?.label || t.group;
+          const typeColor = t.type === 'mandatory' ? '#2980B9' : '#D35400';
+          const typeBg = t.type === 'mandatory' ? 'var(--mandatory)' : 'var(--bonus)';
+          html += `
+            <div class="setting-row" style="align-items:flex-start;gap:10px;">
+              <div class="sr-icon">${t.icon||'📌'}</div>
+              <div class="sr-info" style="flex:1;">
+                <div class="sr-name">${t.name}</div>
+                <div class="sr-sub" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:3px;">
+                  <span style="background:${typeBg};color:${typeColor};border-radius:50px;padding:1px 8px;font-size:0.68rem;font-weight:700;">${t.type==='mandatory'?'חובה':'בונוס'}</span>
+                  <span style="color:var(--text2);font-size:0.68rem;">${groupLabel}</span>
+                  <span style="color:var(--text2);font-size:0.68rem;">${kidLabel}</span>
+                  ${t.type==='bonus'?`<span style="color:#D35400;font-size:0.68rem;font-weight:700;">+${t.reward} שמי׳ז</span>`:''}
+                </div>
+              </div>
+              <button onclick="removeCustomTask('${t.id}')" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:0.75rem;color:#E74C3C;flex-shrink:0;">הסר</button>
+            </div>`;
+        });
+      });
+    }
+
+    // Add new task form
+    html += `
+      <div class="add-form" style="margin-top:16px;">
+        <div class="add-form-title">➕ הוסף משימה חדשה</div>
+        <div class="form-row">
+          <input class="f-input" id="ct-name" placeholder="שם המשימה..." style="flex:2;" />
+          <input class="f-input" id="ct-icon" placeholder="אייקון 📌" style="max-width:70px;" />
+        </div>
+        <div class="form-row">
+          <select class="f-input" id="ct-type" onchange="toggleCustomTaskReward()">
+            ${TYPE_OPTIONS.map(o=>`<option value="${o.id}">${o.label}</option>`).join('')}
+          </select>
+          <select class="f-input" id="ct-group">
+            ${GROUP_OPTIONS.map(o=>`<option value="${o.id}">${o.label}</option>`).join('')}
+          </select>
+          <select class="f-input" id="ct-kid">
+            ${KID_OPTIONS.map(o=>`<option value="${o.id}">${o.label}</option>`).join('')}
+          </select>
+        </div>
+        <div class="form-row">
+          <div id="ct-reward-wrap" style="display:none;flex:1;">
+            <input class="f-input" id="ct-reward" type="number" placeholder="שמי׳ז לבונוס" style="width:100%;" />
+          </div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--text2);margin-bottom:6px;">לאיזה ימים?</div>
+          <div style="display:flex;gap:8px;">
+            ${DAY_OPTIONS.map(d=>`
+              <label style="display:flex;align-items:center;gap:4px;font-size:0.82rem;cursor:pointer;">
+                <input type="checkbox" id="ct-day-${d.id}" value="${d.id}" checked style="cursor:pointer;" />
+                ${d.label}
+              </label>`).join('')}
+          </div>
+        </div>
+        <button class="btn-add" onclick="addCustomTask()" style="width:100%;">✅ הוסף משימה</button>
+      </div>`;
+
+    el.innerHTML = html;
+
+  } else if (settingsTab === 'log') {
+    const logs = (state.actionLog || []).slice().reverse();
+    const kidColors = { hilel: '#FF6B9D', mitar: '#9B59B6', yagel: '#00B4D8', all: '#27AE60', system: '#7F8C8D' };
+
+    let html = `
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+        <button class="btn-add" onclick="exportLogCSV()" style="flex:1;">⬇️ יצוא CSV</button>
+        <button class="btn-add" onclick="exportBackup()" style="flex:1;background:#27AE60;">💾 גיבוי מלא</button>
+        <button class="btn-add" onclick="document.getElementById('restore-input').click()" style="flex:1;background:#E67E22;">📂 שחזור</button>
+        <input type="file" id="restore-input" accept=".json" style="display:none" onchange="restoreBackup(this)" />
+      </div>
+      <div style="font-size:0.75rem;color:var(--text2);margin-bottom:10px;">
+        גיבוי אוטומטי יומי נשמר · ${logs.length} פעולות מתועדות
+      </div>`;
+
+    if (!logs.length) {
+      html += `<div class="empty"><div class="empty-icon">📋</div>עוד אין פעולות מתועדות</div>`;
+    } else {
+      // Filter buttons
+      html += `<div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;" id="log-filters">
+        <button onclick="filterLog('all',this)" style="padding:4px 10px;border-radius:50px;border:1.5px solid var(--gold);background:var(--gold);color:var(--text);font-size:0.72rem;font-weight:700;cursor:pointer;">הכל</button>
+        ${Object.entries(KIDS).map(([k,kid])=>`<button onclick="filterLog('${k}',this)" style="padding:4px 10px;border-radius:50px;border:1.5px solid ${kid.color};background:transparent;color:${kid.color};font-size:0.72rem;font-weight:700;cursor:pointer;">${kid.emoji} ${kid.name}</button>`).join('')}
+      </div>`;
+
+      html += `<div id="log-list" style="max-height:450px;overflow-y:auto;">`;
+      logs.slice(0, 200).forEach(entry => {
+        const color = kidColors[entry.kidId] || '#7F8C8D';
+        const kidName = entry.kidId === 'system' ? 'מערכת' : entry.kidId === 'all' ? 'כולם' : KIDS[entry.kidId]?.name || entry.kidId;
+        const amtColor = entry.amount > 0 ? '#27AE60' : '#E74C3C';
+        const amtSign = entry.amount > 0 ? '+' : '';
+        html += `
+          <div class="log-entry" data-kid="${entry.kidId}" style="background:var(--card);border-radius:10px;padding:10px 12px;margin-bottom:6px;border-right:3px solid ${color};display:flex;align-items:flex-start;gap:10px;">
+            <div style="flex:1;">
+              <div style="font-weight:700;font-size:0.82rem;">${entry.action}</div>
+              <div style="font-size:0.7rem;color:var(--text2);margin-top:2px;">${entry.date} · ${entry.time} · <span style="color:${color}">${kidName}</span></div>
+              ${entry.balanceBefore !== undefined ? `<div style="font-size:0.68rem;color:var(--text2);">יתרה: ${entry.balanceBefore} ← ${entry.balanceAfter}</div>` : ''}
+            </div>
+            <div style="font-family:'Fredoka One',cursive;font-size:0.95rem;color:${amtColor};white-space:nowrap;">${amtSign}${entry.amount} שמי׳ז</div>
+          </div>`;
+      });
+      html += `</div>`;
+    }
+    el.innerHTML = html;
+
+  } else if (settingsTab === 'reset') {
+    el.innerHTML = `
+      <div class="settings-title" style="margin-top:8px;">🔄 איפוס</div>
+      <p style="font-size:0.82rem;color:var(--text2);margin-bottom:12px;">פעולות האיפוס משפיעות על כל הילדים.</p>
+      <button class="reset-btn" onclick="resetToday()">🔄 אפס סימוני היום (שמור יתרות)</button>
+      <button class="reset-btn" style="margin-top:8px;" onclick="resetAll()">⚠️ אפס הכל לגמרי</button>`;
+  }
+}
+
+function saveRewards() {
+  state.bonusTasks.forEach(t => {
+    const el = document.getElementById('sr-' + t.id);
+    if (el) t.reward = parseInt(el.value) || t.reward;
+  });
+  saveState();
+  alert('ערכים נשמרו! ✅');
+  renderSettingsTab();
+}
+
+function saveShopPrices() {
+  SHOP_CATEGORIES.forEach(cat => {
+    cat.items.forEach(item => {
+      const el = document.getElementById('shop-' + item.id);
+      if (el) item.cost = parseInt(el.value) || item.cost;
+    });
+  });
+  saveState();
+  alert('מחירי החנות עודכנו! ✅');
+  renderSettingsTab();
+}
+
+function saveGeneralSettings() {
+  const nisEl = document.getElementById('sr-nis-rate');
+  if (nisEl) state.nisRate = parseInt(nisEl.value) || NIS_RATE;
+  GROUPS.forEach(g => {
+    const el = document.getElementById('sr-group-' + g.id);
+    if (el) g.bonus = parseInt(el.value) || g.bonus;
+  });
+  // Family challenge
+  const fcReward = document.getElementById('sr-fc-reward');
+  const fcGoal = document.getElementById('sr-fc-goal');
+  if (fcReward) state.familyChallenge.reward = fcReward.value.trim() || state.familyChallenge.reward;
+  if (fcGoal) state.familyChallenge.goal = parseInt(fcGoal.value) || state.familyChallenge.goal;
+  saveState();
+  alert('הגדרות נשמרו! ✅');
+  renderSettingsTab();
+  renderTodayHeader();
+}
+
+function resetFamilyChallenge() {
+  if (!confirm('לאפס את ספירת האתגר השבועי?')) return;
+  const wk = getWeekKey();
+  state.familyChallengeCount[wk] = 0;
+  saveState();
+  renderSettingsTab();
+  renderTodayHeader();
+}
+
+function resetToday() {
+  if (!confirm('לאפס את כל סימוני היום?')) return;
+  const today = todayKey();
+  delete state.taskChecks[today];
+  delete state.bonusChecks[today];
+  delete state.weeklyChecks[today];
+  delete state.groupBonusGiven[today];
+  saveState();
+  renderAll();
+}
+
+function resetAll() {
+  if (!confirm('⚠️ לאפס הכל לגמרי כולל יתרות? פעולה זו אינה הפיכה!')) return;
+  localStorage.removeItem('shami_v2');
+  state = defaultState();
+  renderAll();
+}
+
+// ============================================================
+// CELEBRATIONS
+// ============================================================
+function celebrate(kidId, task) {
+  const kid = KIDS[kidId];
+  const msgs = ['מדהים! 🌟', 'כל הכבוד! 💪', 'וואו! 🎉', 'אלוף/ה! 🏆'];
+  document.getElementById('cel-emoji').textContent = task.icon;
+  document.getElementById('cel-title').textContent = msgs[Math.floor(Math.random()*msgs.length)] + ' ' + kid.name + '!';
+  document.getElementById('cel-sub').textContent = task.name;
+  document.getElementById('cel-amount').textContent = '+' + task.reward + ' שטרות שמי׳ז 💰';
+  document.getElementById('celebration').classList.add('show');
+  launchConfetti(kid.color);
+  renderBonusList();
+  renderKidSelector('bonus-kid-selector', selectedBonusKid, 'selectBonusKid');
+}
+
+function celebrateGroupBonus(kidId, group, amount) {
+  const kid = KIDS[kidId];
+  document.getElementById('cel-emoji').textContent = group.emoji;
+  document.getElementById('cel-title').textContent = `${kid.name} — ${group.label}!`;
+  document.getElementById('cel-sub').textContent = 'השלמת את כל המשימות לחלק זה 🎯';
+  document.getElementById('cel-amount').textContent = `+${amount} שטרות שמי׳ז 💰`;
+  document.getElementById('celebration').classList.add('show');
+  launchConfetti(kid.color);
+  renderToday();
+}
+
+function closeCelebration() {
+  document.getElementById('celebration').classList.remove('show');
+}
+
+function launchConfetti(color) {
+  const colors = [color, '#F4C430', '#2ECC71', '#E74C3C', '#9B59B6'];
+  for (let i = 0; i < 40; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti-piece';
+    c.style.cssText = `left:${Math.random()*100}vw;top:-10px;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>0.5?'50%':'2px'};animation-duration:${1.8+Math.random()*1.4}s;animation-delay:${Math.random()*0.6}s;`;
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3500);
+  }
+}
+
+// ============================================================
+// SHOP EDITOR (in Settings)
+// ============================================================
+function renderShopEditor(el) {
+  const cats = getShopCategories();
+  const cs = state.customShop;
+
+  let html = `<p style="font-size:0.8rem;color:var(--text2);margin-bottom:14px;">הוסף, ערוך והסר קטגוריות ופרסים בחנות</p>`;
+
+  cats.forEach(cat => {
+    const isBuiltin = SHOP_CATEGORIES.some(c => c.id === cat.id);
+    html += `
+      <div style="background:var(--card);border-radius:14px;padding:12px 14px;margin-bottom:14px;box-shadow:var(--shadow);border:1.5px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:1.4rem;">${cat.emoji}</span>
+          <span style="font-family:'Fredoka One',cursive;font-size:1rem;flex:1;">${cat.label}</span>
+          <button onclick="removeShopCategory('${cat.id}',${!isBuiltin})" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:0.75rem;color:#E74C3C;">הסר קטגוריה</button>
+        </div>`;
+
+    if (!cat.items || !cat.items.length) {
+      html += `<div style="font-size:0.78rem;color:var(--text2);padding:6px 0;">אין פרסים בקטגוריה זו</div>`;
+    } else {
+      cat.items.forEach(item => {
+        const isBuiltinItem = SHOP_CATEGORIES.flatMap(c => c.items).some(i => i.id === item.id);
+        html += `
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);">
+            <span style="font-size:1.2rem;min-width:28px;">${item.icon}</span>
+            <div style="flex:1;">
+              <div style="font-weight:700;font-size:0.82rem;">${item.name}</div>
+              <div style="font-size:0.7rem;color:var(--text2);">${item.desc || ''}</div>
+            </div>
+            <input type="number" value="${item.cost}" min="1" max="9999"
+              id="shopitem-${item.id}"
+              style="width:64px;padding:4px 6px;border:1.5px solid var(--border);border-radius:8px;font-family:'Fredoka One',cursive;font-size:0.9rem;text-align:center;background:var(--card2);"
+              onchange="saveShopItemCost('${item.id}',this.value)" />
+            <span style="font-size:0.7rem;color:var(--text2);">שמי׳ז</span>
+            <button onclick="removeShopItem('${item.id}',${!isBuiltinItem})" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:4px 8px;cursor:pointer;font-size:0.72rem;color:#E74C3C;flex-shrink:0;">✕</button>
+          </div>`;
+      });
+    }
+
+    html += `
+        <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;align-items:center;">
+          <input id="ni-icon-${cat.id}" placeholder="🎁" style="width:50px;padding:5px;border:1.5px solid var(--border);border-radius:8px;font-size:1rem;text-align:center;background:var(--card2);" />
+          <input id="ni-name-${cat.id}" placeholder="שם הפרס..." style="flex:1;min-width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;background:var(--card2);" />
+          <input id="ni-desc-${cat.id}" placeholder="תיאור..." style="flex:1;min-width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;background:var(--card2);" />
+          <input id="ni-cost-${cat.id}" type="number" placeholder="מחיר" style="width:64px;padding:5px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;text-align:center;background:var(--card2);" />
+          <button onclick="addShopItem('${cat.id}')" style="background:var(--shami);color:white;border:none;border-radius:8px;padding:6px 12px;cursor:pointer;font-family:'Heebo',sans-serif;font-weight:700;font-size:0.78rem;white-space:nowrap;">➕ הוסף</button>
+        </div>
+      </div>`;
+  });
+
+  html += `
+    <div style="background:#F0FBF4;border:1.5px solid #B7EAC8;border-radius:14px;padding:14px;margin-top:6px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:0.95rem;margin-bottom:10px;">➕ קטגוריה חדשה</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <input id="nc-emoji" placeholder="🎁" style="width:52px;padding:6px;border:1.5px solid var(--border);border-radius:8px;font-size:1.1rem;text-align:center;background:white;" />
+        <input id="nc-label" placeholder="שם הקטגוריה..." style="flex:1;min-width:140px;padding:6px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:0.88rem;background:white;" />
+        <button onclick="addShopCategory()" style="background:#1E8449;color:white;border:none;border-radius:8px;padding:7px 16px;cursor:pointer;font-family:'Fredoka One',cursive;font-size:0.88rem;">הוסף</button>
+      </div>
+    </div>`;
+
+  el.innerHTML = html;
+}
+
+function addShopCategory() {
+  const emoji = (document.getElementById('nc-emoji').value.trim() || '🎁');
+  const label = document.getElementById('nc-label').value.trim();
+  if (!label) { alert('נא להזין שם לקטגוריה'); return; }
+  const id = 'cat-' + Date.now();
+  state.customShop.categories.push({ id, emoji, label, items: [] });
+  saveState();
+  renderSettingsTab();
+}
+
+function removeShopCategory(catId, isCustom) {
+  if (!confirm('להסיר קטגוריה זו?')) return;
+  if (isCustom) {
+    state.customShop.categories = state.customShop.categories.filter(c => c.id !== catId);
+  } else {
+    if (!state.customShop.removedBuiltins.includes(catId)) {
+      state.customShop.removedBuiltins.push(catId);
+    }
+  }
+  saveState();
+  renderSettingsTab();
+}
+
+function addShopItem(catId) {
+  const icon = (document.getElementById('ni-icon-' + catId).value.trim() || '🎁');
+  const name = (document.getElementById('ni-name-' + catId).value.trim());
+  const desc = (document.getElementById('ni-desc-' + catId).value.trim() || '');
+  const cost = parseInt(document.getElementById('ni-cost-' + catId).value) || 50;
+  if (!name) { alert('נא להזין שם לפרס'); return; }
+  const id = 'ci-' + Date.now();
+  const item = { id, icon, name, desc, cost };
+
+  const builtinCat = SHOP_CATEGORIES.find(c => c.id === catId);
+  if (builtinCat) {
+    if (!state.customShop.addedItems) state.customShop.addedItems = [];
+    state.customShop.addedItems.push({ ...item, catId });
+  } else {
+    const cat = state.customShop.categories.find(c => c.id === catId);
+    if (cat) cat.items.push(item);
+  }
+  saveState();
+  renderSettingsTab();
+  renderShop();
+}
+
+function removeShopItem(itemId, isCustom) {
+  if (isCustom) {
+    state.customShop.categories.forEach(cat => {
+      cat.items = cat.items.filter(i => i.id !== itemId);
+    });
+    if (state.customShop.addedItems) {
+      state.customShop.addedItems = state.customShop.addedItems.filter(i => i.id !== itemId);
+    }
+  } else {
+    if (!state.customShop.removedItems.includes(itemId)) {
+      state.customShop.removedItems.push(itemId);
+    }
+  }
+  saveState();
+  renderSettingsTab();
+  renderShop();
+}
+
+function saveShopItemCost(itemId, val) {
+  const cost = parseInt(val);
+  if (!cost || cost < 1) return;
+  const builtinItem = SHOP_CATEGORIES.flatMap(c => c.items).find(i => i.id === itemId);
+  if (builtinItem) {
+    if (!state.customShop.pricedItems) state.customShop.pricedItems = {};
+    state.customShop.pricedItems[itemId] = cost;
+  } else {
+    state.customShop.categories.forEach(cat => {
+      const item = cat.items.find(i => i.id === itemId);
+      if (item) item.cost = cost;
+    });
+    if (state.customShop.addedItems) {
+      const item = state.customShop.addedItems.find(i => i.id === itemId);
+      if (item) item.cost = cost;
+    }
+  }
+  saveState();
+  renderShop();
+}
+
+// ============================================================
+// SHOP
+// ============================================================
+let selectedShopKid = 'hilel';
+let pendingPurchase = null;
+
+function selectShopKid(k) {
+  selectedShopKid = k;
+  renderKidSelector('shop-kid-selector', selectedShopKid, 'selectShopKid');
+  renderShop();
+}
+
+function renderShop() {
+  const kid = KIDS[selectedShopKid];
+  const kd = state.kids[selectedShopKid];
+
+  let html = `
+    <div class="shop-balance-bar">
+      <div>
+        <div class="sbb-name">${kid.emoji} ${kid.name}</div>
+        <div class="sbb-label">היתרה שלך</div>
+      </div>
+      <div style="text-align:left;">
+        <div class="sbb-balance">${kd.balance} שמי׳ז</div>
+        <div class="sbb-label">≈ ${Math.floor(kd.balance/NIS_RATE)} ₪</div>
+      </div>
+    </div>`;
+
+  getShopCategories().forEach(cat => {
+    html += `<div class="shop-cat-header">
+      <span class="shop-cat-emoji">${cat.emoji}</span>
+      <span class="shop-cat-label">${cat.label}</span>
+    </div>
+    <div class="shop-grid">`;
+
+    cat.items.forEach(item => {
+      const canAfford = kd.balance >= item.cost;
+      html += `
+        <div class="shop-card ${canAfford ? 'affordable' : 'unaffordable'}"
+          onclick="${canAfford ? `openConfirm('${item.id}')` : 'showCantAfford()'}">
+          <span class="shop-item-icon">${item.icon}</span>
+          <div class="shop-item-name">${item.name}</div>
+          <div class="shop-item-desc">${item.desc}</div>
+          <div class="shop-item-cost">💰 ${item.cost}</div>
+          ${!canAfford ? `<div style="font-size:0.68rem;color:#E74C3C;margin-top:5px;">חסרים עוד ${item.cost - kd.balance}</div>` : ''}
+        </div>`;
+    });
+    html += `</div>`;
+  });
+
+  document.getElementById('shop-content').innerHTML = html;
+}
+
+function openConfirm(itemId) {
+  const item = getShopCategories().flatMap(c => c.items).find(i => i.id === itemId);
+  if (!item) return;
+  pendingPurchase = { itemId, kidId: selectedShopKid };
+  document.getElementById('confirm-icon').textContent = item.icon;
+  document.getElementById('confirm-title').textContent = item.name;
+  document.getElementById('confirm-desc').textContent = item.desc;
+  document.getElementById('confirm-cost').textContent = `${item.cost} שטרות שמי׳ז 💰`;
+  document.getElementById('confirm-modal').classList.add('show');
+}
+
+function closeConfirm() {
+  document.getElementById('confirm-modal').classList.remove('show');
+  pendingPurchase = null;
+}
+
+function confirmPurchase() {
+  if (!pendingPurchase) return;
+  const { itemId, kidId } = pendingPurchase;
+  const item = getShopCategories().flatMap(c => c.items).find(i => i.id === itemId);
+  if (!item) return;
+  closeConfirm();
+  spendShami(kidId, item.cost, item.icon + ' ' + item.name);
+
+  // Celebrate purchase
+  const kid = KIDS[kidId];
+  document.getElementById('cel-emoji').textContent = item.icon;
+  document.getElementById('cel-title').textContent = `נהנה/י ${kid.name}! 🎉`;
+  document.getElementById('cel-sub').textContent = item.name;
+  document.getElementById('cel-amount').textContent = `-${item.cost} שמי׳ז · נשאר: ${state.kids[kidId].balance}`;
+  document.getElementById('celebration').classList.add('show');
+  launchConfetti(kid.color);
+  renderShop();
+  renderKidSelector('shop-kid-selector', selectedShopKid, 'selectShopKid');
+}
+
+function showCantAfford() {
+  const kd = state.kids[selectedShopKid];
+  document.getElementById('cel-emoji').textContent = '😅';
+  document.getElementById('cel-title').textContent = 'עוד לא...';
+  document.getElementById('cel-sub').textContent = 'צריך עוד קצת שמי׳ז לפרס הזה!';
+  document.getElementById('cel-amount').textContent = `יתרה: ${kd.balance} שמי׳ז`;
+  document.getElementById('celebration').classList.add('show');
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showPage(name, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+  else document.querySelectorAll('.tab').forEach(t => { if (t.getAttribute('onclick').includes(name)) t.classList.add('active'); });
+
+  if (name === 'today') { renderToday(); }
+  if (name === 'bonus-tasks') { renderKidSelector('bonus-kid-selector', selectedBonusKid, 'selectBonusKid'); renderBonusList(); }
+  if (name === 'shop') { renderKidSelector('shop-kid-selector', selectedShopKid, 'selectShopKid'); renderShop(); }
+  if (name === 'wallet') { renderKidSelector('wallet-kid-selector', selectedWalletKid, 'selectWalletKid'); renderWallet(); }
+  if (name === 'weekly') renderWeekly();
+  if (name === 'settings') renderSettings();
+}
+
+// ============================================================
+// QUOTES MANAGEMENT
+// ============================================================
+function renderQuotesList() {
+  const el = document.getElementById('quotes-list');
+  if (!el) return;
+  const all = [
+    ...DEFAULT_QUOTES.map((q,i) => ({...q, isDefault: true, idx: i})),
+    ...(state.customQuotes || []).map((q,i) => ({...q, isDefault: false, idx: i}))
+  ];
+  el.innerHTML = all.map((q, i) => `
+    <div class="setting-row" style="align-items:flex-start;">
+      <div class="sr-icon">${q.isDefault ? '📖' : '✏️'}</div>
+      <div class="sr-info" style="flex:1;">
+        <div class="sr-name" style="font-weight:600;font-size:0.82rem;">"${q.text}"</div>
+        <div class="sr-sub">— ${q.author}</div>
+      </div>
+      ${!q.isDefault ? `<button onclick="removeQuote(${q.idx})" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:0.75rem;color:#E74C3C;flex-shrink:0;">הסר</button>` : ''}
+    </div>`).join('');
+}
+
+function addQuote() {
+  const text = document.getElementById('new-quote-text').value.trim();
+  const author = document.getElementById('new-quote-author').value.trim() || 'לא ידוע';
+  if (!text) return;
+  if (!state.customQuotes) state.customQuotes = [];
+if (!state.actionLog) state.actionLog = [];
+if (!state.customTasks) state.customTasks = [];
+if (!state.streaks) state.streaks = {};
+if (!state.streakBonusGiven) state.streakBonusGiven = {};
+if (!state.parentMessages) state.parentMessages = [];
+if (!state.oneTimeTasks) state.oneTimeTasks = [];
+if (!state.familyChallenge) state.familyChallenge = { goal: 30, reward: 'יציאה לפיצה 🍕', active: true };
+if (!state.familyChallengeCount) state.familyChallengeCount = {};
+  state.customQuotes.push({ text, author });
+  saveState();
+  document.getElementById('new-quote-text').value = '';
+  document.getElementById('new-quote-author').value = '';
+  renderQuotesList();
+}
+
+function removeQuote(idx) {
+  if (!state.customQuotes) return;
+  state.customQuotes.splice(idx, 1);
+  saveState();
+  renderQuotesList();
+}
+
+// ============================================================
+// GRAPH PAGE
+// ============================================================
+function renderGraph() {
+  const kidKeys = Object.keys(KIDS);
+  const days = 14;
+  const labels = [];
+  for (let i = days-1; i >= 0; i--) {
+    const d = new Date(); d.setDate(d.getDate()-i);
+    labels.push(d.toLocaleDateString('he-IL', { day: 'numeric', month: 'numeric' }));
+  }
+
+  // Build per-kid per-day earnings
+  const datasets = kidKeys.map(k => {
+    const kid = KIDS[k];
+    const data = labels.map((_, i) => {
+      const d = new Date(); d.setDate(d.getDate()-(days-1-i));
+      const key = d.toISOString().slice(0,10);
+      return (state.history||[]).filter(h => h.kidId===k && h.date===key && h.amount>0).reduce((s,h)=>s+h.amount,0);
+    });
+    return { name: kid.name, color: kid.color, emoji: kid.emoji, data };
+  });
+
+  const maxVal = Math.max(...datasets.flatMap(d=>d.data), 10);
+  const chartH = 160;
+
+  let html = `<div class="settings-title" style="margin-top:8px;">📊 רווחים ב-14 הימים האחרונים</div>
+    <div style="background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:16px;overflow-x:auto;">
+      <svg width="100%" viewBox="0 0 560 ${chartH+60}" xmlns="http://www.w3.org/2000/svg" style="min-width:400px;">`;
+
+  // Grid lines
+  for (let i = 0; i <= 4; i++) {
+    const y = chartH - (i/4)*chartH + 10;
+    const val = Math.round((i/4)*maxVal);
+    html += `<line x1="40" y1="${y}" x2="555" y2="${y}" stroke="#E8DDD0" stroke-width="1"/>
+             <text x="36" y="${y+4}" text-anchor="end" font-size="9" fill="#7A6A5A">${val}</text>`;
+  }
+
+  // Lines per kid
+  const xStep = 515 / (days-1);
+  datasets.forEach(ds => {
+    const points = ds.data.map((v,i) => `${40+i*xStep},${chartH - (v/maxVal)*chartH + 10}`).join(' ');
+    html += `<polyline points="${points}" fill="none" stroke="${ds.color}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`;
+    ds.data.forEach((v,i) => {
+      if (v > 0) html += `<circle cx="${40+i*xStep}" cy="${chartH-(v/maxVal)*chartH+10}" r="4" fill="${ds.color}"/>`;
+    });
+  });
+
+  // X labels (every other day)
+  labels.forEach((l,i) => {
+    if (i % 2 === 0) html += `<text x="${40+i*xStep}" y="${chartH+28}" text-anchor="middle" font-size="8" fill="#7A6A5A">${l}</text>`;
+  });
+
+  html += `</svg>
+      <div style="display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;">
+        ${datasets.map(ds=>`<span style="font-size:0.8rem;color:${ds.color};font-weight:700;">${ds.emoji} ${ds.name}</span>`).join('')}
+      </div>
+    </div>`;
+
+  // Per kid total summary cards
+  html += `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">`;
+  kidKeys.forEach(k => {
+    const kid = KIDS[k]; const kd = state.kids[k];
+    const streak = state.streaks[k] || { count: 0 };
+    const weekEarned = (state.history||[]).filter(h=>h.kidId===k&&h.amount>0&&h.date>=new Date(Date.now()-7*86400000).toISOString().slice(0,10)).reduce((s,h)=>s+h.amount,0);
+    html += `<div style="background:var(--card);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--shadow);border-top:3px solid ${kid.color}">
+      <div style="font-size:1.5rem">${kid.emoji}</div>
+      <div style="font-family:'Fredoka One',cursive;color:${kid.color};font-size:0.95rem">${kid.name}</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:1.4rem;color:#D35400">${kd.balance}</div>
+      <div style="font-size:0.65rem;color:var(--text2)">יתרה</div>
+      <div style="font-size:0.8rem;margin-top:6px">🔥 ${streak.count} ימים</div>
+      <div style="font-size:0.72rem;color:#27AE60">+${weekEarned} השבוע</div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  // One-time tasks section
+  html += `<div class="settings-title">⚡ משימות חד פעמיות</div>
+    <p style="font-size:0.8rem;color:var(--text2);margin-bottom:10px;">משימות מיוחדות שמוצגות פעם אחת בלבד</p>`;
+  const activeTasks = (state.oneTimeTasks||[]).filter(t=>!t.done);
+  if (activeTasks.length) {
+    html += `<div class="task-list">`;
+    activeTasks.forEach(t => {
+      html += `<div class="task-item bonus-item" onclick="completeOneTimeTask('${t.id}')">
+        <div class="task-icon">${t.icon||'⚡'}</div>
+        <div class="task-info">
+          <div class="task-name">${t.name}</div>
+          <div class="task-sub">${t.kidId==='all'?'לכולם':KIDS[t.kidId]?.name||''}</div>
+        </div>
+        <div class="task-reward reward-bonus">+${t.reward} 💰</div>
+      </div>`;
+    });
+    html += `</div>`;
+  } else {
+    html += `<div class="empty"><div class="empty-icon">✨</div>אין משימות חד פעמיות כרגע</div>`;
+  }
+
+  // Add one-time task form
+  html += `<div class="add-form" style="margin-top:14px;">
+    <div class="add-form-title">➕ הוסף משימה חד פעמית</div>
+    <div class="form-row">
+      <input class="f-input" id="ot-name" placeholder="שם המשימה..." />
+      <input class="f-input" id="ot-icon" placeholder="🎯" style="max-width:70px;" />
+    </div>
+    <div class="form-row">
+      <select class="f-input" id="ot-kid">
+        <option value="all">לכולם</option>
+        ${Object.entries(KIDS).map(([k,kid])=>`<option value="${k}">${kid.name}</option>`).join('')}
+      </select>
+      <input class="f-input" id="ot-reward" type="number" placeholder="שמי׳ז" />
+      <button class="btn-add" onclick="addOneTimeTask()">הוסף</button>
+    </div>
+  </div>`;
+
+  document.getElementById('graph-content').innerHTML = html;
+}
+
+function addOneTimeTask() {
+  const name = document.getElementById('ot-name').value.trim();
+  const icon = document.getElementById('ot-icon').value.trim() || '⚡';
+  const reward = parseInt(document.getElementById('ot-reward').value) || 20;
+  const kidId = document.getElementById('ot-kid').value;
+  if (!name) return;
+  const id = 'ot-' + Date.now();
+  state.oneTimeTasks.push({ id, icon, name, reward, kidId, done: false });
+  saveState();
+  document.getElementById('ot-name').value = '';
+  document.getElementById('ot-icon').value = '';
+  document.getElementById('ot-reward').value = '';
+  renderGraph();
+}
+
+function completeOneTimeTask(id) {
+  const task = state.oneTimeTasks.find(t=>t.id===id);
+  if (!task) return;
+  task.done = true;
+  const kids = task.kidId === 'all' ? Object.keys(KIDS) : [task.kidId];
+  kids.forEach(k => earnShami(k, task.reward, task.icon + ' ' + task.name));
+  saveState();
+  const kid = KIDS[kids[0]];
+  celebrate(kid.name.length ? {name:task.kidId==='all'?'כולם':KIDS[task.kidId].name, color:'#F4C430', emoji:'⚡'} : kid, task);
+  renderGraph();
+}
+
+// ============================================================
+// PARENT MESSAGES
+// ============================================================
+function showParentMessages() {
+  // Mark all as read
+  (state.parentMessages||[]).forEach(m => m.read = true);
+  saveState();
+  renderTodayHeader();
+  renderParentMsgList();
+  document.getElementById('parent-msg-modal').classList.add('show');
+}
+
+function closeParentMessages() {
+  document.getElementById('parent-msg-modal').classList.remove('show');
+}
+
+function renderParentMsgList() {
+  const msgs = (state.parentMessages||[]).slice().reverse();
+  const el = document.getElementById('parent-msg-list');
+  if (!el) return;
+  if (!msgs.length) { el.innerHTML = '<div class="empty">עוד אין הודעות</div>'; return; }
+  el.innerHTML = msgs.map(m => `
+    <div style="background:${m.isBonus?'#D5F5E3':'var(--card2)'};border-radius:12px;padding:12px 14px;margin-bottom:8px;border-right:3px solid ${m.isBonus?'#2ECC71':'var(--gold)'};">
+      ${m.isBonus?`<div style="font-family:'Fredoka One',cursive;color:#27AE60;font-size:0.9rem;">🎁 בונוס: +${m.bonus} שמי׳ז לכולם!</div>`:''}
+      <div style="font-size:0.88rem;font-weight:600;">${m.text}</div>
+      <div style="font-size:0.7rem;color:var(--text2);margin-top:4px;">${m.date} · ${m.time}</div>
+    </div>`).join('');
+}
+
+function sendParentMessage() {
+  const text = document.getElementById('parent-msg-input').value.trim();
+  if (!text) return;
+  const now = new Date();
+  const msg = {
+    text, read: false,
+    date: now.toLocaleDateString('he-IL'),
+    time: now.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'}),
+    isBonus: false
+  };
+
+  // Check if includes bonus keyword
+  const bonusMatch = text.match(/(\d+)\s*שמי/);
+  if (bonusMatch) {
+    const bonus = parseInt(bonusMatch[1]);
+    msg.isBonus = true; msg.bonus = bonus;
+    Object.keys(KIDS).forEach(k => earnShami(k, bonus, '📨 ' + text));
+  }
+
+  state.parentMessages.push(msg);
+  saveState();
+  document.getElementById('parent-msg-input').value = '';
+  renderParentMsgList();
+  renderTodayHeader();
+  renderWallet();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+function renderAll() {
+  renderToday();
+  renderGraph();
+  renderKidSelector('bonus-kid-selector', selectedBonusKid, 'selectBonusKid');
+  renderBonusList();
+  renderKidSelector('shop-kid-selector', selectedShopKid, 'selectShopKid');
+  renderShop();
+  renderKidSelector('wallet-kid-selector', selectedWalletKid, 'selectWalletKid');
+  renderWallet();
+  renderWeekly();
+  renderSettings();
+  updateUndoBtn();
+}
+
+
+// Date display
+function updateDate() {
+  const now = new Date();
+  const days = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+  document.getElementById('date-display').textContent = `יום ${days[now.getDay()]}, ${now.toLocaleDateString('he-IL')}`;
+}
+updateDate();
+setInterval(updateDate, 60000);
+setInterval(() => { if (document.getElementById('page-today').classList.contains('active')) renderTodayHeader(); }, 30000);
+
+// אתחול async — טוען מהענן אם יש SCRIPT_URL
+(async () => {
+  if (SCRIPT_URL) {
+    const cloudState = await loadStateFromCloud();
+    if (cloudState) {
+      // מיזוג: אותו תהליך migration שרץ על ה-state המקומי
+      state = cloudState;
+      Object.keys(KIDS).forEach(k => {
+        if (!state.kids[k]) state.kids[k] = { balance: 0, totalEarned: 0 };
+      });
+      if (!state.customShop) state.customShop = { categories: [], removedBuiltins: [], removedItems: [] };
+      if (!state.customShop.categories) state.customShop.categories = [];
+      if (!state.customShop.removedBuiltins) state.customShop.removedBuiltins = [];
+      if (!state.customShop.removedItems) state.customShop.removedItems = [];
+      if (!state.actionLog) state.actionLog = [];
+      if (!state.customTasks) state.customTasks = [];
+      if (!state.streaks) state.streaks = {};
+      if (!state.streakBonusGiven) state.streakBonusGiven = {};
+      if (!state.parentMessages) state.parentMessages = [];
+      if (!state.oneTimeTasks) state.oneTimeTasks = [];
+      if (!state.familyChallenge) state.familyChallenge = { goal: 30, reward: 'יציאה לפיצה 🍕', active: true };
+      if (!state.familyChallengeCount) state.familyChallengeCount = {};
+      if (!state.taskChecks) state.taskChecks = {};
+      if (!state.bonusChecks) state.bonusChecks = {};
+      if (!state.weeklyChecks) state.weeklyChecks = {};
+      if (!state.groupBonusGiven) state.groupBonusGiven = {};
+      if (!state.bonusTasks) state.bonusTasks = DEFAULT_BONUS_TASKS.map(t => ({ ...t, reward: t.defaultReward }));
+      if (!state.weeklyGeneralTasks) state.weeklyGeneralTasks = DEFAULT_WEEKLY_GENERAL.map(t => ({ ...t }));
+      if (!state.weeklyAssign) state.weeklyAssign = {};
+      if (!state.customQuotes) state.customQuotes = [];
+    }
+  }
+  renderAll();
+})();
+</script>
+</body>
+</html>
