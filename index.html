@@ -150,27 +150,6 @@ body {
 .w-stat-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
 .nis-rate { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 12px; font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 12px; display: inline-block; }
 
-/* BONUS BANNER */
-.bonus-banner {
-  border-radius: 14px;
-  padding: 14px 18px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  box-shadow: var(--shadow);
-}
-.bonus-banner.complete { background: #D5F5E3; border: 2px solid #2ECC71; }
-.bonus-banner.incomplete { background: var(--mandatory); border: 2px solid var(--mandatory-border); }
-.bb-icon { font-size: 2rem; flex-shrink: 0; }
-.bb-text { flex: 1; }
-.bb-title { font-weight: 700; font-size: 0.9rem; }
-.bb-desc { font-size: 0.78rem; color: var(--text2); margin-top: 2px; }
-.bb-progress { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
-.bb-bar { flex: 1; height: 6px; background: rgba(0,0,0,0.1); border-radius: 6px; overflow: hidden; }
-.bb-fill { height: 100%; background: #2ECC71; border-radius: 6px; transition: width 0.5s ease; }
-.bb-count { font-family: 'Fredoka One', cursive; font-size: 0.85rem; color: var(--text2); white-space: nowrap; }
-
 /* SECTION HEADER */
 .section-header {
   display: flex;
@@ -186,7 +165,6 @@ body {
   border-radius: 50px;
   letter-spacing: 0.5px;
 }
-.badge-mandatory { background: var(--mandatory); color: #2980B9; border: 1px solid var(--mandatory-border); }
 .badge-bonus { background: var(--bonus); color: #D4AC0D; border: 1px solid var(--bonus-border); }
 .section-title-text { font-family: 'Fredoka One', cursive; font-size: 1.1rem; }
 
@@ -208,7 +186,6 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 .task-item:active { transform: scale(0.98); }
-.task-item.mandatory-item { border-right: 4px solid #AED6F1; }
 .task-item.bonus-item { border-right: 4px solid #F9E79F; }
 .task-item.done { opacity: 0.55; }
 .task-item.done .task-name { text-decoration: line-through; }
@@ -224,7 +201,6 @@ body {
   background: white;
 }
 .task-item.done .task-check { background: #2ECC71; border-color: #2ECC71; color: white; }
-.task-item.mandatory-item .task-check { border-color: #AED6F1; }
 .task-item.bonus-item .task-check { border-color: #F9E79F; }
 
 .task-icon { font-size: 1.4rem; flex-shrink: 0; }
@@ -240,46 +216,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.reward-mandatory { background: var(--mandatory); color: #2980B9; }
 .reward-bonus { background: #FDEBD0; color: #D35400; }
-
-/* WEEKLY ASSIGNMENT */
-.weekly-card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 12px;
-  box-shadow: var(--shadow);
-  border: 1.5px solid var(--border);
-}
-.weekly-title { font-family: 'Fredoka One', cursive; font-size: 1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-.assignment-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border);
-}
-.assignment-row:last-child { border-bottom: none; }
-.ar-task { flex: 1; font-weight: 600; font-size: 0.85rem; }
-.ar-task-icon { font-size: 1.1rem; }
-.ar-reward { font-family: 'Fredoka One', cursive; color: #D35400; font-size: 0.85rem; width: 55px; text-align: center; }
-.ar-select {
-  background: var(--card2);
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 5px 8px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 0.8rem;
-  color: var(--text);
-  cursor: pointer;
-  outline: none;
-  width: 90px;
-}
-.ar-select:focus { border-color: var(--gold); }
-
-/* SETTINGS */
-.settings-section { margin-bottom: 24px; }
 .settings-title { font-family: 'Fredoka One', cursive; font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
 .setting-row {
   background: var(--card);
@@ -310,21 +247,6 @@ body {
 }
 .sr-val:focus { border-color: var(--gold); }
 
-.btn-save {
-  background: var(--text);
-  color: var(--gold);
-  border: none;
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1rem;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 8px;
-  transition: opacity 0.2s;
-}
-.btn-save:hover { opacity: 0.85; }
-
 /* HISTORY */
 .history-item {
   background: var(--card);
@@ -342,40 +264,6 @@ body {
 .hi-name { font-weight: 700; font-size: 0.85rem; }
 .hi-meta { font-size: 0.72rem; color: var(--text2); margin-top: 1px; }
 .hi-amount { font-family: 'Fredoka One', cursive; color: #27AE60; font-size: 0.95rem; }
-
-/* LEADERBOARD */
-.lb-card {
-  background: var(--card);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  margin-bottom: 16px;
-}
-.lb-header-row {
-  background: var(--text);
-  padding: 14px 20px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.1rem;
-  color: var(--gold);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.lb-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--border);
-}
-.lb-row:last-child { border-bottom: none; }
-.lb-rank { font-family: 'Fredoka One', cursive; font-size: 1.4rem; width: 32px; text-align: center; }
-.lb-avatar { font-size: 1.8rem; }
-.lb-name { flex: 1; }
-.lb-name-text { font-weight: 700; font-size: 0.95rem; }
-.lb-level { font-size: 0.72rem; color: var(--text2); }
-.lb-balance { font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: #D35400; }
-.lb-total { font-size: 0.72rem; color: var(--text2); text-align: left; }
 
 /* CELEBRATION */
 .celebration {
@@ -412,16 +300,6 @@ body {
   font-size: 1rem;
   cursor: pointer;
 }
-.bonus-complete-box {
-  background: #D5F5E3;
-  border: 2px solid #2ECC71;
-  border-radius: 14px;
-  padding: 14px 18px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.bcb-title { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #1A8A4A; }
-.bcb-sub { font-size: 0.85rem; color: #2E7D32; margin-top: 4px; }
 
 /* CONFETTI */
 .confetti-piece {
@@ -450,18 +328,6 @@ body {
   transition: all 0.2s;
 }
 .reset-btn:hover { background: #FDE8E8; border-color: var(--danger); color: var(--danger); }
-
-/* ADD TASK FORM */
-.add-form {
-  background: var(--card);
-  border-radius: 14px;
-  padding: 16px;
-  margin-top: 16px;
-  box-shadow: var(--shadow);
-  border: 1.5px dashed var(--border);
-}
-.add-form-title { font-family: 'Fredoka One', cursive; font-size: 1rem; margin-bottom: 12px; }
-.form-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
 .f-input {
   flex: 1; min-width: 130px;
   background: var(--card2);
@@ -589,8 +455,6 @@ select.f-input option { background: white; }
   .shop-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-
-
 /* STREAK CARDS */
 .streak-grid {
   display: grid;
@@ -609,9 +473,9 @@ select.f-input option { background: white; }
   box-shadow: var(--shadow);
 }
 .streak-card:active { transform: scale(0.97); }
-.streak-card.cold  { background: var(--card); border: 1.5px solid var(--border); }
-.streak-card.warm  { background: #FFF5E6; border: 2px solid #FF9A3C; }
-.streak-card.hot   { background: linear-gradient(135deg, #FFF3CD, #FFE066); border: 2px solid #F4C430; animation: streak-pulse 1.5s ease infinite; }
+.streak-card.cold { background: var(--card); border: 1.5px solid var(--border); }
+.streak-card.warm { background: #FFF5E6; border: 2px solid #FF9A3C; }
+.streak-card.hot { background: linear-gradient(135deg, #FFF3CD, #FFE066); border: 2px solid #F4C430; animation: streak-pulse 1.5s ease infinite; }
 
 @keyframes streak-pulse {
   0%,100% { box-shadow: 0 0 0 0 rgba(244,196,48,0.4); }
@@ -619,18 +483,18 @@ select.f-input option { background: white; }
 }
 
 .streak-emoji { font-size: 1.3rem; display: block; margin-bottom: 2px; }
-.streak-name  { font-family: 'Fredoka One', cursive; font-size: 0.88rem; margin-bottom: 4px; }
-.streak-dots  { display: flex; justify-content: center; gap: 4px; margin-bottom: 6px; }
-.streak-dot   { width: 11px; height: 11px; border-radius: 50%; border: 2px solid #DDD; background: white; transition: all 0.3s; }
+.streak-name { font-family: 'Fredoka One', cursive; font-size: 0.88rem; margin-bottom: 4px; }
+.streak-dots { display: flex; justify-content: center; gap: 4px; margin-bottom: 6px; }
+.streak-dot { width: 11px; height: 11px; border-radius: 50%; border: 2px solid #DDD; background: white; transition: all 0.3s; }
 .streak-dot.filled.cold { background: #BDC3C7; border-color: #95A5A6; }
 .streak-dot.filled.warm { background: #FF9A3C; border-color: #E67E22; }
-.streak-dot.filled.hot  { background: #F4C430; border-color: #D4A017; box-shadow: 0 0 6px rgba(244,196,48,0.6); }
+.streak-dot.filled.hot { background: #F4C430; border-color: #D4A017; box-shadow: 0 0 6px rgba(244,196,48,0.6); }
 .streak-count { font-family: 'Fredoka One', cursive; font-size: 1.3rem; line-height: 1; }
 .streak-label { font-size: 0.65rem; color: var(--text2); margin-bottom: 6px; }
-.streak-msg   { font-size: 0.68rem; font-weight: 700; border-radius: 50px; padding: 3px 10px; display: inline-block; }
+.streak-msg { font-size: 0.68rem; font-weight: 700; border-radius: 50px; padding: 3px 10px; display: inline-block; }
 .streak-msg.cold { background: #F0F0F0; color: #888; }
 .streak-msg.warm { background: #FFE0B2; color: #E65100; }
-.streak-msg.hot  { background: #F4C430; color: #5D4037; }
+.streak-msg.hot { background: #F4C430; color: #5D4037; }
 
 /* STREAK POPUP */
 .streak-popup {
@@ -651,13 +515,13 @@ select.f-input option { background: white; }
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   animation: popIn 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
 }
-.sp-emoji  { font-size: 3.5rem; display: block; margin-bottom: 8px; }
-.sp-title  { font-family: 'Fredoka One', cursive; font-size: 1.4rem; margin-bottom: 6px; }
-.sp-sub    { font-size: 0.85rem; color: var(--text2); margin-bottom: 14px; }
+.sp-emoji { font-size: 3.5rem; display: block; margin-bottom: 8px; }
+.sp-title { font-family: 'Fredoka One', cursive; font-size: 1.4rem; margin-bottom: 6px; }
+.sp-sub { font-size: 0.85rem; color: var(--text2); margin-bottom: 14px; }
 .sp-record { background: var(--card2); border-radius: 12px; padding: 10px; margin-bottom: 14px; }
 .sp-record-val { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: #D35400; }
 .sp-record-lbl { font-size: 0.72rem; color: var(--text2); }
-.sp-close  { background: var(--text); color: var(--gold); border: none; border-radius: 50px; padding: 10px 28px; font-family: 'Fredoka One', cursive; font-size: 0.95rem; cursor: pointer; }
+.sp-close { background: var(--text); color: var(--gold); border: none; border-radius: 50px; padding: 10px 28px; font-family: 'Fredoka One', cursive; font-size: 0.95rem; cursor: pointer; }
 
 @media (max-width:480px) {
   .streak-card { padding: 10px 8px; }
@@ -776,6 +640,7 @@ select.f-input option { background: white; }
 .mini-task.done .mini-check { background: #2ECC71; border-color: #2ECC71; color: white; }
 .mini-task-icon { font-size: 0.9rem; flex-shrink: 0; }
 .mini-task-name { font-size: 0.72rem; font-weight: 600; line-height: 1.2; flex: 1; }
+.mini-task-note { display: block; font-size: 0.6rem; font-weight: 400; color: var(--text2); margin-top: 2px; }
 
 /* Day complete banner */
 .day-done-banner {
@@ -838,6 +703,53 @@ select.f-input option { background: white; }
 }
 .mini-progress-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
 
+/* UNIFIED EDITOR */
+.ed-intro { font-size: 0.8rem; color: var(--text2); margin: 2px 0 10px; }
+.ed-chips { display: flex; gap: 6px; margin-bottom: 8px; }
+.ed-chip { flex: 1; padding: 8px; border-radius: 50px; border: 1.5px solid var(--border); background: var(--card); font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--text2); cursor: pointer; }
+.ed-chip.on { background: var(--text); color: var(--gold); border-color: var(--text); }
+.ed-group { font-weight: 700; font-size: 0.85rem; margin: 14px 0 6px; display: flex; align-items: center; gap: 8px; }
+.ed-group-sub { font-weight: 400; font-size: 0.72rem; color: var(--text2); }
+.edit-row { display: flex; align-items: center; gap: 10px; background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 10px 12px; margin-bottom: 6px; cursor: pointer; box-shadow: var(--shadow); }
+.edit-row:active { transform: scale(0.99); }
+.edit-row.dim { opacity: 0.5; }
+.er-icon { font-size: 1.2rem; width: 28px; text-align: center; flex-shrink: 0; }
+.er-name { flex: 1; font-weight: 700; font-size: 0.85rem; line-height: 1.3; min-width: 0; }
+.er-badges { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; max-width: 45%; }
+.er-badge { font-size: 0.66rem; font-weight: 700; padding: 2px 7px; border-radius: 50px; background: var(--card2); color: var(--text2); white-space: nowrap; }
+.er-badge.bonus { background: #FDEBD0; color: #D35400; }
+.er-badge.mand { background: var(--mandatory); color: #2980B9; }
+.er-badge.hid { background: #EEE; color: #888; }
+.er-dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.er-edit { font-size: 0.8rem; opacity: 0.5; }
+.er-add { width: 100%; background: transparent; border: 1.5px dashed var(--border); border-radius: 12px; padding: 9px; color: var(--shami); font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; margin-bottom: 4px; }
+.ed-empty { font-size: 0.8rem; color: var(--text2); padding: 6px 4px; }
+.ed-shopcat { margin-bottom: 14px; }
+.edit-box { max-width: 420px; text-align: right; padding: 24px 20px; max-height: 88vh; overflow-y: auto; animation: none; }
+.edit-box .cel-title { text-align: center; margin-bottom: 12px; }
+.ed-field { margin-bottom: 10px; }
+.ed-label { font-size: 0.75rem; font-weight: 700; color: var(--text2); margin-bottom: 4px; }
+.ed-field .f-input { width: 100%; min-width: 0; }
+.ed-icon { max-width: 80px; text-align: center; font-size: 1.2rem !important; }
+.ed-days { display: flex; gap: 14px; font-size: 0.85rem; }
+.ed-days label, .ed-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; font-size: 0.85rem; }
+.ed-colors { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.ed-colors input[type=color] { width: 44px; height: 34px; border: none; background: none; padding: 0; }
+.ed-swatch { width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px var(--border); cursor: pointer; }
+.sr-text { width: 130px; font-family: 'Heebo', sans-serif; font-size: 0.85rem; }
+.sr-btn { background: transparent; border: 1.5px solid var(--border); border-radius: 8px; padding: 5px 12px; font-size: 0.78rem; color: var(--text2); cursor: pointer; font-family: 'Heebo', sans-serif; font-weight: 700; }
+#toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--text); color: var(--gold); padding: 10px 22px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; opacity: 0; pointer-events: none; transition: all 0.25s; z-index: 400; }
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.pin-input { width: 100%; text-align: center; font-size: 1.5rem; letter-spacing: 0.4em; font-family: 'Heebo', sans-serif; }
+.pin-input::placeholder { letter-spacing: normal; font-size: 0.95rem; }
+#lock-btn { padding: 6px 10px; }
+#lock-btn.unlocked { background: rgba(244,196,48,0.25); border-color: var(--gold); }
+@media (max-width: 480px) {
+  .date-display { display: none; }
+  .header-top { padding: 10px 12px; }
+  .logo { font-size: 1.15rem; }
+}
+
 @media (max-width: 600px) {
   .all-kids-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .kid-col-name { font-size: 0.85rem; }
@@ -856,6 +768,7 @@ select.f-input option { background: white; }
     <div style="display:flex;align-items:center;gap:8px;">
       <span id="sync-indicator" style="font-size:0.68rem;color:rgba(255,255,255,0.75);transition:opacity 0.5s;opacity:0;white-space:nowrap;"></span>
       <button class="undo-btn" id="undo-btn" onclick="undoLastAction()" title="בטל פעולה אחרונה">↩️ בטל</button>
+      <button class="undo-btn" id="lock-btn" onclick="toggleParentLock()" title="כניסה למצב הורה">🔒</button>
       <button onclick="showParentMessages()" style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:50px;padding:6px 14px;color:white;font-family:'Heebo',sans-serif;font-weight:700;font-size:0.78rem;cursor:pointer;display:flex;align-items:center;gap:5px;" id="parent-msg-btn">
         📨 הורים
         <span id="msg-badge" style="display:none;background:#E74C3C;border-radius:50%;width:16px;height:16px;font-size:0.65rem;display:flex;align-items:center;justify-content:center;"></span>
@@ -869,7 +782,6 @@ select.f-input option { background: white; }
     <button class="tab" onclick="showPage('shop',this)">🛍️ חנות</button>
     <button class="tab" onclick="showPage('wallet',this)">💰 ארנק</button>
     <button class="tab" onclick="showPage('graph',this)">📊 גרף</button>
-    <button class="tab" onclick="showPage('weekly',this)">📅 שיבוץ</button>
     <button class="tab" onclick="showPage('settings',this)">⚙️ הגדרות</button>
   </div>
 </div>
@@ -889,17 +801,7 @@ select.f-input option { background: white; }
       <div class="kid-selector" id="bonus-kid-selector"></div>
     </div>
     <div id="bonus-list"></div>
-    <div class="add-form">
-      <div class="add-form-title">➕ הוסף משימת בונוס</div>
-      <div class="form-row">
-        <input class="f-input" id="new-task-name" placeholder="שם המשימה..." />
-        <input class="f-input" id="new-task-icon" placeholder="אייקון 🧹" style="max-width:80px;" />
-      </div>
-      <div class="form-row">
-        <input class="f-input" id="new-task-reward" type="number" placeholder="שטרות שמי׳ז" />
-        <button class="btn-add" onclick="addBonusTask()">הוסף</button>
-      </div>
-    </div>
+    <button class="reset-btn" style="margin-top:14px;" onclick="openSettingsTab('tasks')">🔒 ✏️ עריכת משימות הבונוס</button>
   </div>
 
   <!-- WALLET PAGE -->
@@ -908,11 +810,6 @@ select.f-input option { background: white; }
       <div class="kid-selector" id="wallet-kid-selector"></div>
     </div>
     <div id="wallet-content"></div>
-  </div>
-
-  <!-- WEEKLY ASSIGNMENT -->
-  <div class="page" id="page-weekly">
-    <div style="margin-top:4px;" id="weekly-content"></div>
   </div>
 
   <!-- SETTINGS -->
@@ -970,9 +867,45 @@ select.f-input option { background: white; }
     <div id="parent-msg-list" style="max-height:300px;overflow-y:auto;text-align:right;"></div>
     <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px;">
       <textarea id="parent-msg-input" placeholder="כתוב הודעה לילדים..." class="f-input" style="width:100%;min-height:60px;resize:none;margin-bottom:8px;"></textarea>
+      <div style="display:flex;gap:6px;margin-bottom:8px;align-items:center;">
+        <span style="font-size:0.78rem;color:var(--text2);white-space:nowrap;">🔒 בונוס:</span>
+        <input id="parent-msg-bonus" type="number" min="0" placeholder="0" class="f-input" style="min-width:0;max-width:80px;" />
+        <select id="parent-msg-target" class="f-input" style="min-width:0;"></select>
+      </div>
       <button class="cel-btn" onclick="sendParentMessage()" style="width:100%;">שלח 💌</button>
     </div>
     <button onclick="closeParentMessages()" style="margin-top:10px;background:none;border:none;color:var(--text2);cursor:pointer;font-size:0.85rem;">סגור</button>
+  </div>
+</div>
+
+<!-- UNIFIED EDIT MODAL -->
+<div class="celebration" id="edit-modal" style="z-index:220;" onclick="closeEditor()">
+  <div class="cel-box edit-box" onclick="event.stopPropagation()">
+    <div class="cel-title" id="edit-title" style="font-size:1.2rem;"></div>
+    <div id="edit-fields"></div>
+    <div id="edit-error" style="color:#E74C3C;font-size:0.8rem;min-height:1.2em;margin:4px 0;"></div>
+    <div class="confirm-btns">
+      <button class="btn-cancel" onclick="closeEditor()">ביטול</button>
+      <button class="btn-confirm" onclick="saveEditor()">שמור</button>
+    </div>
+    <button id="edit-delete" class="reset-btn" style="margin-top:10px;" onclick="deleteFromEditor()">🗑️ מחיקה</button>
+  </div>
+</div>
+<div id="toast"></div>
+
+<!-- PARENT PIN MODAL -->
+<div class="celebration" id="pin-modal" style="z-index:250;" onclick="closePin()">
+  <div class="cel-box" onclick="event.stopPropagation()" style="max-width:320px;">
+    <span class="cel-emoji" style="animation:none;">🔒</span>
+    <div class="cel-title" id="pin-title" style="font-size:1.3rem;">קוד הורה</div>
+    <div class="cel-sub" id="pin-sub"></div>
+    <input id="pin-input" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" class="f-input pin-input" placeholder="קוד בן 4 ספרות" />
+    <input id="pin-input2" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" class="f-input pin-input" placeholder="שוב, לאימות" style="display:none;margin-top:8px;" />
+    <div id="pin-error" style="color:#E74C3C;font-size:0.8rem;min-height:1.2em;margin:6px 0;"></div>
+    <div class="confirm-btns">
+      <button class="btn-cancel" onclick="closePin()">ביטול</button>
+      <button class="btn-confirm" onclick="submitPin()">אישור</button>
+    </div>
   </div>
 </div>
 
@@ -990,11 +923,39 @@ select.f-input option { background: white; }
 // ============================================================
 // DATA
 // ============================================================
-const KIDS = {
-  hilel: { name: 'הלל', age: 9, emoji: '👧', color: '#FF6B9D' },
-  mitar: { name: 'מיתר', age: 8, emoji: '👧', color: '#9B59B6' },
-  yagel: { name: 'יגל', age: 7, emoji: '👦', color: '#00B4D8' }
+// ילדים ברירת מחדל — אחרי ההתקנה הכל נערך בהגדרות ← משפחה (state.kidProfiles)
+const DEFAULT_KIDS = {
+  hilel: { name: 'הלל', emoji: '👧', color: '#FF6B9D' },
+  mitar: { name: 'מיתר', emoji: '👧', color: '#9B59B6' },
+  yagel: { name: 'יגל', emoji: '👦', color: '#00B4D8' }
 };
+const DEFAULT_FAMILY = { name: 'שמי', currency: 'שמי׳ז' };
+// KIDS = הילדים הפעילים בלבד, נבנה מחדש מתוך state.kidProfiles
+const KIDS = {};
+function applyKidProfiles(s) {
+  s = s || state;
+  Object.keys(KIDS).forEach(k => delete KIDS[k]);
+  const prof = (s && s.kidProfiles) || DEFAULT_KIDS;
+  Object.keys(prof)
+    .sort((a, b) => (prof[a].order || 0) - (prof[b].order || 0))
+    .forEach(k => { if (!prof[k].hidden) KIDS[k] = Object.assign({}, prof[k]); });
+}
+function familyName() { return (state.family && state.family.name) || DEFAULT_FAMILY.name; }
+function currencyName() { return (state.family && state.family.currency) || DEFAULT_FAMILY.currency; }
+function firstKid() { return Object.keys(KIDS)[0]; }
+
+const DEFAULT_QUOTES = [
+  { text: "הצלחה היא סכום של מאמצים קטנים שחוזרים על עצמם יום אחרי יום.", author: "רוברט קולייר" },
+  { text: "לא משנה כמה לאט אתה הולך, כל עוד אתה לא עוצר.", author: "קונפוציוס" },
+  { text: "כל מסע מתחיל בצעד אחד.", author: "לאו דזה" },
+  { text: "הדרך הטובה ביותר לחזות את העתיד היא לצור אותו.", author: "אברהם לינקולן" },
+  { text: "התמדה היא המפתח. היא הופכת חלום למציאות.", author: "לא ידוע" },
+  { text: "אל תפחד מהאתגרים — הם מחזקים אותך.", author: "לא ידוע" },
+  { text: "כל יום הוא הזדמנות חדשה להיות הגרסה הטובה ביותר של עצמך.", author: "לא ידוע" },
+  { text: "המוח שלך חזק יותר ממה שאתה חושב.", author: "לא ידוע" },
+  { text: "אי אפשר לחזור לאתמול, אבל אפשר להתחיל מחר בצורה אחרת.", author: "לואיס קרול" },
+  { text: "הניסיון הוא לא מה שקורה לך — זה מה שאתה עושה עם מה שקורה לך.", author: "אולדוס האקסלי" },
+];
 
 // Tasks grouped by time-of-day. Each group has a bonus on completion.
 const GROUPS = [
@@ -1104,32 +1065,36 @@ const SATURDAY_MANDATORY = [
   { id: 's11', icon: '🌙', name: 'כניסה למיטה עד 20:00',            group: 'evening' },
 ];
 
-function getDayTasks() {
+function getDayType() {
   const day = new Date().getDay(); // 0=Sunday, 5=Friday, 6=Saturday
-  let base;
-  if (day === 5) base = FRIDAY_MANDATORY;
-  else if (day === 6) base = SATURDAY_MANDATORY;
-  else base = DEFAULT_MANDATORY;
-
-  // Apply customMandatory overrides (name/icon edits) and hidden list
-  const cm = state.customMandatory || { overrides: {}, hidden: [] };
-  const hidden = cm.hidden || [];
-  const overrides = cm.overrides || {};
-  const modifiedBase = base
-    .filter(t => !hidden.includes(t.id))
-    .map(t => overrides[t.id] ? { ...t, ...overrides[t.id] } : t);
-
-  // Inject bonus custom tasks for today
-  const dayKey = day === 5 ? 'friday' : day === 6 ? 'saturday' : 'weekdays';
-  const custom = (state.customTasks||[]).filter(t => (t.days||[]).includes(dayKey));
-
-  // Inject mandatory custom tasks added via the editor
-  const mandatoryCustom = ((cm.customTasks)||[])
-    .filter(t => t.dayKey === dayKey)
-    .map(t => ({ ...t, points: t.points || 10, mandatory: true }));
-
-  return [...modifiedBase, ...mandatoryCustom, ...custom];
+  return day === 5 ? 'friday' : day === 6 ? 'saturday' : 'weekdays';
 }
+
+// משימות היום. אם מועבר kidId — רק משימות שמיועדות לילד הזה (או לכולם).
+function getDayTasks(kidId) {
+  const dayKey = getDayType();
+  return (state.dayTasks || []).filter(t =>
+    !t.hidden && (t.days || []).includes(dayKey) &&
+    (!kidId || !t.kidId || t.kidId === 'all' || t.kidId === kidId));
+}
+
+function findTaskAnyDay(taskId) {
+  return (state.dayTasks || []).find(t => t.id === taskId);
+}
+
+// משימת בונוס (רשות) — לא נספרת להשלמת הקבוצה או היום
+function isBonusTask(t) {
+  return !!(t && t.type === 'bonus');
+}
+function bonusAmountOf(t) {
+  return Number(t.amount) || 0;
+}
+function groupBonusAmount(gid) {
+  const g = GROUPS.find(x => x.id === gid);
+  const v = state.settings && state.settings.groupBonus && state.settings.groupBonus[gid];
+  return typeof v === 'number' ? v : (g ? g.bonus : 10);
+}
+function nisRate() { return state.nisRate || NIS_RATE; }
 
 function getDayLabel() {
   const day = new Date().getDay();
@@ -1190,189 +1155,521 @@ const NIS_RATE = 10; // 10 shami = 1 NIS
 // SHOP CATEGORIES — merged view (built-ins + custom edits)
 // ============================================================
 function getShopCategories() {
-  const cs = state.customShop || { categories: [], removedBuiltins: [], removedItems: [] };
-  const removedCats  = cs.removedBuiltins || [];
-  const removedItems = cs.removedItems    || [];
+  return state.shop || [];
+}
 
-  // Start with built-in categories (minus removed ones, minus removed items)
-  const pricedItems = cs.pricedItems || {};
-  const addedItems  = cs.addedItems  || [];
-  const result = SHOP_CATEGORIES
-    .filter(cat => !removedCats.includes(cat.id))
-    .map(cat => ({
-      ...cat,
-      items: [
-        ...cat.items
-          .filter(item => !removedItems.includes(item.id))
-          .map(item => pricedItems[item.id] ? { ...item, cost: pricedItems[item.id] } : item),
-        ...addedItems.filter(i => i.catId === cat.id).map(i => { const { catId, ...rest } = i; return rest; })
-      ]
-    }));
+// בונה את רשימת החנות מהמבנה של גרסה 1/2 (פריטים מובנים + שינויים)
+function legacyShop(s) {
+  const cs = s.customShop || {};
+  const removedCats = cs.removedBuiltins || [], removedItems = cs.removedItems || [];
+  const priced = cs.pricedItems || {}, added = cs.addedItems || [];
+  const out = SHOP_CATEGORIES.filter(c => !removedCats.includes(c.id)).map(c => ({
+    id: c.id, emoji: c.emoji, label: c.label,
+    items: c.items.filter(i => !removedItems.includes(i.id)).map(i => Object.assign({}, i, priced[i.id] ? { cost: priced[i.id] } : {}))
+      .concat(added.filter(i => i.catId === c.id).map(i => { const o = Object.assign({}, i); delete o.catId; return o; })),
+  }));
+  (cs.categories || []).forEach(c => out.push({ id: c.id, emoji: c.emoji, label: c.label, items: (c.items || []).map(i => Object.assign({}, i)) }));
+  return out;
+}
 
-  // Append custom categories
-  (cs.categories || []).forEach(cat => {
-    result.push({ ...cat, items: [...(cat.items || [])] });
+// בונה את רשימת משימות היום מהמבנה של גרסה 1/2
+function legacyDayTasks(s) {
+  const cm = s.customMandatory || {};
+  const ov = cm.overrides || {}, hidden = cm.hidden || [];
+  const energy = (s.settings && typeof s.settings.energyBonus === 'number') ? s.settings.energyBonus : ENERGY_BONUS;
+  const out = [];
+  [['weekdays', DEFAULT_MANDATORY], ['friday', FRIDAY_MANDATORY], ['saturday', SATURDAY_MANDATORY]].forEach(([day, list]) => {
+    list.forEach(t => {
+      const bonus = !!(t.energyBonus || t.afternoonBonus || t.eveningBonus);
+      const o = ov[t.id] || {};
+      const task = {
+        id: t.id, icon: o.icon || t.icon, name: o.name || t.name, group: t.group, days: [day],
+        type: bonus ? 'bonus' : 'mandatory',
+        amount: bonus ? (t.energyBonus ? (t.bonusOverride || energy) : t.bonusAmount) : 0,
+        kidId: 'all', hidden: hidden.includes(t.id), builtin: true,
+      };
+      if (t.note) task.note = t.note;
+      out.push(task);
+    });
   });
-
-  return result;
+  (cm.customTasks || []).forEach(t => out.push({ id: t.id, icon: t.icon, name: t.name, group: t.group, days: [t.dayKey], type: 'mandatory', amount: 0, kidId: 'all', hidden: false }));
+  (s.customTasks || []).forEach(t => out.push({ id: t.id, icon: t.icon, name: t.name, group: t.group, days: (t.days || []).slice(), type: t.type === 'bonus' ? 'bonus' : 'mandatory', amount: Number(t.reward) || 0, kidId: t.kidId || 'all', hidden: false }));
+  return out;
 }
 
 // ============================================================
-// GOOGLE SHEETS SYNC
+// GOOGLE SHEETS SYNC (v2) — גרסאות + מיזוג תלת-כיווני
 // ============================================================
-// הכנס כאן את ה-URL של ה-Apps Script Web App שלך אחרי ה-deploy:
+// כל מכשיר שומר עותק "בסיס" של מה שהשרת אישר לאחרונה. כששני מכשירים
+// שינו במקביל, השרת מחזיר התנגשות והאפליקציה ממזגת: שינויים של שני
+// הצדדים נשמרים, יתרות מחושבות כסכום השינויים של שניהם.
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz7BAHolDvH_ay9MhNfSKMB_oB78hhUXe0719iJSPBX6nYgw2fTUgTeIh-aNJgDfyX8Lw/exec';   // Google Apps Script Web App URL
 
-let _syncPending = false;
-let _syncTimer   = null;
+const LS_STATE = 'shami_v3';
+const LS_BASE  = 'shami_v3_base';   // המצב האחרון שהשרת אישר
+const LS_REV   = 'shami_v3_rev';
+const LS_DIRTY = 'shami_v3_dirty';  // יש שינויים מקומיים שעוד לא הגיעו לענן
+const KEEP_DAYS = 60;
 
-// שמירה ל-localStorage מיד + שליחה לגוגל בעיכוב קצר (debounce 1.5s)
-function saveState() {
-  localStorage.setItem('shami_v3', JSON.stringify(state));
-  if (!SCRIPT_URL) return;
-  if (_syncTimer) clearTimeout(_syncTimer);
-  _syncTimer = setTimeout(_pushToSheet, 1500);
+const SYNC = { busy: false, again: false, timer: null, retryTimer: null, pendingRender: false,
+  // מכשיר שיש בו נתונים אבל עוד לא סונכרן בגרסה הזו
+  firstRun: !lsGet('shami_v3_base') && !!lsGet('shami_v3') };
+
+function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
+
+function clone(o) { return o === undefined ? undefined : JSON.parse(JSON.stringify(o)); }
+function isPlainObj(o) { return o !== null && typeof o === 'object' && !Array.isArray(o); }
+// השוואה שלא מושפעת מסדר המפתחות
+function canon(v) {
+  if (v === undefined) return '~u';
+  return JSON.stringify(v, function (k, val) {
+    if (isPlainObj(val)) { const o = {}; Object.keys(val).sort().forEach(key => { o[key] = val[key]; }); return o; }
+    return val;
+  });
+}
+function eq(a, b) { return canon(a) === canon(b); }
+function stripMeta(s) { if (!s) return s; const c = Object.assign({}, s); delete c._rev; delete c._baseRev; return c; }
+function hashStr(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+  return (h >>> 0).toString(36);
 }
 
-function _pushToSheet() {
-  if (!SCRIPT_URL) return;
-  _syncPending = true;
-  _showSyncIndicator('שומר...');
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    body: JSON.stringify(state),
-  })
-  .then(r => r.json())
-  .then(d => {
-    _syncPending = false;
-    if (d.ok) _showSyncIndicator('✓ סונכרן', 2000);
-    else _showSyncIndicator('⚠️ שגיאת שמירה', 3000);
-  })
-  .catch(() => {
-    _syncPending = false;
-    _showSyncIndicator('⚠️ אין חיבור', 3000);
+// ---------- dates (שעון מקומי, לא UTC) ----------
+function dateKey(d) {
+  d = d || new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function daysAgo(n) { const d = new Date(); d.setDate(d.getDate() - n); return d; }
+function todayKey() { return dateKey(new Date()); }
+
+// ---------- merge ----------
+function isAdditivePath(p) {
+  return /^kids\.[^.]+\.(balance|totalEarned)$/.test(p) || /^familyChallengeCount\.[^.]+$/.test(p);
+}
+
+function merge3(b, l, r, path) {
+  path = path || '';
+  if (eq(l, r)) return clone(l);
+  if (eq(b, l)) return clone(r);      // רק השרת השתנה
+  if (eq(b, r)) return clone(l);      // רק המכשיר השתנה
+  // שני הצדדים שינו
+  if (typeof l === 'number' && typeof r === 'number' && typeof b === 'number' && isAdditivePath(path)) {
+    return b + (l - b) + (r - b);
+  }
+  if (isPlainObj(l) && isPlainObj(r)) {
+    const bo = isPlainObj(b) ? b : {};
+    const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+    const out = {};
+    const keys = new Set(Object.keys(r).concat(Object.keys(l)));
+    keys.forEach(k => {
+      const inL = has(l, k), inR = has(r, k), inB = has(bo, k);
+      const p = path ? path + '.' + k : k;
+      if (inL && inR) { out[k] = merge3(inB ? bo[k] : undefined, l[k], r[k], p); return; }
+      if (inL) { if (inB && eq(bo[k], l[k])) return; out[k] = clone(l[k]); return; }   // נמחק בשרת
+      if (inR) { if (inB && eq(bo[k], r[k])) return; out[k] = clone(r[k]); }           // נמחק במכשיר
+    });
+    return out;
+  }
+  if (Array.isArray(l) && Array.isArray(r)) return mergeArr(Array.isArray(b) ? b : [], l, r, path);
+  return clone(l);
+}
+
+function mergeArr(b, l, r, path) {
+  const all = b.concat(l, r);
+  if (all.every(x => x === null || typeof x !== 'object')) {
+    const B = new Set(b.map(canon)), L = new Set(l.map(canon)), R = new Set(r.map(canon));
+    const out = r.filter(x => !(B.has(canon(x)) && !L.has(canon(x))));
+    l.forEach(x => { const k = canon(x); if (!R.has(k) && !B.has(k)) out.push(x); });
+    return clone(out);
+  }
+  const key = path === 'actionLog'
+    ? (x => (x && x.ts) ? [x.ts, x.kidId, x.amount, x.action].join('|') : canon(x))
+    : (x => (x && x.id !== undefined) ? 'id:' + x.id : canon(x));
+  const bm = new Map(b.map(x => [key(x), x]));
+  const lm = new Map(l.map(x => [key(x), x]));
+  const rm = new Map(r.map(x => [key(x), x]));
+  const out = [];
+  r.forEach(x => {
+    const k = key(x);
+    if (lm.has(k)) out.push(merge3(bm.get(k), lm.get(k), x, path + '[]'));
+    else if (bm.has(k)) { if (!eq(bm.get(k), x)) out.push(clone(x)); }
+    else out.push(clone(x));
   });
+  l.forEach(x => {
+    const k = key(x);
+    if (rm.has(k)) return;
+    if (bm.has(k)) { if (!eq(bm.get(k), x)) out.push(clone(x)); }
+    else out.push(clone(x));
+  });
+  if (path === 'actionLog') out.sort((a, c) => (a.ts || 0) - (c.ts || 0));
+  return out;
+}
+
+// מיזוג ראשון של מכשיר שעוד אין לו "בסיס" (מעבר מגרסה 1, או אחרי שהיה מנותק).
+// היתרות נלקחות מהענן, ומוסיפים להן רק תנועות שקיימות במכשיר ולא בענן —
+// כך לא מאבדים שינויים מקומיים וגם לא סופרים פעמיים.
+function logKey(x) { return [x.ts, x.kidId, x.amount, x.action].join('|'); }
+function firstSyncMerge(L, R) {
+  const lLog = L.actionLog || [], rLog = R.actionLog || [];
+  const maxTs = log => log.reduce((m, x) => Math.max(m, (x && x.ts) || 0), 0);
+  // הגדרות ומשימות: לוקחים מהצד שהיה פעיל אחרון; מהצד השני מוסיפים רק סימונים
+  const primary = maxTs(lLog) > maxTs(rLog) ? L : R;
+  const secondary = primary === L ? R : L;
+  const merged = clone(primary);
+  ['taskChecks', 'bonusChecks', 'weeklyChecks', 'groupBonusGiven', 'dayComplete', 'streakBonusGiven'].forEach(m => {
+    const src = secondary[m] || {};
+    merged[m] = merged[m] || {};
+    Object.keys(src).forEach(d => {
+      if (!isPlainObj(src[d])) { if (merged[m][d] === undefined) merged[m][d] = clone(src[d]); return; }
+      merged[m][d] = merged[m][d] || {};
+      Object.keys(src[d]).forEach(k => {
+        if (isPlainObj(src[d][k])) merged[m][d][k] = Object.assign({}, src[d][k], merged[m][d][k] || {});
+        else if (merged[m][d][k] === undefined) merged[m][d][k] = clone(src[d][k]);
+      });
+    });
+  });
+  const ids = new Set((merged.parentMessages || []).map(x => x.id));
+  (secondary.parentMessages || []).forEach(x => { if (!ids.has(x.id)) merged.parentMessages.push(clone(x)); });
+
+  // כסף: היתרה בענן + תנועות שקיימות רק במכשיר
+  const rKeys = new Set(rLog.map(logKey));
+  const floor = rLog.length ? Math.max(Math.min.apply(null, rLog.map(x => x.ts || Infinity)), R.archivedThrough || 0) : Infinity;
+  const extra = {}, uniq = [];
+  lLog.forEach(x => {
+    if (!x || !x.ts || x.ts <= floor || rKeys.has(logKey(x))) return;
+    uniq.push(clone(x));
+    const e = extra[x.kidId] = extra[x.kidId] || { bal: 0, earned: 0 };
+    e.bal += Number(x.amount) || 0;
+    if (x.amount > 0) e.earned += x.amount;
+  });
+  merged.actionLog = rLog.map(clone).concat(uniq).sort((a, c) => (a.ts || 0) - (c.ts || 0));
+  merged.archivedThrough = R.archivedThrough || merged.archivedThrough || 0;
+  merged.kids = merged.kids || {};
+  Object.keys(Object.assign({}, R.kids, L.kids)).forEach(k => {
+    const rk = (R.kids && R.kids[k]) || { balance: 0, totalEarned: 0 };
+    const e = extra[k] || { bal: 0, earned: 0 };
+    merged.kids[k] = { balance: (rk.balance || 0) + e.bal, totalEarned: (rk.totalEarned || 0) + e.earned };
+  });
+  if (merged.parentPinHash === undefined && secondary.parentPinHash) merged.parentPinHash = secondary.parentPinHash;
+  return merged;
+}
+
+// ---------- save / push / pull ----------
+function saveState() {
+  pruneState(state);
+  lsSet(LS_STATE, JSON.stringify(state));
+  if (!SCRIPT_URL) return;
+  lsSet(LS_DIRTY, '1');
+  clearTimeout(SYNC.timer);
+  SYNC.timer = setTimeout(pushNow, 1500);
+}
+
+function isDirty() { return lsGet(LS_DIRTY) === '1'; }
+function getBase() { const s = lsGet(LS_BASE); if (!s) return null; try { return JSON.parse(s); } catch (e) { return null; } }
+function setBase(s, rev) {
+  lsSet(LS_BASE, JSON.stringify(s));
+  if (rev !== undefined && rev !== null) lsSet(LS_REV, String(rev));
+}
+
+async function fetchJSON(url, opts, ms) {
+  const ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  const t = ctl ? setTimeout(() => ctl.abort(), ms || 15000) : null;
+  try {
+    const r = await fetch(url, Object.assign({}, opts || {}, ctl ? { signal: ctl.signal } : {}));
+    return await r.json();
+  } finally {
+    if (t) clearTimeout(t);
+  }
+}
+
+// השרת מעביר פעולות ישנות לארכיון — מחילים את אותו קיצוץ אצלנו
+function applyServerPrune(s, d) {
+  if (d.legacyArchived && Array.isArray(s.history) && s.history.length) s.history = [];
+  if (typeof d.archivedThrough === 'number') {
+    s.archivedThrough = d.archivedThrough;
+    if (Array.isArray(s.actionLog)) s.actionLog = s.actionLog.filter(x => !(x && x.ts && x.ts <= d.archivedThrough));
+  }
+}
+
+async function pushNow() {
+  if (!SCRIPT_URL) return;
+  if (SYNC.busy) { SYNC.again = true; return; }
+  if (!isDirty()) return;
+  SYNC.busy = true;
+  clearTimeout(SYNC.retryTimer);
+  _showSyncIndicator('שומר...');
+  let ok = false;
+  try {
+    for (let attempt = 0; attempt < 4 && !ok; attempt++) {
+      const revStr = lsGet(LS_REV);
+      const baseRev = revStr === null ? -1 : Number(revStr);
+      const snapshot = clone(state);
+      const sent = canon(snapshot);
+      const d = await fetchJSON(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(Object.assign({}, snapshot, { _baseRev: baseRev })),
+      }, 25000);
+      if (d && d.ok) {
+        const changedMeanwhile = canon(state) !== sent;
+        applyServerPrune(snapshot, d);
+        applyServerPrune(state, d);
+        setBase(snapshot, d.rev);
+        lsSet(LS_STATE, JSON.stringify(state));
+        if (!changedMeanwhile) lsDel(LS_DIRTY);
+        ok = true;
+      } else if (d && d.conflict) {
+        const remote = stripMeta(d.state);
+        const base = getBase();
+        state = normalizeState(base ? merge3(base, state, remote) : firstSyncMerge(state, normalizeState(clone(remote))));
+        setBase(remote, d.rev);
+        lsSet(LS_STATE, JSON.stringify(state));
+        refreshUI();
+      } else {
+        throw new Error((d && d.error) || 'save failed');
+      }
+    }
+    if (!ok) throw new Error('too many conflicts');
+    _showSyncIndicator('✓ סונכרן', 2000);
+  } catch (e) {
+    _showSyncIndicator('⚠️ לא נשמר בענן — ננסה שוב', 4000);
+    SYNC.retryTimer = setTimeout(pushNow, 30000);
+  } finally {
+    SYNC.busy = false;
+    if (SYNC.again || (ok && isDirty())) {
+      SYNC.again = false;
+      clearTimeout(SYNC.timer);
+      SYNC.timer = setTimeout(pushNow, 800);
+    }
+  }
+}
+
+async function pullNow(force) {
+  if (!SCRIPT_URL || SYNC.busy) return;
+  SYNC.busy = true;
+  let changed = false;
+  try {
+    const haveRev = lsGet(LS_REV);
+    if (!force && haveRev !== null) {
+      const c = await fetchJSON(SCRIPT_URL + '?check=1', {}, 10000);
+      if (c && typeof c.rev === 'number' && c.rev === Number(haveRev)) return;
+    }
+    if (force) _showSyncIndicator('טוען...');
+    const raw = await fetchJSON(SCRIPT_URL, {}, 20000);
+    if (!raw || raw.error) throw new Error((raw && raw.error) || 'load failed');
+    const rev = typeof raw._rev === 'number' ? raw._rev : 0;
+    if (!raw.kids) {                       // הענן ריק — מעלים את מה שיש במכשיר
+      setBase({}, rev);
+      lsSet(LS_DIRTY, '1');
+      _showSyncIndicator('', 0);
+      return;
+    }
+    const remote = stripMeta(raw);
+    const base = getBase();
+    if (!base && SYNC.firstRun) state = normalizeState(firstSyncMerge(state, normalizeState(clone(remote))));
+    else if (isDirty()) state = normalizeState(base ? merge3(base, state, remote) : firstSyncMerge(state, normalizeState(clone(remote))));
+    else state = normalizeState(clone(remote));
+    SYNC.firstRun = false;
+    setBase(remote, rev);
+    pruneState(state);
+    lsSet(LS_STATE, JSON.stringify(state));
+    if (!eq(state, remote)) lsSet(LS_DIRTY, '1'); else lsDel(LS_DIRTY);
+    changed = true;
+    _showSyncIndicator(force ? '✓ נטען' : '', force ? 1500 : 0);
+  } catch (e) {
+    _showSyncIndicator(force ? '⚠️ אין חיבור — עובד מקומית' : '', force ? 3000 : 0);
+  } finally {
+    SYNC.busy = false;
+    if (changed) refreshUI();
+    if (isDirty() || SYNC.again) {
+      SYNC.again = false;
+      clearTimeout(SYNC.timer);
+      SYNC.timer = setTimeout(pushNow, 500);
+    }
+  }
+}
+
+function refreshUI() {
+  const ae = document.activeElement;
+  if (ae && ['INPUT', 'TEXTAREA', 'SELECT'].includes(ae.tagName)) { SYNC.pendingRender = true; return; }
+  SYNC.pendingRender = false;
+  renderAll();
 }
 
 function _showSyncIndicator(msg, hideAfter) {
-  let el = document.getElementById('sync-indicator');
+  const el = document.getElementById('sync-indicator');
   if (!el) return;
+  clearTimeout(el._t);
+  if (!msg) { el.style.opacity = '0'; return; }
   el.textContent = msg;
   el.style.opacity = '1';
-  if (hideAfter) setTimeout(() => { el.style.opacity = '0'; }, hideAfter);
-}
-
-// טעינה: מנסה קודם מגוגל, fallback ל-localStorage
-async function loadStateFromCloud() {
-  if (!SCRIPT_URL) return null;
-  try {
-    _showSyncIndicator('טוען...');
-    const r = await fetch(SCRIPT_URL);
-    const data = await r.json();
-    if (data && data.kids) {
-      localStorage.setItem('shami_v3', JSON.stringify(data));
-      _showSyncIndicator('✓ נטען', 2000);
-      return data;
-    }
-  } catch(e) {
-    _showSyncIndicator('⚠️ טוען מקומי', 2000);
-  }
-  return null;
+  if (hideAfter) el._t = setTimeout(() => { el.style.opacity = '0'; }, hideAfter);
 }
 
 // ============================================================
-// STATE (localStorage)
+// STATE
 // ============================================================
 function loadState() {
   try {
-    const s = localStorage.getItem('shami_v3');
+    const s = lsGet(LS_STATE);
     if (s) return JSON.parse(s);
-  } catch(e) {}
+  } catch (e) {}
   return null;
 }
 
+function defaultQuotes() {
+  return DEFAULT_QUOTES.map((q, i) => ({ id: 'dq' + i, text: q.text, author: q.author }));
+}
+
 function defaultState() {
-  const today = todayKey();
-  const state = {
+  const s = {
+    schema: 3,
+    family: Object.assign({}, DEFAULT_FAMILY),
+    kidProfiles: {},
     kids: {},
-    bonusTasks: DEFAULT_BONUS_TASKS.map(t => ({ ...t, reward: t.defaultReward })),
-    weeklyGeneralTasks: DEFAULT_WEEKLY_GENERAL.map(t => ({ ...t })),
-    weeklyAssign: {},
-    history: [],
-    customQuotes: [],
-    actionLog: [],       // full action log
-    customTasks: [],     // user-defined tasks
-    streaks: {},        // { kidId: { count, lastDate } }
-    streakBonusGiven: {}, // { 'kidId-date': true }
-    parentMessages: [], // [{ text, date, read }]
-    oneTimeTasks: [],   // [{ id, icon, name, reward, kidId, done }]
+    dayTasks: legacyDayTasks({}),                 // כל משימות "היום" — חובה ובונוס
+    bonusTasks: DEFAULT_BONUS_TASKS.map(t => ({ ...t, reward: t.defaultReward })),   // טאב "בונוס"
+    removedBonusTasks: [],
+    weeklyGeneralTasks: DEFAULT_WEEKLY_GENERAL.map(t => ({ ...t, days: ['weekdays'], kidId: 'all' })),
+    weeklyAssign: {},     // שיוך משימות טאב "בונוס" לילד מסוים
+    shop: legacyShop({}),
+    quotes: defaultQuotes(),
+    history: [],          // גרסה 1 בלבד — ההיסטוריה נגזרת היום מ-actionLog
+    customQuotes: [],     // גרסה 1-2 בלבד
+    actionLog: [],
+    archivedThrough: 0,
+    customTasks: [],      // גרסה 1-2 בלבד
+    streaks: {},          // גרסה 1 בלבד
+    dayComplete: {},      // { date: { kidId: true } } — ימים שהושלמו במלואם
+    streakBest: {},
+    streakBonusGiven: {},
+    parentMessages: [],
+    oneTimeTasks: [],
     familyChallenge: { goal: 30, reward: 'יציאה לפיצה 🍕', active: true },
-    familyChallengeCount: {}, // { weekKey: count }
-    taskChecks: {},      // { date: { kidId: { taskId: bool } } }
-    bonusChecks: {},     // { date: { kidId: { taskId: count } } }
-    weeklyChecks: {},    // { date: { kidId: { taskId: count } } }
-    groupBonusGiven: {}, // { date: { kidId: { groupId: bool } } }
-    customShop: { categories: [], removedBuiltins: [], removedItems: [] },
-    customMandatory: { overrides: {}, hidden: [] }, // edits to built-in mandatory tasks
+    familyChallengeCount: {},
+    taskChecks: {},
+    bonusChecks: {},
+    weeklyChecks: {},
+    groupBonusGiven: {},
+    customShop: { categories: [], removedBuiltins: [], removedItems: [] },   // גרסה 1-2 בלבד
+    customMandatory: { overrides: {}, hidden: [], customTasks: [] },        // גרסה 1-2 בלבד
+    settings: { groupBonus: {}, streakTarget: 7, streakBonus: 50 },
   };
-  Object.keys(KIDS).forEach(k => {
-    state.kids[k] = { balance: 0, totalEarned: 0 };
+  GROUPS.forEach(g => { s.settings.groupBonus[g.id] = g.bonus; });
+  Object.keys(DEFAULT_KIDS).forEach((k, i) => {
+    s.kidProfiles[k] = Object.assign({ order: i, hidden: false }, DEFAULT_KIDS[k]);
+    s.kids[k] = { balance: 0, totalEarned: 0 };
   });
-  return state;
+  return s;
 }
 
-let state = loadState() || defaultState();
-Object.keys(KIDS).forEach(k => {
-  if (!state.kids[k]) state.kids[k] = { balance: 0, totalEarned: 0 };
-});
-if (!state.customShop) state.customShop = { categories: [], removedBuiltins: [], removedItems: [] };
-if (!state.customShop.categories) state.customShop.categories = [];
-if (!state.customShop.removedBuiltins) state.customShop.removedBuiltins = [];
-if (!state.customShop.removedItems) state.customShop.removedItems = [];
-if (!state.bonusTasks) state.bonusTasks = DEFAULT_BONUS_TASKS.map(t => ({ ...t, reward: t.defaultReward }));
-// Merge new bonus tasks AND sync reward/name/category changes
-DEFAULT_BONUS_TASKS.forEach(dt => {
-  const existing = state.bonusTasks.find(t => t.id === dt.id);
-  if (existing) {
-    existing.reward = dt.defaultReward;
-    existing.name = dt.name;
-    existing.icon = dt.icon;
-    existing.category = dt.category;
-  } else {
-    state.bonusTasks.push({ ...dt, reward: dt.defaultReward });
+// מוסיף שדות חסרים, ממיר נתונים מגרסאות קודמות, ומקצץ נתונים ישנים.
+// לא דורס עריכות של ההורה.
+function normalizeState(s) {
+  if (!s || typeof s !== 'object' || !s.kids) s = defaultState();
+  const fromSchema = s.schema || 1;
+  const d = defaultState();
+  Object.keys(d).forEach(k => { if (s[k] === undefined || s[k] === null) s[k] = d[k]; });
+  if (!s.family.name) s.family.name = DEFAULT_FAMILY.name;
+  if (!s.family.currency) s.family.currency = DEFAULT_FAMILY.currency;
+  Object.keys(s.kidProfiles).forEach((k, i) => {
+    const p = s.kidProfiles[k];
+    if (!p.name) p.name = k;
+    if (!p.emoji) p.emoji = '🙂';
+    if (!p.color) p.color = '#7F8C8D';
+    if (typeof p.order !== 'number') p.order = i;
+    if (!s.kids[k]) s.kids[k] = { balance: 0, totalEarned: 0 };
+    if (typeof s.kids[k].balance !== 'number') s.kids[k].balance = Number(s.kids[k].balance) || 0;
+    if (typeof s.kids[k].totalEarned !== 'number') s.kids[k].totalEarned = Number(s.kids[k].totalEarned) || 0;
+  });
+  if (!s.settings.groupBonus) s.settings.groupBonus = {};
+  GROUPS.forEach(g => { if (typeof s.settings.groupBonus[g.id] !== 'number') s.settings.groupBonus[g.id] = g.bonus; });
+  if (typeof s.settings.streakTarget !== 'number') s.settings.streakTarget = 7;
+  if (typeof s.settings.streakBonus !== 'number') s.settings.streakBonus = 50;
+
+  // מזהים קבועים לפריטים בלי id (נדרש למיזוג)
+  s.parentMessages.forEach(m => { if (!m.id) m.id = 'pm' + hashStr((m.date || '') + '|' + (m.time || '') + '|' + (m.text || '')); });
+  (s.customQuotes || []).forEach(q => { if (!q.id) q.id = 'q' + hashStr((q.text || '') + '|' + (q.author || '')); });
+  if (!Array.isArray(s.history)) s.history = [];
+
+  // גרסה 1 → 2: רצף נשמר כרשימת ימים שהושלמו
+  if (fromSchema < 2) {
+    const tKey = todayKey(), yKey = dateKey(daysAgo(1));
+    Object.keys(s.streaks || {}).forEach(kid => {
+      const st = s.streaks[kid] || {};
+      if (st.best) s.streakBest[kid] = Math.max(s.streakBest[kid] || 0, st.best);
+      if (st.count > 0 && (st.lastDate === tKey || st.lastDate === yKey)) {
+        const last = new Date(st.lastDate + 'T12:00:00');
+        for (let i = 0; i < st.count && i < 400; i++) {
+          const dd = new Date(last); dd.setDate(dd.getDate() - i);
+          const k = dateKey(dd);
+          (s.dayComplete[k] = s.dayComplete[k] || {})[kid] = true;
+        }
+      }
+    });
   }
-});
-// Remove bonus tasks no longer in DEFAULT_BONUS_TASKS
-state.bonusTasks = state.bonusTasks.filter(t => DEFAULT_BONUS_TASKS.find(dt => dt.id === t.id));
-if (!state.weeklyGeneralTasks) state.weeklyGeneralTasks = DEFAULT_WEEKLY_GENERAL.map(t => ({ ...t }));
-// Sync reward values from DEFAULT_WEEKLY_GENERAL (in case they changed)
-DEFAULT_WEEKLY_GENERAL.forEach(dt => {
-  const existing = state.weeklyGeneralTasks.find(t => t.id === dt.id);
-  if (existing) existing.reward = dt.reward;
-  else state.weeklyGeneralTasks.push({ ...dt });
-});
-if (!state.weeklyAssign) state.weeklyAssign = {};
-if (!state.taskChecks) state.taskChecks = {};
-if (!state.bonusChecks) state.bonusChecks = {};
-if (!state.weeklyChecks) state.weeklyChecks = {};
-if (!state.groupBonusGiven) state.groupBonusGiven = {};
-if (!state.customQuotes) state.customQuotes = [];
-if (!state.actionLog) state.actionLog = [];
-if (!state.customTasks) state.customTasks = [];
-if (!state.streaks) state.streaks = {};
-if (!state.streakBonusGiven) state.streakBonusGiven = {};
-if (!state.parentMessages) state.parentMessages = [];
-if (!state.oneTimeTasks) state.oneTimeTasks = [];
-if (!state.familyChallenge) state.familyChallenge = { goal: 30, reward: 'יציאה לפיצה 🍕', active: true };
-if (!state.familyChallengeCount) state.familyChallengeCount = {};
-if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [], customTasks: [] };
-if (!state.customMandatory.overrides) state.customMandatory.overrides = {};
-if (!state.customMandatory.hidden) state.customMandatory.hidden = [];
-if (!state.customMandatory.customTasks) state.customMandatory.customTasks = [];
 
-function todayKey() {
-  return new Date().toISOString().slice(0, 10);
+  // גרסה 2 → 3: כל הפריטים הניתנים לעריכה עוברים לרשימות אחידות
+  if (fromSchema < 3) {
+    if (s.nisRate === undefined && s.settings.nisRate) s.nisRate = s.settings.nisRate;
+    s.dayTasks = legacyDayTasks(s);
+    s.shop = legacyShop(s);
+    s.quotes = defaultQuotes().concat((s.customQuotes || []).map(q => ({ id: q.id, text: q.text, author: q.author })));
+    const removed = s.removedBonusTasks || [];
+    DEFAULT_BONUS_TASKS.forEach(dt => {
+      if (!removed.includes(dt.id) && !s.bonusTasks.find(t => t.id === dt.id)) s.bonusTasks.push({ ...dt, reward: dt.defaultReward });
+    });
+    DEFAULT_WEEKLY_GENERAL.forEach(dt => {
+      if (!s.weeklyGeneralTasks.find(t => t.id === dt.id)) s.weeklyGeneralTasks.push({ ...dt });
+    });
+    s.customMandatory = { overrides: {}, hidden: [], customTasks: [] };
+    s.customTasks = [];
+    s.customShop = { categories: [], removedBuiltins: [], removedItems: [] };
+    s.customQuotes = [];
+    delete s.settings.energyBonus;
+  }
+  s.weeklyGeneralTasks.forEach(t => { if (!Array.isArray(t.days)) t.days = ['weekdays']; if (!t.kidId) t.kidId = 'all'; });
+  s.bonusTasks.forEach(t => { if (!t.category) t.category = 'כללי'; });
+  s.dayTasks.forEach(t => { if (!Array.isArray(t.days)) t.days = ['weekdays']; if (!t.kidId) t.kidId = 'all'; if (!t.type) t.type = 'mandatory'; });
+  s.schema = 3;
+  pruneState(s);
+  return s;
 }
+
+function pruneState(s) {
+  const cutoff = dateKey(daysAgo(KEEP_DAYS));
+  ['taskChecks', 'bonusChecks', 'weeklyChecks', 'groupBonusGiven'].forEach(m => {
+    const o = s[m]; if (!o) return;
+    Object.keys(o).forEach(dk => { if (dk < cutoff) delete o[dk]; });
+  });
+  if (s.dayComplete) {
+    const c2 = dateKey(daysAgo(400));
+    Object.keys(s.dayComplete).forEach(dk => { if (dk < c2) delete s.dayComplete[dk]; });
+  }
+  if (s.streakBonusGiven) {
+    Object.keys(s.streakBonusGiven).forEach(k => { const m = k.match(/(\d{4}-\d{2}-\d{2})/); if (m && m[1] < cutoff) delete s.streakBonusGiven[k]; });
+  }
+  if (s.familyChallengeCount) {
+    const c3 = dateKey(daysAgo(7 * 12));
+    Object.keys(s.familyChallengeCount).forEach(w => { if (w < c3) delete s.familyChallengeCount[w]; });
+  }
+  if (Array.isArray(s.parentMessages) && s.parentMessages.length > 100) s.parentMessages = s.parentMessages.slice(-100);
+  if (Array.isArray(s.oneTimeTasks)) {
+    const old = Date.now() - KEEP_DAYS * 86400000;
+    s.oneTimeTasks = s.oneTimeTasks.filter(t => !(t.done && t.doneTs && t.doneTs < old));
+  }
+  if (Array.isArray(s.actionLog)) {
+    // השרת מאשר מה הועבר לארכיון; בלי ענן — פשוט שומרים 60 יום
+    const th = SCRIPT_URL ? (s.archivedThrough || 0) : Date.now() - KEEP_DAYS * 86400000;
+    if (th) s.actionLog = s.actionLog.filter(x => !(x && x.ts && x.ts <= th));
+    if (s.actionLog.length > 6000) s.actionLog = s.actionLog.slice(-6000);
+  }
+}
+
+let state = normalizeState(loadState() || defaultState());
+applyKidProfiles(state);
 
 // ============================================================
 // SELECTED KID STATE
@@ -1410,74 +1707,87 @@ function isGroupBonusGiven(kidId, groupId) {
   return !!(state.groupBonusGiven[d] && state.groupBonusGiven[d][kidId] && state.groupBonusGiven[d][kidId][groupId]);
 }
 
-function markGroupBonus(kidId, groupId) {
+function markGroupBonus(kidId, groupId, value) {
   const d = todayKey();
   if (!state.groupBonusGiven[d]) state.groupBonusGiven[d] = {};
   if (!state.groupBonusGiven[d][kidId]) state.groupBonusGiven[d][kidId] = {};
-  state.groupBonusGiven[d][kidId][groupId] = true;
+  if (value === false) delete state.groupBonusGiven[d][kidId][groupId];
+  else state.groupBonusGiven[d][kidId][groupId] = true;
 }
 
-// Non-bonus-only tasks for a group (exclude energy and afternoon/evening/morning bonuses)
-function groupTasks(groupId) {
-  return getDayTasks().filter(t =>
-    t.group === groupId &&
-    !t.energyBonus &&
-    !t.afternoonBonus &&
-    !t.eveningBonus &&
-    !t.morningBonus &&
-    !(t.type === 'bonus')  // custom bonus tasks
-  );
+// Regular (non-bonus) tasks of a time-of-day group, for one kid
+function groupTasks(groupId, kidId) {
+  return getDayTasks(kidId).filter(t => t.group === groupId && !isBonusTask(t));
 }
 
 function allGroupDone(kidId, groupId) {
   const checks = getMandatoryChecks(kidId);
-  return groupTasks(groupId).every(t => checks[t.id]);
+  const tasks = groupTasks(groupId, kidId);
+  return tasks.length > 0 && tasks.every(t => checks[t.id]);
 }
 
-function groupDoneCount(kidId, groupId) {
-  const checks = getMandatoryChecks(kidId);
-  return groupTasks(groupId).filter(t => checks[t.id]).length;
+function dayRegularTasks(kidId) {
+  return getDayTasks(kidId).filter(t => !isBonusTask(t));
 }
 
 function allDayDone(kidId) {
   const checks = getMandatoryChecks(kidId);
-  return getDayTasks().filter(t => !t.energyBonus && !t.afternoonBonus && !t.eveningBonus).every(t => checks[t.id]);
+  const tasks = dayRegularTasks(kidId);
+  return tasks.length > 0 && tasks.every(t => checks[t.id]);
 }
 
 // ============================================================
-// STREAK LOGIC
+// STREAK — מחושב מרשימת הימים שהושלמו במלואם
 // ============================================================
-function updateStreak(kidId) {
-  const today = todayKey();
-  if (!state.streaks[kidId]) state.streaks[kidId] = { count: 0, lastDate: null };
-  const streak = state.streaks[kidId];
-  if (streak.lastDate === today) return; // already updated today
+function streakTarget() { const v = state.settings && state.settings.streakTarget; return v > 0 ? v : 7; }
+function streakBonusAmount() { const v = state.settings && state.settings.streakBonus; return typeof v === 'number' ? v : 50; }
 
-  const yesterday = new Date(); yesterday.setDate(yesterday.getDate()-1);
-  const yKey = yesterday.toISOString().slice(0,10);
+function isDayComplete(kidId, dk) {
+  return !!(state.dayComplete[dk] && state.dayComplete[dk][kidId]);
+}
 
-  if (streak.lastDate === yKey) {
-    streak.count += 1;
-  } else if (streak.lastDate !== today) {
-    streak.count = 1;
+// רצף = ימים רצופים שהושלמו, עד היום (או עד אתמול אם היום עוד לא הושלם)
+function computeStreak(kidId) {
+  const d = new Date();
+  if (!isDayComplete(kidId, dateKey(d))) d.setDate(d.getDate() - 1);
+  let n = 0;
+  while (n < 400 && isDayComplete(kidId, dateKey(d))) { n++; d.setDate(d.getDate() - 1); }
+  return n;
+}
+
+function getStreakBest(kidId) {
+  return Math.max(state.streakBest[kidId] || 0, computeStreak(kidId));
+}
+
+function streakBonusKey(kidId, dk) { return kidId + '-' + dk + '-streak'; }
+
+// נקרא אחרי סימון/ביטול של משימה רגילה. מחזיר מידע לחגיגה.
+function updateDayCompletion(kidId, triggerTaskId) {
+  const dk = todayKey();
+  const done = allDayDone(kidId);
+  const was = isDayComplete(kidId, dk);
+  if (done && !was) {
+    (state.dayComplete[dk] = state.dayComplete[dk] || {})[kidId] = true;
+    const n = computeStreak(kidId);
+    if (n > (state.streakBest[kidId] || 0)) state.streakBest[kidId] = n;
+    const bk = streakBonusKey(kidId, dk);
+    if (n > 0 && n % streakTarget() === 0 && !state.streakBonusGiven[bk]) {
+      state.streakBonusGiven[bk] = true;
+      earnShami(kidId, streakBonusAmount(), '🔥 בונוס רצף ' + n + ' ימים!', 's|' + dk + '|streak|' + triggerTaskId);
+      return { streakBonus: n };
+    }
+    return { completed: true };
   }
-  streak.lastDate = today;
-  saveState();
-
-  // Track best
-  if (!streak.best || streak.count > streak.best) streak.best = streak.count;
-  saveState();
-
-  // Streak bonus every 6 days
-  const bonusKey = kidId + '-' + today + '-streak';
-  if (streak.count > 0 && streak.count % 7 === 0 && !state.streakBonusGiven[bonusKey]) {
-    state.streakBonusGiven[bonusKey] = true;
-    earnShami(kidId, 50, '🔥 בונוס רצף ' + streak.count + ' ימים!');
-    celebrateStreak(kidId, streak.count);
-    return;
+  if (!done && was) {
+    delete state.dayComplete[dk][kidId];
+    if (!Object.keys(state.dayComplete[dk]).length) delete state.dayComplete[dk];
+    const bk = streakBonusKey(kidId, dk);
+    if (state.streakBonusGiven[bk]) {
+      delete state.streakBonusGiven[bk];
+      reverseOrCompensate(kidId, 's|' + dk + '|', streakBonusAmount(), 'ביטול בונוס רצף', true);
+    }
   }
-  renderStreakCards();
-  renderToday();
+  return null;
 }
 
 function celebrateStreak(kidId, days) {
@@ -1485,10 +1795,9 @@ function celebrateStreak(kidId, days) {
   document.getElementById('cel-emoji').textContent = '🔥';
   document.getElementById('cel-title').textContent = kid.name + ' — רצף ' + days + ' ימים!';
   document.getElementById('cel-sub').textContent = 'השלמת את כל המשימות ' + days + ' ימים ברצף!';
-  document.getElementById('cel-amount').textContent = '+50 שמי׳ז בונוס רצף 💰';
+  document.getElementById('cel-amount').textContent = '+' + streakBonusAmount() + ' שמי׳ז בונוס רצף 💰';
   document.getElementById('celebration').classList.add('show');
   launchConfetti(kid.color);
-  renderToday();
 }
 
 // ============================================================
@@ -1497,16 +1806,13 @@ function celebrateStreak(kidId, days) {
 function getWeekKey() {
   const d = new Date();
   const day = d.getDay();
-  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-  const mon = new Date(d.setDate(diff));
-  return mon.toISOString().slice(0,10);
+  d.setDate(d.getDate() - day + (day === 0 ? -6 : 1));
+  return dateKey(d);
 }
 
-function addFamilyChallengeCount() {
+function addFamilyChallengeCount(delta) {
   const wk = getWeekKey();
-  if (!state.familyChallengeCount[wk]) state.familyChallengeCount[wk] = 0;
-  state.familyChallengeCount[wk]++;
-  saveState();
+  state.familyChallengeCount[wk] = Math.max(0, (state.familyChallengeCount[wk] || 0) + (delta === undefined ? 1 : delta));
 }
 
 function getFamilyChallengeCount() {
@@ -1514,116 +1820,133 @@ function getFamilyChallengeCount() {
 }
 
 // ============================================================
-// EARN
+// EARN / SPEND / LOG
 // ============================================================
-function logAction(kidId, amount, action, balanceBefore, balanceAfter) {
-  if (!state.actionLog) state.actionLog = [];
-if (!state.customTasks) state.customTasks = [];
+// ref מזהה את המקור של כל תנועה, כדי שאפשר יהיה לבטל אותה במדויק:
+//   m|date|taskId  — בונוס על משימה        g|date|group|taskId — בונוס קבוצה
+//   b|date|taskId  — משימת בונוס            w|date|taskId — משימה כללית
+//   s|date|streak|taskId — בונוס רצף         ot|id — חד-פעמית   msg|id — בונוס בהודעה
+let _lastTs = 0;
+function uniqueTs() {
+  let t = Date.now();
+  if (t <= _lastTs) t = _lastTs + 1;
+  _lastTs = t;
+  return t;
+}
+
+function logAction(kidId, amount, action, balanceBefore, balanceAfter, ref) {
   const now = new Date();
-  state.actionLog.push({
+  const e = {
     kidId, amount, action,
     balanceBefore, balanceAfter,
     date: now.toLocaleDateString('he-IL'),
     time: now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
-    ts: now.getTime()
-  });
-  // Keep max 2000 entries
-  if (state.actionLog.length > 2000) state.actionLog = state.actionLog.slice(-2000);
+    ts: uniqueTs()
+  };
+  if (ref) e.ref = ref;
+  state.actionLog.push(e);
+  return e;
 }
 
-function earnShami(kidId, amount, reason) {
-  const before = state.kids[kidId].balance;
-  state.kids[kidId].balance += amount;
-  state.kids[kidId].totalEarned += amount;
-  const after = state.kids[kidId].balance;
-  const now = new Date();
-  state.history.unshift({
-    kidId, amount, reason,
-    date: todayKey(),
-    time: now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
-  });
-  logAction(kidId, amount, reason, before, after);
-  // Auto daily backup
+function earnShami(kidId, amount, reason, ref) {
+  const k = state.kids[kidId];
+  const before = k.balance;
+  k.balance += amount;
+  if (amount > 0) k.totalEarned += amount;
+  logAction(kidId, amount, reason, before, k.balance, ref);
   autoDailyBackup();
   saveState();
 }
 
-function spendShami(kidId, amount, reason) {
-  const before = state.kids[kidId].balance;
-  state.kids[kidId].balance = Math.max(0, state.kids[kidId].balance - amount);
-  const after = state.kids[kidId].balance;
-  const now = new Date();
-  state.history.unshift({
-    kidId, amount: -amount, reason,
-    date: todayKey(),
-    time: now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
-  });
-  logAction(kidId, -amount, reason, before, after);
+function spendShami(kidId, amount, reason, ref) {
+  const k = state.kids[kidId];
+  const before = k.balance;
+  k.balance -= amount;
+  logAction(kidId, -amount, reason, before, k.balance, ref);
   saveState();
+}
+
+// היסטוריה (לארנק/גרף/סטטיסטיקות) נגזרת מיומן הפעולות — מהחדש לישן
+function getHistory(kidId) {
+  const out = [];
+  const log = state.actionLog || [];
+  for (let i = log.length - 1; i >= 0; i--) {
+    const e = log[i];
+    if (kidId && e.kidId !== kidId) continue;
+    out.push({ kidId: e.kidId, amount: e.amount, reason: e.action, date: e.ts ? dateKey(new Date(e.ts)) : '', time: e.time || '' });
+  }
+  return out;
+}
+
+// מסיר רשומה מהיומן ומחזיר את השפעתה על היתרה (היתרה יכולה לרדת מתחת ל-0)
+function removeLogEntry(idx) {
+  const e = state.actionLog[idx];
+  if (!e) return;
+  const k = state.kids[e.kidId];
+  if (k) {
+    k.balance -= e.amount;
+    if (e.amount > 0) k.totalEarned = Math.max(0, k.totalEarned - e.amount);
+  }
+  state.actionLog.splice(idx, 1);
+}
+
+// מבטל תשלום לפי ref. אם הרשומה לא נמצאה (למשל נוצרה בגרסה הקודמת) —
+// רושם תנועה הפוכה כדי שהכסף בכל זאת יחזור.
+function reverseOrCompensate(kidId, ref, amount, label, isPrefix) {
+  for (let i = state.actionLog.length - 1; i >= 0; i--) {
+    const e = state.actionLog[i];
+    if (e.kidId !== kidId || !e.ref) continue;
+    if (isPrefix ? e.ref.indexOf(ref) === 0 : e.ref === ref) { removeLogEntry(i); return; }
+  }
+  if (amount) {
+    const k = state.kids[kidId];
+    const before = k.balance;
+    k.balance -= amount;
+    k.totalEarned = Math.max(0, k.totalEarned - amount);
+    logAction(kidId, -amount, '↩️ ' + label, before, k.balance);
+  }
 }
 
 // ============================================================
 // UNDO LAST ACTION
 // ============================================================
 function undoLastAction() {
-  if (!state.actionLog || !state.actionLog.length) return;
-  const last = state.actionLog[state.actionLog.length - 1];
-  if (!last) return;
+  const log = state.actionLog || [];
+  if (!log.length) return;
+  const last = log[log.length - 1];
+  const kidName = KIDS[last.kidId] ? KIDS[last.kidId].name : '';
+  const sign = last.amount > 0 ? '+' : '';
+  const run = () => {
+    if (!confirm(`לבטל את הפעולה האחרונה?\n${kidName}: ${last.action} (${sign}${last.amount} שמי׳ז)`)) return;
+    undoEntry(last);
+    saveState();
+    renderAll();
+  };
+  // ביטול קנייה/מימוש מחזיר כסף — רק הורה
+  if (last.amount < 0) requireParent(run, 'ביטול קנייה או מימוש');
+  else run();
+}
 
-  const kidId = last.kidId;
-  if (!state.kids[kidId]) return;
-
-  // Reverse the balance change
-  const delta = last.amount; // positive = earn, negative = spend
-  state.kids[kidId].balance = Math.max(0, state.kids[kidId].balance - delta);
-  if (delta > 0) {
-    // Was an earn — reduce totalEarned too
-    state.kids[kidId].totalEarned = Math.max(0, (state.kids[kidId].totalEarned || 0) - delta);
-  }
-
-  // Remove last actionLog entry
-  state.actionLog.pop();
-
-  // Remove matching history entry (most recent for this kid)
-  const hIdx = state.history.findIndex(h => h.kidId === kidId && h.amount === delta);
-  if (hIdx !== -1) state.history.splice(hIdx, 1);
-
-  // Try to un-check the task if this was a mandatory task check or group bonus
-  // Action label is the reason text, e.g. "✅ צחצוח שיניים" or "🎯 בוקר הושלם!"
-  const reason = last.action || '';
-  const today = todayKey();
-  const checks = getMandatoryChecks(kidId, today);
-
-  // Try to find a matching task by name in reason
-  const allTasks = getDayTasks();
-  const matchedTask = allTasks.find(t => reason.includes(t.name));
-  if (matchedTask) {
-    checks[matchedTask.id] = false;
-    // Also un-mark group bonus if it was given for this group
-    if (matchedTask.group) {
-      const d = today;
-      if (state.groupBonusGiven[d] && state.groupBonusGiven[d][kidId]) {
-        state.groupBonusGiven[d][kidId][matchedTask.group] = false;
-      }
+function undoEntry(e) {
+  const ref = e.ref || '';
+  const p = ref.split('|');
+  const type = p[0];
+  const isToday = p[1] === todayKey();
+  // תנועה שנוצרה מסימון משימה היום → מבטלים את הסימון, והכסף חוזר איתו
+  if (isToday && type === 'm' && getMandatoryChecks(e.kidId)[p[2]]) { toggleMandatory(p[2], e.kidId, { silent: true }); return; }
+  if (isToday && (type === 'g' || type === 's') && p[3] && getMandatoryChecks(e.kidId)[p[3]]) { toggleMandatory(p[3], e.kidId, { silent: true }); return; }
+  if (isToday && type === 'b' && getBonusChecks(e.kidId)[p[2]]) { toggleBonus(p[2], e.kidId, { silent: true }); return; }
+  if (isToday && type === 'w' && getWeeklyChecks(e.kidId)[p[2]]) { toggleWeeklyGeneral(p[2], e.kidId, { silent: true }); return; }
+  if (type === 'ot' || type === 'msg') {
+    if (type === 'ot') {
+      const t = (state.oneTimeTasks || []).find(x => x.id === p[1]);
+      if (t) { t.done = false; delete t.doneTs; }
     }
+    for (let i = state.actionLog.length - 1; i >= 0; i--) if (state.actionLog[i].ref === ref) removeLogEntry(i);
+    return;
   }
-
-  // If it was a group bonus action (reason includes "הושלם")
-  const groupMatch = reason.match(/(בוקר|צהריים|ערב) הושלם/);
-  if (groupMatch) {
-    const groupLabels = { 'בוקר': 'morning', 'צהריים': 'afternoon', 'ערב': 'evening' };
-    const gId = groupLabels[groupMatch[1]];
-    if (gId) {
-      const d = today;
-      if (state.groupBonusGiven[d] && state.groupBonusGiven[d][kidId]) {
-        state.groupBonusGiven[d][kidId][gId] = false;
-      }
-    }
-  }
-
-  saveState();
-  updateUndoBtn();
-  renderAll();
+  const idx = state.actionLog.lastIndexOf(e);
+  if (idx !== -1) removeLogEntry(idx);
 }
 
 function updateUndoBtn() {
@@ -1644,71 +1967,19 @@ function updateUndoBtn() {
 // ============================================================
 // CUSTOM TASKS MANAGEMENT
 // ============================================================
-function toggleCustomTaskReward() {
-  const type = document.getElementById('ct-type')?.value;
-  const wrap = document.getElementById('ct-reward-wrap');
-  if (wrap) wrap.style.display = type === 'bonus' ? 'flex' : 'none';
-}
-
-function addCustomTask() {
-  const name = document.getElementById('ct-name')?.value.trim();
-  if (!name) { alert('יש להזין שם למשימה'); return; }
-  const icon    = document.getElementById('ct-icon')?.value.trim() || '📌';
-  const type    = document.getElementById('ct-type')?.value || 'mandatory';
-  const group   = document.getElementById('ct-group')?.value || 'morning';
-  const kidId   = document.getElementById('ct-kid')?.value || 'all';
-  const reward  = parseInt(document.getElementById('ct-reward')?.value) || 0;
-  const days    = ['weekdays','friday','saturday'].filter(d => document.getElementById('ct-day-'+d)?.checked);
-
-  if (!days.length) { alert('יש לבחור לפחות יום אחד'); return; }
-  if (type === 'bonus' && !reward) { alert('יש להזין כמות שמי׳ז לבונוס'); return; }
-
-  const task = {
-    id: 'ct-' + Date.now(),
-    name, icon, type, group, kidId, reward, days,
-    // flags for existing toggle logic
-    energyBonus:    false,
-    afternoonBonus: type === 'bonus' && group === 'afternoon',
-    eveningBonus:   type === 'bonus' && group === 'evening',
-    morningBonus:   type === 'bonus' && group === 'morning',
-    bonusAmount:    reward,
-  };
-
-  if (!state.customTasks) state.customTasks = [];
-  state.customTasks.push(task);
-  saveState();
-  renderSettingsTab();
-}
-
-function removeCustomTask(id) {
-  if (!confirm('להסיר את המשימה?')) return;
-  state.customTasks = (state.customTasks||[]).filter(t => t.id !== id);
-  saveState();
-  renderSettingsTab();
-}
-
-// Inject custom tasks into getDayTasks
-const _origGetDayTasks = getDayTasks;
-function getDayTasksWithCustom() {
-  const base = _origGetDayTasks();
-  const day = new Date().getDay(); // 0=Sun,5=Fri,6=Sat
-  const dayKey = day === 5 ? 'friday' : day === 6 ? 'saturday' : 'weekdays';
-  const custom = (state.customTasks||[]).filter(t => (t.days||[]).includes(dayKey));
-  return [...base, ...custom];
-}
-
 // ============================================================
 // BACKUP & RESTORE
 // ============================================================
+// גיבוי מקומי יומי (3 ימים אחרונים). הגיבוי העיקרי נעשה בגוגל שיטס.
 function autoDailyBackup() {
   const key = 'shami_backup_' + todayKey();
-  if (!localStorage.getItem(key)) {
-    localStorage.setItem(key, JSON.stringify(state));
-    // Clean old backups (keep 7 days)
-    for (let i = 8; i <= 30; i++) {
+  if (!lsGet(key)) {
+    for (let i = 3; i <= 40; i++) {
       const d = new Date(); d.setDate(d.getDate() - i);
-      localStorage.removeItem('shami_backup_' + d.toISOString().slice(0,10));
+      lsDel('shami_backup_' + dateKey(d));
+      lsDel('shami_backup_' + d.toISOString().slice(0,10));
     }
+    lsSet(key, JSON.stringify(state));
   }
 }
 
@@ -1716,7 +1987,7 @@ function exportLogCSV() {
   const logs = (state.actionLog || []).slice().reverse();
   const header = 'תאריך,שעה,ילד,פעולה,סכום,יתרה לפני,יתרה אחרי';
   const rows = logs.map(e => {
-    const name = e.kidId === 'all' ? 'כולם' : KIDS[e.kidId]?.name || e.kidId;
+    const name = e.kidId === 'all' ? 'כולם' : (state.kidProfiles[e.kidId] || {}).name || e.kidId;
     return [e.date, e.time, name, '"' + (e.action||'').replace(/"/g,'""') + '"', e.amount, e.balanceBefore ?? '', e.balanceAfter ?? ''].join(',');
   });
   const csv = '﻿' + header + '\n' + rows.join('\n');
@@ -1745,7 +2016,9 @@ function restoreBackup(input) {
       const restored = JSON.parse(e.target.result);
       if (!restored.kids) { alert('קובץ לא תקין'); return; }
       if (!confirm('לשחזר מגיבוי? כל הנתונים הנוכחיים יוחלפו!')) return;
-      state = restored;
+      const pin = state.parentPinHash;
+      state = normalizeState(restored);
+      if (pin && !state.parentPinHash) state.parentPinHash = pin;
       saveState();
       renderAll();
       alert('שוחזר בהצלחה! ✅');
@@ -1772,100 +2045,98 @@ function filterLog(kidId, btn) {
 }
 
 // ============================================================
-// TOGGLE MANDATORY TASK
+// TOGGLES — סימון נותן שמי׳ז, ביטול הסימון מחזיר אותם
 // ============================================================
-function toggleMandatory(taskId, kidId) {
-  const checks = getMandatoryChecks(kidId);
-  const allTasks = [...DEFAULT_MANDATORY, ...FRIDAY_MANDATORY, ...SATURDAY_MANDATORY];
-  const task = getDayTasks().find(t => t.id === taskId) || allTasks.find(t => t.id === taskId);
+// כך אי אפשר "לחלוב" נקודות בסימון וביטול חוזרים.
+function toggleMandatory(taskId, kidId, opts) {
+  opts = opts || {};
+  const task = getDayTasks(kidId).find(t => t.id === taskId) || findTaskAnyDay(taskId);
   if (!task) return;
+  const dk = todayKey();
+  const checks = getMandatoryChecks(kidId);
   const wasDone = !!checks[taskId];
-  checks[taskId] = !wasDone;
-  saveState();
+  let cel = null;
 
-  // Energy bonus — standalone (supports bonusOverride for different amounts)
-  if (!wasDone && task.energyBonus) {
-    const amt = task.bonusOverride || ENERGY_BONUS;
-    earnShami(kidId, amt, task.icon + ' ' + task.name + ' — בונוס!');
-    celebrateGroupBonus(kidId, { label: task.name, emoji: task.icon }, amt);
-    return;
-  }
-
-  // Afternoon optional bonuses — standalone
-  if (!wasDone && task.afternoonBonus) {
-    earnShami(kidId, task.bonusAmount, task.icon + ' ' + task.name + ' — בונוס!');
-    celebrateGroupBonus(kidId, { label: task.name, emoji: task.icon }, task.bonusAmount);
-    return;
-  }
-
-  // Evening optional bonuses — standalone
-  if (!wasDone && task.eveningBonus) {
-    earnShami(kidId, task.bonusAmount, task.icon + ' ' + task.name + ' — בונוס!');
-    celebrateGroupBonus(kidId, { label: task.name, emoji: task.icon }, task.bonusAmount);
-    return;
-  }
-
-  // Morning optional bonuses (custom tasks)
-  if (!wasDone && task.morningBonus) {
-    earnShami(kidId, task.bonusAmount, task.icon + ' ' + task.name + ' — בונוס!');
-    celebrateGroupBonus(kidId, { label: task.name, emoji: task.icon }, task.bonusAmount);
-    return;
-  }
-
-  // Check group completion bonus
-  if (!wasDone && !task.energyBonus) {
-    const g = GROUPS.find(gr => gr.id === task.group);
-    if (g && allGroupDone(kidId, g.id) && !isGroupBonusGiven(kidId, g.id)) {
-      markGroupBonus(kidId, g.id);
-      earnShami(kidId, g.bonus, g.emoji + ' בונוס ' + g.label);
-      // Add to family challenge
-      addFamilyChallengeCount();
-      celebrateGroupBonus(kidId, g, g.bonus);
-      return;
+  if (!wasDone) {
+    checks[taskId] = true;
+    if (isBonusTask(task)) {
+      const amt = bonusAmountOf(task);
+      if (amt) earnShami(kidId, amt, task.icon + ' ' + task.name + ' — בונוס!', 'm|' + dk + '|' + taskId);
+      cel = { type: 'task', group: { label: task.name, emoji: task.icon }, amount: amt };
+    } else {
+      const g = GROUPS.find(gr => gr.id === task.group);
+      if (g && allGroupDone(kidId, g.id) && !isGroupBonusGiven(kidId, g.id)) {
+        markGroupBonus(kidId, g.id);
+        const amt = groupBonusAmount(g.id);
+        earnShami(kidId, amt, g.emoji + ' בונוס ' + g.label, 'g|' + dk + '|' + g.id + '|' + taskId);
+        addFamilyChallengeCount(1);
+        cel = { type: 'group', group: g, amount: amt };
+      }
+      const r = updateDayCompletion(kidId, taskId);
+      if (r && r.streakBonus) cel = { type: 'streak', days: r.streakBonus };
+    }
+  } else {
+    delete checks[taskId];
+    if (isBonusTask(task)) {
+      reverseOrCompensate(kidId, 'm|' + dk + '|' + taskId, bonusAmountOf(task), task.name);
+    } else {
+      const g = GROUPS.find(gr => gr.id === task.group);
+      if (g && isGroupBonusGiven(kidId, g.id)) {
+        markGroupBonus(kidId, g.id, false);
+        reverseOrCompensate(kidId, 'g|' + dk + '|' + g.id + '|', groupBonusAmount(g.id), 'בונוס ' + g.label, true);
+        addFamilyChallengeCount(-1);
+      }
+      updateDayCompletion(kidId, taskId);
     }
   }
-
-  // Check if entire day done → update streak
-  if (!wasDone && allDayDone(kidId)) {
-    updateStreak(kidId);
-    updateUndoBtn();
-    return;
+  saveState();
+  if (!opts.silent && cel) {
+    if (cel.type === 'streak') celebrateStreak(kidId, cel.days);
+    else celebrateGroupBonus(kidId, cel.group, cel.amount);
   }
-
   renderToday();
   updateUndoBtn();
 }
 
-// ============================================================
-// TOGGLE WEEKLY GENERAL TASK
-// ============================================================
-function toggleWeeklyGeneral(taskId, kidId) {
-  const checks = getWeeklyChecks(kidId);
+// משימות "כללי" (ימי חול) — פעם אחת ביום, לחיצה נוספת מבטלת
+function toggleWeeklyGeneral(taskId, kidId, opts) {
+  opts = opts || {};
   const task = state.weeklyGeneralTasks.find(t => t.id === taskId);
   if (!task) return;
-  checks[taskId] = (checks[taskId] || 0) + 1;
-  earnShami(kidId, task.reward, task.icon + ' ' + task.name);
-  celebrate(kidId, task);
-}
-
-// ============================================================
-// TOGGLE BONUS TASK
-// ============================================================
-function toggleBonus(taskId, kidId) {
-  const checks = getBonusChecks(kidId);
-  const task = state.bonusTasks.find(t => t.id === taskId);
-  if (!task) return;
-
+  const checks = getWeeklyChecks(kidId);
+  const dk = todayKey();
   if (!checks[taskId]) {
     checks[taskId] = 1;
-    earnShami(kidId, task.reward, task.icon + ' ' + task.name);
-    celebrate(kidId, task);
+    earnShami(kidId, task.reward, task.icon + ' ' + task.name, 'w|' + dk + '|' + taskId);
+    if (!opts.silent) celebrate(kidId, task);
   } else {
-    // Already done — allow another (parent permission implied by the design)
-    checks[taskId] = (checks[taskId] || 0) + 1;
-    earnShami(kidId, task.reward, task.icon + ' ' + task.name + ' (נוסף)');
-    celebrate(kidId, task);
+    delete checks[taskId];
+    reverseOrCompensate(kidId, 'w|' + dk + '|' + taskId, task.reward, task.name);
+    saveState();
   }
+  renderToday();
+  updateUndoBtn();
+}
+
+// משימות בונוס (טאב "בונוס") — פעם אחת ביום לכל ילד, לחיצה נוספת מבטלת
+function toggleBonus(taskId, kidId, opts) {
+  opts = opts || {};
+  const task = state.bonusTasks.find(t => t.id === taskId);
+  if (!task) return;
+  const checks = getBonusChecks(kidId);
+  const dk = todayKey();
+  if (!checks[taskId]) {
+    checks[taskId] = 1;
+    earnShami(kidId, task.reward, task.icon + ' ' + task.name, 'b|' + dk + '|' + taskId);
+    if (!opts.silent) celebrate(kidId, task);
+  } else {
+    delete checks[taskId];
+    reverseOrCompensate(kidId, 'b|' + dk + '|' + taskId, task.reward, task.name);
+    saveState();
+  }
+  renderBonusList();
+  renderKidSelector('bonus-kid-selector', selectedBonusKid, 'selectBonusKid');
+  updateUndoBtn();
 }
 
 // ============================================================
@@ -1877,8 +2148,8 @@ function renderKidSelector(containerId, selectedKidVar, onSelect) {
     <button class="kid-btn ${k === selectedKidVar ? 'active' : ''}"
       style="--kid-color:${kid.color}"
       onclick="${onSelect}('${k}')">
-      <span class="kid-emoji">${kid.emoji}</span>
-      <span>${kid.name}</span>
+      <span class="kid-emoji">${esc(kid.emoji)}</span>
+      <span>${esc(kid.name)}</span>
       <span class="kid-bal" style="color:${k === selectedKidVar ? 'rgba(255,255,255,0.8)' : '#D35400'}">${state.kids[k].balance} שמי׳ז</span>
     </button>`).join('');
 }
@@ -1886,25 +2157,11 @@ function renderKidSelector(containerId, selectedKidVar, onSelect) {
 // ============================================================
 // QUOTES
 // ============================================================
-const DEFAULT_QUOTES = [
-  { text: "הצלחה היא סכום של מאמצים קטנים שחוזרים על עצמם יום אחרי יום.", author: "רוברט קולייר" },
-  { text: "לא משנה כמה לאט אתה הולך, כל עוד אתה לא עוצר.", author: "קונפוציוס" },
-  { text: "כל מסע מתחיל בצעד אחד.", author: "לאו דזה" },
-  { text: "הדרך הטובה ביותר לחזות את העתיד היא לצור אותו.", author: "אברהם לינקולן" },
-  { text: "התמדה היא המפתח. היא הופכת חלום למציאות.", author: "לא ידוע" },
-  { text: "אל תפחד מהאתגרים — הם מחזקים אותך.", author: "לא ידוע" },
-  { text: "כל יום הוא הזדמנות חדשה להיות הגרסה הטובה ביותר של עצמך.", author: "לא ידוע" },
-  { text: "המוח שלך חזק יותר ממה שאתה חושב.", author: "לא ידוע" },
-  { text: "אי אפשר לחזור לאתמול, אבל אפשר להתחיל מחר בצורה אחרת.", author: "לואיס קרול" },
-  { text: "הניסיון הוא לא מה שקורה לך — זה מה שאתה עושה עם מה שקורה לך.", author: "אולדוס האקסלי" },
-];
+
 
 function getTodayQuote() {
-  const quotes = state.customQuotes && state.customQuotes.length
-    ? [...DEFAULT_QUOTES, ...state.customQuotes]
-    : DEFAULT_QUOTES;
-  const dayIndex = new Date().getDate() % quotes.length;
-  return quotes[dayIndex];
+  const quotes = (state.quotes && state.quotes.length) ? state.quotes : [{ text: '', author: '' }];
+  return quotes[new Date().getDate() % quotes.length];
 }
 
 // ============================================================
@@ -1918,33 +2175,27 @@ function getStreakLevel(count) {
 
 function renderStreakCards() {
   const kidKeys = Object.keys(KIDS);
-  const STREAK_TARGET = 7;
-  const STREAK_BONUS = 50;
-
-  let html = '<div class="streak-grid">';
+  let html = `<div class="streak-grid" style="grid-template-columns:repeat(${Math.max(1, kidKeys.length)},1fr)">`;
   kidKeys.forEach(kidId => {
     const kid = KIDS[kidId];
-    const streak = state.streaks[kidId] || { count: 0, best: 0 };
-    const count = streak.count || 0;
+    const count = computeStreak(kidId);
     const level = getStreakLevel(count);
-    const remaining = STREAK_TARGET - (count % STREAK_TARGET);
-    const isAtTarget = count > 0 && count % STREAK_TARGET === 0;
-
-    // Dots — show position within current 6-cycle
-    const posInCycle = count % STREAK_TARGET;
-    const dotsHtml = Array.from({length: STREAK_TARGET}, (_,i) =>
+    const remaining = streakTarget() - (count % streakTarget());
+    const isAtTarget = count > 0 && count % streakTarget() === 0;
+    const posInCycle = count % streakTarget();
+    const dotsHtml = Array.from({length: streakTarget()}, (_,i) =>
       `<div class="streak-dot ${i < posInCycle || isAtTarget ? 'filled ' + level : ''}"></div>`
     ).join('');
 
     let msg, msgClass;
-    if (isAtTarget && count > 0) {
+    if (isAtTarget && isDayComplete(kidId, todayKey())) {
       msg = '🎯 קיבלת בונוס היום!'; msgClass = 'hot';
     } else if (count === 0) {
       msg = 'התחל היום! 💪'; msgClass = 'cold';
     } else if (remaining === 1) {
       msg = '🔥 עוד יום לבונוס!'; msgClass = level;
     } else {
-      msg = `עוד ${remaining} ימים ← +${STREAK_BONUS} 💰`; msgClass = level;
+      msg = `עוד ${remaining} ימים ← +${streakBonusAmount()} 💰`; msgClass = level;
     }
 
     let streakEmoji = '❄️';
@@ -1952,12 +2203,12 @@ function renderStreakCards() {
     if (level === 'hot')  streakEmoji = '⭐';
 
     html += `<div class="streak-card ${level}" onclick="openStreakPopup('${kidId}')">
-      <span class="streak-emoji">${kid.emoji}</span>
-      <div class="streak-name" style="color:${kid.color}">${kid.name}</div>
+      <span class="streak-emoji">${esc(kid.emoji)}</span>
+      <div class="streak-name" style="color:${kid.color}">${esc(kid.name)}</div>
       <div class="streak-dots">${dotsHtml}</div>
       <div class="streak-count" style="color:${level==='cold'?'var(--text2)':level==='warm'?'#E67E22':'#D4A017'}">${count} ${streakEmoji}</div>
       <div class="streak-label">ימים ברצף</div>
-      <div class="streak-msg ${msgClass}">${msg}</div>
+      <div class="streak-msg ${msgClass}">${esc(msg)}</div>
     </div>`;
   });
   html += '</div>';
@@ -1968,27 +2219,20 @@ function renderStreakCards() {
 
 function openStreakPopup(kidId) {
   const kid = KIDS[kidId];
-  const streak = state.streaks[kidId] || { count: 0, best: 0 };
-  const count = streak.count || 0;
-  const best = Math.max(streak.best || 0, count);
+  const count = computeStreak(kidId);
+  const best = getStreakBest(kidId);
   const level = getStreakLevel(count);
-  const STREAK_TARGET = 7;
-  const remaining = STREAK_TARGET - (count % STREAK_TARGET || STREAK_TARGET);
-
-  // Update best
-  if (!state.streaks[kidId]) state.streaks[kidId] = {};
-  state.streaks[kidId].best = best;
-  saveState();
+  const remaining = streakTarget() - (count % streakTarget());
 
   document.getElementById('sp-emoji').textContent = level==='hot' ? '⭐' : level==='warm' ? '🔥' : '❄️';
   document.getElementById('sp-title').textContent = kid.name + ' — ' + count + ' ימים!';
   document.getElementById('sp-sub').textContent = count === 0
     ? 'השלם את כל המשימות היום כדי להתחיל רצף!'
-    : `כל יום שמשלימים את כל החובות — הרצף גדל. אחרי 7 ימים ← 50 שמי׳ז!`;
+    : `כל יום שמשלימים את כל החובות — הרצף גדל. אחרי ${streakTarget()} ימים ← ${streakBonusAmount()} שמי׳ז!`;
   document.getElementById('sp-record-val').textContent = best + ' ימים';
-  document.getElementById('sp-next').textContent = count > 0 && remaining > 0
-    ? `עוד ${remaining} ימים לבונוס הבא של 50 שמי׳ז 💰`
-    : count > 0 ? '🎯 בונוס מחכה לך היום!' : '';
+  document.getElementById('sp-next').textContent = count > 0
+    ? `עוד ${remaining} ימים לבונוס הבא של ${streakBonusAmount()} שמי׳ז 💰`
+    : '';
   document.getElementById('streak-popup').classList.add('show');
 }
 
@@ -2009,11 +2253,11 @@ function renderTodayHeader() {
   const dayInfo = getDayLabel();
 
   let greeting;
-  if (hour < 10) greeting = 'בוקר טוב למשפחת שמי';
-  else if (hour < 13) greeting = 'בוקר מקסים למשפחת שמי';
-  else if (hour < 17) greeting = 'צהריים טובים למשפחת שמי';
-  else if (hour < 20) greeting = 'ערב טוב למשפחת שמי';
-  else greeting = 'לילה טוב למשפחת שמי';
+  if (hour < 10) greeting = 'בוקר טוב למשפחת ' + familyName();
+  else if (hour < 13) greeting = 'בוקר מקסים למשפחת ' + familyName();
+  else if (hour < 17) greeting = 'צהריים טובים למשפחת ' + familyName();
+  else if (hour < 20) greeting = 'ערב טוב למשפחת ' + familyName();
+  else greeting = 'לילה טוב למשפחת ' + familyName();
 
   if (dayInfo) greeting = dayInfo.emoji + ' ' + greeting + ' — ' + dayInfo.label + '!';
 
@@ -2037,13 +2281,13 @@ function renderTodayHeader() {
   document.getElementById('today-header').innerHTML = `
     <div class="today-hero">
       <div style="margin-bottom:4px;">
-        <div class="today-greeting">${greeting} ✨</div>
+        <div class="today-greeting">${esc(greeting)} ✨</div>
       </div>
       <div class="today-datetime">יום ${dayName}, ${dateStr} · ${timeStr}</div>
 
       <div style="margin-bottom:10px;">
         <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:4px;">
-          <span>🏆 אתגר משפחתי: ${fc.reward}</span>
+          <span>🏆 אתגר משפחתי: ${esc(fc.reward)}</span>
           <span>${fcCount}/${fc.goal}</span>
         </div>
         <div style="height:5px;background:rgba(255,255,255,0.1);border-radius:5px;overflow:hidden;">
@@ -2051,8 +2295,8 @@ function renderTodayHeader() {
         </div>
         ${fcCount>=fc.goal?'<div style="font-size:0.75rem;color:var(--gold);margin-top:4px;font-weight:700;">🎉 השגתם את האתגר השבועי!</div>':''}
       </div>
-      <div class="today-quote">${quote.text}</div>
-      <div class="today-quote-attr">— ${quote.author}</div>
+      <div class="today-quote">${esc(quote.text)}</div>
+      <div class="today-quote-attr">— ${esc(quote.author)}</div>
     </div>`;
 }
 
@@ -2065,99 +2309,83 @@ function renderToday() {
   const el = document.getElementById('all-kids-today');
   const kidKeys = Object.keys(KIDS);
 
-  let html = '<div class="all-kids-grid">';
+  const taskRow = (t, kidId, isDone, cls, extra) => `
+    <div class="mini-task ${cls} ${isDone ? 'done' : ''}" onclick="toggleMandatory('${t.id}','${kidId}')">
+      <div class="mini-check">${isDone ? '✓' : ''}</div>
+      <span class="mini-task-icon">${esc(t.icon)}</span>
+      <span class="mini-task-name">${esc(t.name)}${extra || ''}${t.note ? `<span class="mini-task-note">${esc(t.note)}</span>` : ''}</span>
+    </div>`;
+
+  let html = '';
+  // משימות חד-פעמיות פעילות
+  const oneTime = (state.oneTimeTasks || []).filter(t => !t.done && (t.kidId === 'all' || KIDS[t.kidId]));
+  if (oneTime.length) {
+    html += `<div class="mini-group-label" style="font-size:0.8rem;margin-top:0;">⚡ משימות מיוחדות</div><div class="task-list" style="margin-bottom:12px;">`;
+    oneTime.forEach(t => {
+      html += `<div class="task-item bonus-item" onclick="completeOneTimeTask('${t.id}')">
+        <div class="task-check"></div>
+        <div class="task-icon">${esc(t.icon || '⚡')}</div>
+        <div class="task-info"><div class="task-name">${esc(t.name)}</div>
+          <div class="task-sub">${t.kidId === 'all' ? 'לכולם (כל אחד מקבל)' : 'ל' + esc(KIDS[t.kidId].name)}</div></div>
+        <div class="task-reward reward-bonus">+${esc(t.reward)} 💰</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+  html += `<div class="all-kids-grid" style="grid-template-columns:repeat(${Math.max(1, kidKeys.length)},1fr)">`;
 
   kidKeys.forEach(kidId => {
     const kid = KIDS[kidId];
     const kd = state.kids[kidId];
     const checks = getMandatoryChecks(kidId);
     const wChecks = getWeeklyChecks(kidId);
+    const dayTasks = getDayTasks(kidId);
 
-    // Total done across all groups for header badge
-    const totalTasks = getDayTasks().filter(t => !t.energyBonus && !t.afternoonBonus && !t.eveningBonus).length;
-    const totalDone = getDayTasks().filter(t => !t.energyBonus && !t.afternoonBonus && !t.eveningBonus && checks[t.id]).length;
-    const allComplete = totalDone === totalTasks;
+    const regular = dayTasks.filter(t => !isBonusTask(t));
+    const totalTasks = regular.length;
+    const totalDone = regular.filter(t => checks[t.id]).length;
+    const allComplete = totalTasks > 0 && totalDone === totalTasks;
 
     html += `<div class="kid-column" style="border-top: 3px solid ${kid.color}">
       <div class="kid-col-header" style="background:${kid.color}11">
-        <span class="kid-col-emoji">${kid.emoji}</span>
-        <div class="kid-col-name" style="color:${kid.color}">${kid.name}</div>
-        <div class="kid-col-balance">${kd.balance} שמי׳ז</div>
+        <span class="kid-col-emoji">${esc(kid.emoji)}</span>
+        <div class="kid-col-name" style="color:${kid.color}">${esc(kid.name)}</div>
+        <div class="kid-col-balance" style="${kd.balance < 0 ? 'color:#E74C3C' : ''}">${kd.balance} שמי׳ז</div>
         <span class="kid-col-bonus-badge" style="background:#F0F0F0;color:#888">${totalDone}/${totalTasks}</span>
       </div>
       <div class="kid-col-body">
         ${allComplete ? `<div class="day-done-banner">🎉 יום הושלם!</div>` : ''}`;
 
-    // Each group
     GROUPS.forEach(g => {
-      const tasks = groupTasks(g.id);
-      // energyTasks handled below
-      const done = groupDoneCount(kidId, g.id);
+      const tasks = regular.filter(t => t.group === g.id);
+      const bonuses = dayTasks.filter(t => t.group === g.id && isBonusTask(t));
+      if (!tasks.length && !bonuses.length) return;
+      const done = tasks.filter(t => checks[t.id]).length;
       const total = tasks.length;
-      const allDone = done === total;
+      const allDone = total > 0 && done === total;
       const bonusGiven = isGroupBonusGiven(kidId, g.id);
       const pct = total ? Math.round(done/total*100) : 0;
 
       html += `<div class="mini-group-label ${allDone ? 'mini-group-done' : ''}">
         ${g.emoji} ${g.label}
-        ${allDone && bonusGiven ? '<span style="color:#27AE60">+' + g.bonus + '✓</span>' : ''}
+        ${allDone && bonusGiven ? '<span style="color:#27AE60">+' + groupBonusAmount(g.id) + '✓</span>' : ''}
       </div>
       <div class="mini-progress"><div class="mini-progress-fill" style="width:${pct}%;background:${allDone?'#2ECC71':kid.color}"></div></div>`;
 
-      tasks.forEach(t => {
-        const isDone = !!checks[t.id];
-        html += `<div class="mini-task ${isDone ? 'done' : ''}" onclick="toggleMandatory('${t.id}','${kidId}')">
-          <div class="mini-check">${isDone ? '✓' : ''}</div>
-          <span class="mini-task-icon">${t.icon}</span>
-          <span class="mini-task-name">${t.name}</span>
-        </div>`;
-      });
-
-      // Energy bonus tasks (all of them for this group)
-      const energyTasks = DEFAULT_MANDATORY.filter(t => t.group === g.id && t.energyBonus);
-      energyTasks.forEach(et => {
-        const eDone = !!checks[et.id];
-        const eAmt = et.bonusOverride || ENERGY_BONUS;
-        html += `<div class="mini-task energy ${eDone ? 'done' : ''}" onclick="toggleMandatory('${et.id}','${kidId}')">
-          <div class="mini-check">${eDone ? '✓' : ''}</div>
-          <span class="mini-task-icon">${et.icon}</span>
-          <span class="mini-task-name">${et.name} +${eAmt}💰</span>
-        </div>`;
-      });
-
-      // Afternoon/morning optional bonus tasks (including custom)
-      const afternoonBonusTasks = getDayTasks().filter(t => t.group === g.id && (t.afternoonBonus || t.morningBonus || t.type === 'bonus'));
-      afternoonBonusTasks.forEach(abt => {
-        const abtDone = !!checks[abt.id];
-        const abtReward = abt.bonusAmount || abt.reward || 0;
-        html += `<div class="mini-task energy ${abtDone ? 'done' : ''}" onclick="toggleMandatory('${abt.id}','${kidId}')">
-          <div class="mini-check">${abtDone ? '✓' : ''}</div>
-          <span class="mini-task-icon">${abt.icon}</span>
-          <span class="mini-task-name">${abt.name} +${abtReward}💰</span>
-        </div>`;
-      });
-
-      // Evening optional bonus tasks
-      const eveningBonusTasks = getDayTasks().filter(t => t.group === g.id && t.eveningBonus);
-      eveningBonusTasks.forEach(ebt => {
-        const ebtDone = !!checks[ebt.id];
-        html += `<div class="mini-task energy ${ebtDone ? 'done' : ''}" onclick="toggleMandatory('${ebt.id}','${kidId}')">
-          <div class="mini-check">${ebtDone ? '✓' : ''}</div>
-          <span class="mini-task-icon">${ebt.icon}</span>
-          <span class="mini-task-name">${ebt.name} +${ebt.bonusAmount}💰</span>
-        </div>`;
-      });
+      tasks.forEach(t => { html += taskRow(t, kidId, !!checks[t.id], '', ''); });
+      bonuses.forEach(t => { html += taskRow(t, kidId, !!checks[t.id], 'energy', ' +' + bonusAmountOf(t) + '💰'); });
     });
 
-    // Weekly general
-    if (state.weeklyGeneralTasks.length && getDayTasks() === DEFAULT_MANDATORY) {
+    // משימות כלליות — בימי חול בלבד, פעם ביום
+    const general = state.weeklyGeneralTasks.filter(t => (t.days || ['weekdays']).includes(getDayType()) && (!t.kidId || t.kidId === 'all' || t.kidId === kidId));
+    if (general.length) {
       html += `<div class="mini-group-label">🛒 כללי</div>`;
-      state.weeklyGeneralTasks.forEach(t => {
-        const count = wChecks[t.id] || 0;
-        html += `<div class="mini-task weekly-gen" onclick="toggleWeeklyGeneral('${t.id}','${kidId}')">
-          <div class="mini-check" style="${count>0?'background:#2ECC71;border-color:#2ECC71;color:white;':'border-color:#9AE6B4;'}">${count > 0 ? count : ''}</div>
-          <span class="mini-task-icon">${t.icon}</span>
-          <span class="mini-task-name">${t.name} +${t.reward}💰</span>
+      general.forEach(t => {
+        const isDone = !!wChecks[t.id];
+        html += `<div class="mini-task weekly-gen ${isDone ? 'done' : ''}" onclick="toggleWeeklyGeneral('${t.id}','${kidId}')">
+          <div class="mini-check" style="${isDone?'background:#2ECC71;border-color:#2ECC71;color:white;':'border-color:#9AE6B4;'}">${isDone ? '✓' : ''}</div>
+          <span class="mini-task-icon">${esc(t.icon)}</span>
+          <span class="mini-task-name">${esc(t.name)} +${esc(t.reward)}💰</span>
         </div>`;
       });
     }
@@ -2169,8 +2397,8 @@ function renderToday() {
   el.innerHTML = html;
 }
 
-function renderTodayKidSelector() {} // legacy stub — no longer needed
-function renderBonusBanner() {}      // legacy stub
+ // legacy stub — no longer needed
+      // legacy stub
 
 // ============================================================
 // RENDER BONUS PAGE
@@ -2204,19 +2432,19 @@ function renderBonusList() {
     categories.forEach(cat => {
       const catTasks = myTasks.filter(t => (t.category || 'כללי') === cat);
       html += `<div class="section-header" style="margin-top:14px;">
-        <span class="section-badge badge-bonus">⭐ ${cat}</span>
+        <span class="section-badge badge-bonus">⭐ ${esc(cat)}</span>
       </div><div class="task-list">`;
       catTasks.forEach(t => {
         const count = checks[t.id] || 0;
         html += `
-          <div class="task-item bonus-item" onclick="toggleBonus('${t.id}','${selectedBonusKid}')">
+          <div class="task-item bonus-item ${count > 0 ? 'done' : ''}" onclick="toggleBonus('${t.id}','${selectedBonusKid}')">
             <div class="task-check">${count > 0 ? '✓' : ''}</div>
-            <div class="task-icon">${t.icon}</div>
+            <div class="task-icon">${esc(t.icon)}</div>
             <div class="task-info">
-              <div class="task-name">${t.name}</div>
-              <div class="task-sub">${count > 0 ? 'בוצע ' + count + ' פעם היום' : 'לחץ לסמן ביצוע'}</div>
+              <div class="task-name">${esc(t.name)}</div>
+              <div class="task-sub">${count > 0 ? 'בוצע היום ✓ · לחיצה נוספת מבטלת' : 'לחץ לסמן ביצוע (פעם ביום)'}</div>
             </div>
-            <div class="task-reward reward-bonus">+${t.reward} 💰</div>
+            <div class="task-reward reward-bonus">+${esc(t.reward)} 💰</div>
           </div>`;
       });
       html += `</div>`;
@@ -2231,32 +2459,18 @@ function renderBonusList() {
       const assignedTo = KIDS[assign[t.id]]?.name || '';
       html += `
         <div class="task-item bonus-item" style="opacity:0.4;cursor:default;">
-          <div class="task-icon">${t.icon}</div>
+          <div class="task-icon">${esc(t.icon)}</div>
           <div class="task-info">
-            <div class="task-name">${t.name}</div>
-            <div class="task-sub">משובץ ל${assignedTo}</div>
+            <div class="task-name">${esc(t.name)}</div>
+            <div class="task-sub">משובץ ל${esc(assignedTo)}</div>
           </div>
-          <div class="task-reward reward-bonus">+${t.reward} 💰</div>
+          <div class="task-reward reward-bonus">+${esc(t.reward)} 💰</div>
         </div>`;
     });
     html += `</div>`;
   }
 
   document.getElementById('bonus-list').innerHTML = html;
-}
-
-function addBonusTask() {
-  const name = document.getElementById('new-task-name').value.trim();
-  const icon = document.getElementById('new-task-icon').value.trim() || '⭐';
-  const reward = parseInt(document.getElementById('new-task-reward').value) || 20;
-  if (!name) return;
-  const id = 'b' + Date.now();
-  state.bonusTasks.push({ id, icon, name, reward });
-  saveState();
-  document.getElementById('new-task-name').value = '';
-  document.getElementById('new-task-icon').value = '';
-  document.getElementById('new-task-reward').value = '';
-  renderBonusList();
 }
 
 // ============================================================
@@ -2271,17 +2485,18 @@ function selectWalletKid(k) {
 function renderWallet() {
   const kid = KIDS[selectedWalletKid];
   const kd = state.kids[selectedWalletKid];
-  const history = state.history.filter(h => h.kidId === selectedWalletKid).slice(0, 20);
+  const allHist = getHistory(selectedWalletKid);
+  const history = allHist.slice(0, 20);
 
-  const nisValue = Math.floor(kd.balance / (state.nisRate||NIS_RATE));
-  const todayEarned = state.history.filter(h => h.kidId === selectedWalletKid && h.date === todayKey() && h.amount > 0).reduce((s,h) => s + h.amount, 0);
+  const nisValue = Math.floor(kd.balance / nisRate());
+  const todayEarned = allHist.filter(h => h.date === todayKey() && h.amount > 0).reduce((s,h) => s + h.amount, 0);
 
   let html = `
     <div class="wallet-card">
-      <div class="wallet-name">${kid.emoji} ${kid.name}</div>
-      <div class="wallet-balance">${kd.balance}</div>
+      <div class="wallet-name">${esc(kid.emoji)} ${esc(kid.name)}</div>
+      <div class="wallet-balance" style="${kd.balance < 0 ? 'color:#FF8A80' : ''}">${kd.balance}</div>
       <div class="wallet-unit">שטרות שמי׳ז</div>
-      <div class="nis-rate">≈ ${nisValue} ₪ אמיתיים (${state.nisRate||NIS_RATE} שמי׳ז = 1 ₪)</div>
+      <div class="nis-rate">≈ ${nisValue} ₪ אמיתיים (${nisRate()} שמי׳ז = 1 ₪)</div>
       <div class="wallet-stats">
         <div class="w-stat">
           <div class="w-stat-val">+${todayEarned}</div>
@@ -2295,8 +2510,8 @@ function renderWallet() {
     </div>
 
     <div style="display:flex;gap:8px;margin-bottom:16px;">
-      <button class="btn-add" style="flex:1;background:#E74C3C;color:white;" onclick="redeemShami('${selectedWalletKid}')">💸 מימוש שטרות</button>
-      <button class="btn-add" style="flex:1;" onclick="addShami('${selectedWalletKid}')">➕ הוסף ידנית</button>
+      <button class="btn-add" style="flex:1;background:#E74C3C;color:white;" onclick="requireParent(() => redeemShami('${selectedWalletKid}'), 'מימוש שמי׳ז')">🔒 💸 מימוש</button>
+      <button class="btn-add" style="flex:1;" onclick="requireParent(() => addShami('${selectedWalletKid}'), 'הוספה ידנית')">🔒 ➕ הוסף ידנית</button>
     </div>
 
     <div class="section-header"><span class="section-title-text">📜 היסטוריה</span></div>
@@ -2310,7 +2525,7 @@ function renderWallet() {
         <div class="history-item">
           <div class="hi-icon">${h.amount > 0 ? '💰' : '💸'}</div>
           <div class="hi-info">
-            <div class="hi-name">${h.reason}</div>
+            <div class="hi-name">${esc(h.reason)}</div>
             <div class="hi-meta">${h.date} · ${h.time}</div>
           </div>
           <div class="hi-amount" style="color:${h.amount > 0 ? '#27AE60' : '#E74C3C'}">${h.amount > 0 ? '+' : ''}${h.amount} שמי׳ז</div>
@@ -2326,7 +2541,7 @@ function redeemShami(kidId) {
   if (!amount || isNaN(amount) || amount <= 0) return;
   if (amount > state.kids[kidId].balance) { alert('אין מספיק שטרות!'); return; }
   const reason = prompt('סיבת המימוש:') || 'מימוש';
-  spendShami(kidId, amount, '💸 ' + reason);
+  spendShami(kidId, amount, '💸 ' + reason, 'redeem');
   renderWallet();
   renderKidSelector('wallet-kid-selector', selectedWalletKid, 'selectWalletKid');
 }
@@ -2335,7 +2550,7 @@ function addShami(kidId) {
   const amount = parseInt(prompt(`כמה שטרות שמי׳ז להוסיף ל${KIDS[kidId].name}?`));
   if (!amount || isNaN(amount) || amount <= 0) return;
   const reason = prompt('סיבה:') || 'הוספה ידנית';
-  earnShami(kidId, amount, '➕ ' + reason);
+  earnShami(kidId, amount, '➕ ' + reason, 'add');
   renderWallet();
   renderKidSelector('wallet-kid-selector', selectedWalletKid, 'selectWalletKid');
 }
@@ -2343,65 +2558,29 @@ function addShami(kidId) {
 // ============================================================
 // WEEKLY ASSIGNMENT
 // ============================================================
-function renderWeekly() {
-  let html = `
-    <div class="weekly-card">
-      <div class="weekly-title">📅 שיבוץ שבועי — משימות בונוס</div>
-      <p style="font-size:0.8rem;color:var(--text2);margin-bottom:14px;">שבצו כל משימה לילד אחד השבוע. ניתן גם להשאיר "לכולם".</p>`;
-
-  state.bonusTasks.forEach(t => {
-    const assigned = state.weeklyAssign[t.id] || 'all';
-    html += `
-      <div class="assignment-row">
-        <div class="ar-task-icon">${t.icon}</div>
-        <div class="ar-task">${t.name}</div>
-        <div class="ar-reward">+${t.reward} 💰</div>
-        <select class="ar-select" onchange="assignTask('${t.id}', this.value)">
-          <option value="all" ${assigned==='all'?'selected':''}>כולם</option>
-          ${Object.entries(KIDS).map(([k,kid]) => `<option value="${k}" ${assigned===k?'selected':''}>${kid.name}</option>`).join('')}
-        </select>
-      </div>`;
-  });
-
-  html += `</div>
-    <button class="btn-save" onclick="saveWeekly()">💾 שמור שיבוץ</button>`;
-  document.getElementById('weekly-content').innerHTML = html;
-}
-
-function assignTask(taskId, kidId) {
-  state.weeklyAssign[taskId] = kidId;
-}
-
-function saveWeekly() {
-  saveState();
-  alert('השיבוץ השבועי נשמר! ✅');
-  renderBonusList();
-}
-
 // ============================================================
 // SETTINGS
 // ============================================================
 // ============================================================
 // SETTINGS — sub-tab state
 // ============================================================
-let settingsTab = 'bonus';
+let settingsTab = 'tasks';
 
 function renderSettings() {
   const tabs = [
-    { id: 'bonus',     label: '💰 בונוס' },
-    { id: 'shop',      label: '🛍️ חנות' },
-    { id: 'mandatory', label: '✅ חובה' },
-    { id: 'general',   label: '⚙️ כללי' },
-    { id: 'stats',     label: '📊 סטטיסטיקות' },
-    { id: 'quotes',    label: '💬 ציטוטים' },
-    { id: 'tasks',     label: '📋 משימות' },
-    { id: 'log',       label: '📜 לוג' },
-    { id: 'reset',     label: '🔄 איפוס' },
+    { id: 'tasks',  label: '📋 משימות' },
+    { id: 'family', label: '👨‍👩‍👧 משפחה' },
+    { id: 'shop',   label: '🛍️ חנות' },
+    { id: 'quotes', label: '💬 ציטוטים' },
+    { id: 'stats',  label: '📊 סטטיסטיקות' },
+    { id: 'log',    label: '📜 לוג' },
+    { id: 'reset',  label: '🔄 איפוס' },
   ];
+
 
   let html = `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;margin-top:4px;">`;
   tabs.forEach(t => {
-    html += `<button onclick="switchSettingsTab('${t.id}')" style="padding:7px 12px;border-radius:50px;border:1.5px solid ${settingsTab===t.id?'var(--text)':'var(--border)'};background:${settingsTab===t.id?'var(--text)':'var(--card)'};color:${settingsTab===t.id?'var(--gold)':'var(--text2)'};font-family:Heebo,sans-serif;font-weight:700;font-size:0.75rem;cursor:pointer;">${t.label}</button>`;
+    html += `<button onclick="switchSettingsTab('${t.id}')" style="padding:7px 12px;border-radius:50px;border:1.5px solid ${settingsTab===t.id?'var(--text)':'var(--border)'};background:${settingsTab===t.id?'var(--text)':'var(--card)'};color:${settingsTab===t.id?'var(--gold)':'var(--text2)'};font-family:Heebo,sans-serif;font-weight:700;font-size:0.75rem;cursor:pointer;">${esc(t.label)}</button>`;
   });
   html += `</div><div id="settings-tab-content"></div>`;
 
@@ -2418,81 +2597,13 @@ function renderSettingsTab() {
   const el = document.getElementById('settings-tab-content');
   if (!el) return;
 
-  if (settingsTab === 'bonus') {
-    // Group by category
-    const cats = [];
-    const seen = new Set();
-    state.bonusTasks.forEach(t => { const c = t.category||'כללי'; if(!seen.has(c)){seen.add(c);cats.push(c);} });
-    let html = '';
-    cats.forEach(cat => {
-      html += `<div class="settings-title" style="margin-top:16px;">⭐ ${cat}</div>`;
-      state.bonusTasks.filter(t=>(t.category||'כללי')===cat).forEach(t => {
-        html += `<div class="setting-row">
-          <div class="sr-icon">${t.icon}</div>
-          <div class="sr-info"><div class="sr-name">${t.name}</div></div>
-          <input class="sr-val" type="number" value="${t.reward}" id="sr-${t.id}" min="1" max="500" />
-          <span style="font-size:0.75rem;color:var(--text2);margin-right:4px;">שמי׳ז</span>
-        </div>`;
-      });
-    });
-    html += `<button class="btn-save" style="margin-top:12px;" onclick="saveRewards()">💾 שמור</button>`;
-    el.innerHTML = html;
-
-  } else if (settingsTab === 'shop') {
-    renderShopEditor(el);
-
-  } else if (settingsTab === 'mandatory') {
-    renderMandatoryEditor(el);
-
-  } else if (settingsTab === 'general') {
-    el.innerHTML = `
-      <div class="settings-title" style="margin-top:8px;">💰 יחס המרה לכסף אמיתי</div>
-      <div class="setting-row">
-        <div class="sr-icon">₪</div>
-        <div class="sr-info"><div class="sr-name">כמה שמי׳ז שווים 1 ₪?</div><div class="sr-sub">כרגע: ${state.nisRate||NIS_RATE} שמי׳ז = 1 ₪</div></div>
-        <input class="sr-val" type="number" value="${state.nisRate||NIS_RATE}" id="sr-nis-rate" min="1" max="1000" />
-      </div>
-
-      <div class="settings-title" style="margin-top:16px;">🌅 בונוס קבוצת משימות</div>
-      ${GROUPS.map(g => `
-      <div class="setting-row">
-        <div class="sr-icon">${g.emoji}</div>
-        <div class="sr-info"><div class="sr-name">בונוס ${g.label}</div><div class="sr-sub">כרגע: ${g.bonus} שמי׳ז</div></div>
-        <input class="sr-val" type="number" value="${g.bonus}" id="sr-group-${g.id}" min="1" max="200" />
-      </div>`).join('')}
-
-      <div class="settings-title" style="margin-top:16px;">😊 בונוסים מיוחדים</div>
-      <div class="setting-row">
-        <div class="sr-icon">😊</div>
-        <div class="sr-info"><div class="sr-name">אנרגיה טובה</div><div class="sr-sub">כרגע: ${ENERGY_BONUS} שמי׳ז</div></div>
-        <input class="sr-val" type="number" value="${ENERGY_BONUS}" id="sr-energy" min="1" max="100" />
-      </div>
-
-      <div class="settings-title" style="margin-top:16px;">🏆 אתגר משפחתי שבועי</div>
-      <div class="setting-row">
-        <div class="sr-icon">🎯</div>
-        <div class="sr-info"><div class="sr-name">תיאור האתגר</div><div class="sr-sub">מה מקבלים אם מגיעים ליעד?</div></div>
-      </div>
-      <div style="padding:0 4px 8px;">
-        <input class="f-input" id="sr-fc-reward" value="${state.familyChallenge.reward}" placeholder="למשל: יציאה לפיצה 🍕" style="width:100%;margin-bottom:8px;" />
-      </div>
-      <div class="setting-row">
-        <div class="sr-icon">🔢</div>
-        <div class="sr-info"><div class="sr-name">יעד שבועי</div><div class="sr-sub">כמה קבוצות צריך להשלים השבוע?</div></div>
-        <input class="sr-val" type="number" value="${state.familyChallenge.goal}" id="sr-fc-goal" min="1" max="200" />
-      </div>
-      <div class="setting-row" style="background:var(--card2);">
-        <div class="sr-icon">📊</div>
-        <div class="sr-info"><div class="sr-name">התקדמות השבוע</div><div class="sr-sub">${getFamilyChallengeCount()} / ${state.familyChallenge.goal} קבוצות</div></div>
-        <button onclick="resetFamilyChallenge()" style="background:transparent;border:1.5px solid var(--border);border-radius:8px;padding:5px 10px;font-size:0.75rem;color:var(--text2);cursor:pointer;">אפס</button>
-      </div>
-
-      <button class="btn-save" style="margin-top:12px;" onclick="saveGeneralSettings()">💾 שמור</button>`;
-
-  } else if (settingsTab === 'stats') {
-    const allHistory = state.history || [];
-    const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate()-7);
-    const weekKey = weekAgo.toISOString().slice(0,10);
+  if (settingsTab === 'family') return renderFamilySettings(el);
+  if (settingsTab === 'tasks') return renderTaskEditor(el);
+  if (settingsTab === 'shop') return renderShopEditor(el);
+  if (settingsTab === 'quotes') return renderQuoteEditor(el);
+  if (settingsTab === 'stats') {
+    const allHistory = getHistory();
+    const weekKey = dateKey(daysAgo(7));
 
     let html = `<div class="settings-title" style="margin-top:8px;">📊 סיכום כללי</div>`;
 
@@ -2502,12 +2613,12 @@ function renderSettingsTab() {
       const weekEarned = allHistory.filter(h => h.kidId===k && h.amount>0 && h.date>=weekKey).reduce((s,h)=>s+h.amount,0);
       const monthEarned = allHistory.filter(h => h.kidId===k && h.amount>0).reduce((s,h)=>s+h.amount,0);
       html += `<div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:4px;padding:14px 16px;">
-        <div style="font-family:'Fredoka One',cursive;font-size:1rem;color:${kid.color}">${kid.emoji} ${kid.name}</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:1rem;color:${kid.color}">${esc(kid.emoji)} ${esc(kid.name)}</div>
         <div style="display:flex;gap:20px;margin-top:6px;">
           <div><div style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:#D35400">${kd.balance}</div><div style="font-size:0.7rem;color:var(--text2)">יתרה</div></div>
           <div><div style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:#27AE60">+${weekEarned}</div><div style="font-size:0.7rem;color:var(--text2)">השבוע</div></div>
           <div><div style="font-family:'Fredoka One',cursive;font-size:1.3rem">${kd.totalEarned}</div><div style="font-size:0.7rem;color:var(--text2)">סה"כ</div></div>
-          <div><div style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:#9B59B6">${Math.floor((kd.balance)/(state.nisRate||NIS_RATE))}</div><div style="font-size:0.7rem;color:var(--text2)">≈ ₪</div></div>
+          <div><div style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:#9B59B6">${Math.floor((kd.balance)/nisRate())}</div><div style="font-size:0.7rem;color:var(--text2)">≈ ₪</div></div>
         </div>
       </div>`;
     });
@@ -2523,124 +2634,17 @@ function renderSettingsTab() {
       topTasks.forEach(([name, count], i) => {
         html += `<div class="setting-row">
           <div class="sr-icon">${['🥇','🥈','🥉','4️⃣','5️⃣'][i]}</div>
-          <div class="sr-info"><div class="sr-name">${name}</div></div>
+          <div class="sr-info"><div class="sr-name">${esc(name)}</div></div>
           <div style="font-family:'Fredoka One',cursive;color:#D35400">${count}x</div>
         </div>`;
       });
     }
     el.innerHTML = html;
 
-  } else if (settingsTab === 'quotes') {
-    el.innerHTML = `
-      <p style="font-size:0.8rem;color:var(--text2);margin-bottom:12px;">הציטוטים מוצגים במסך הבית. כל יום מוצג ציטוט אחר.</p>
-      <div id="quotes-list"></div>
-      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:8px;margin-top:8px;">
-        <textarea id="new-quote-text" placeholder="הכנס ציטוט חדש..." class="f-input" style="width:100%;min-height:60px;resize:vertical;"></textarea>
-        <input id="new-quote-author" placeholder="— מחבר (לא חובה)" class="f-input" style="width:100%;" />
-        <button class="btn-add" onclick="addQuote()" style="width:100%;">➕ הוסף ציטוט</button>
-      </div>`;
-    renderQuotesList();
-
-  } else if (settingsTab === 'tasks') {
-    const DAY_OPTIONS = [
-      { id: 'weekdays', label: 'ימי חול' },
-      { id: 'friday',   label: 'שישי' },
-      { id: 'saturday', label: 'שבת' },
-    ];
-    const GROUP_OPTIONS = [
-      { id: 'morning',   label: '🌅 בוקר' },
-      { id: 'afternoon', label: '🌤️ צהריים' },
-      { id: 'evening',   label: '🌙 ערב' },
-    ];
-    const KID_OPTIONS = [
-      { id: 'all', label: 'כל הילדים' },
-      ...Object.entries(KIDS).map(([k,kid]) => ({ id: k, label: kid.emoji + ' ' + kid.name }))
-    ];
-    const TYPE_OPTIONS = [
-      { id: 'mandatory', label: 'חובה' },
-      { id: 'bonus',     label: 'בונוס' },
-    ];
-
-    const customTasks = state.customTasks || [];
-
-    let html = `
-      <div class="settings-title" style="margin-top:8px;">📋 משימות מותאמות אישית</div>
-      <p style="font-size:0.78rem;color:var(--text2);margin-bottom:12px;">משימות שתוסיף כאן יופיעו ביום ובקבוצה שתבחר, לכל הילדים או לילד ספציפי.</p>`;
-
-    if (!customTasks.length) {
-      html += `<div class="empty" style="padding:20px;"><div class="empty-icon">📝</div>עוד לא הוספת משימות</div>`;
-    } else {
-      // Group by day
-      const dayLabels = { weekdays: 'ימי חול', friday: 'שישי 🕍', saturday: 'שבת ☀️' };
-      ['weekdays','friday','saturday'].forEach(dayId => {
-        const dayTasks = customTasks.filter(t => (t.days||[]).includes(dayId));
-        if (!dayTasks.length) return;
-        html += `<div class="settings-title" style="font-size:0.9rem;margin-top:12px;">${dayLabels[dayId]}</div>`;
-        dayTasks.forEach(t => {
-          const kidLabel = t.kidId === 'all' ? 'כולם' : KIDS[t.kidId]?.name || t.kidId;
-          const groupLabel = GROUP_OPTIONS.find(g=>g.id===t.group)?.label || t.group;
-          const typeColor = t.type === 'mandatory' ? '#2980B9' : '#D35400';
-          const typeBg = t.type === 'mandatory' ? 'var(--mandatory)' : 'var(--bonus)';
-          html += `
-            <div class="setting-row" style="align-items:flex-start;gap:10px;">
-              <div class="sr-icon">${t.icon||'📌'}</div>
-              <div class="sr-info" style="flex:1;">
-                <div class="sr-name">${t.name}</div>
-                <div class="sr-sub" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:3px;">
-                  <span style="background:${typeBg};color:${typeColor};border-radius:50px;padding:1px 8px;font-size:0.68rem;font-weight:700;">${t.type==='mandatory'?'חובה':'בונוס'}</span>
-                  <span style="color:var(--text2);font-size:0.68rem;">${groupLabel}</span>
-                  <span style="color:var(--text2);font-size:0.68rem;">${kidLabel}</span>
-                  ${t.type==='bonus'?`<span style="color:#D35400;font-size:0.68rem;font-weight:700;">+${t.reward} שמי׳ז</span>`:''}
-                </div>
-              </div>
-              <button onclick="removeCustomTask('${t.id}')" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:0.75rem;color:#E74C3C;flex-shrink:0;">הסר</button>
-            </div>`;
-        });
-      });
-    }
-
-    // Add new task form
-    html += `
-      <div class="add-form" style="margin-top:16px;">
-        <div class="add-form-title">➕ הוסף משימה חדשה</div>
-        <div class="form-row">
-          <input class="f-input" id="ct-name" placeholder="שם המשימה..." style="flex:2;" />
-          <input class="f-input" id="ct-icon" placeholder="אייקון 📌" style="max-width:70px;" />
-        </div>
-        <div class="form-row">
-          <select class="f-input" id="ct-type" onchange="toggleCustomTaskReward()">
-            ${TYPE_OPTIONS.map(o=>`<option value="${o.id}">${o.label}</option>`).join('')}
-          </select>
-          <select class="f-input" id="ct-group">
-            ${GROUP_OPTIONS.map(o=>`<option value="${o.id}">${o.label}</option>`).join('')}
-          </select>
-          <select class="f-input" id="ct-kid">
-            ${KID_OPTIONS.map(o=>`<option value="${o.id}">${o.label}</option>`).join('')}
-          </select>
-        </div>
-        <div class="form-row">
-          <div id="ct-reward-wrap" style="display:none;flex:1;">
-            <input class="f-input" id="ct-reward" type="number" placeholder="שמי׳ז לבונוס" style="width:100%;" />
-          </div>
-        </div>
-        <div style="margin-bottom:10px;">
-          <div style="font-size:0.8rem;font-weight:700;color:var(--text2);margin-bottom:6px;">לאיזה ימים?</div>
-          <div style="display:flex;gap:8px;">
-            ${DAY_OPTIONS.map(d=>`
-              <label style="display:flex;align-items:center;gap:4px;font-size:0.82rem;cursor:pointer;">
-                <input type="checkbox" id="ct-day-${d.id}" value="${d.id}" checked style="cursor:pointer;" />
-                ${d.label}
-              </label>`).join('')}
-          </div>
-        </div>
-        <button class="btn-add" onclick="addCustomTask()" style="width:100%;">✅ הוסף משימה</button>
-      </div>`;
-
-    el.innerHTML = html;
-
   } else if (settingsTab === 'log') {
     const logs = (state.actionLog || []).slice().reverse();
-    const kidColors = { hilel: '#FF6B9D', mitar: '#9B59B6', yagel: '#00B4D8', all: '#27AE60', system: '#7F8C8D' };
+    const kidColors = { all: '#27AE60', system: '#7F8C8D' };
+    Object.keys(state.kidProfiles || {}).forEach(k => { kidColors[k] = state.kidProfiles[k].color; });
 
     let html = `
       <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
@@ -2659,20 +2663,20 @@ function renderSettingsTab() {
       // Filter buttons
       html += `<div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;" id="log-filters">
         <button onclick="filterLog('all',this)" style="padding:4px 10px;border-radius:50px;border:1.5px solid var(--gold);background:var(--gold);color:var(--text);font-size:0.72rem;font-weight:700;cursor:pointer;">הכל</button>
-        ${Object.entries(KIDS).map(([k,kid])=>`<button onclick="filterLog('${k}',this)" style="padding:4px 10px;border-radius:50px;border:1.5px solid ${kid.color};background:transparent;color:${kid.color};font-size:0.72rem;font-weight:700;cursor:pointer;">${kid.emoji} ${kid.name}</button>`).join('')}
+        ${Object.entries(KIDS).map(([k,kid])=>`<button onclick="filterLog('${k}',this)" style="padding:4px 10px;border-radius:50px;border:1.5px solid ${kid.color};background:transparent;color:${kid.color};font-size:0.72rem;font-weight:700;cursor:pointer;">${esc(kid.emoji)} ${esc(kid.name)}</button>`).join('')}
       </div>`;
 
       html += `<div id="log-list" style="max-height:450px;overflow-y:auto;">`;
       logs.slice(0, 200).forEach(entry => {
         const color = kidColors[entry.kidId] || '#7F8C8D';
-        const kidName = entry.kidId === 'system' ? 'מערכת' : entry.kidId === 'all' ? 'כולם' : KIDS[entry.kidId]?.name || entry.kidId;
+        const kidName = entry.kidId === 'system' ? 'מערכת' : entry.kidId === 'all' ? 'כולם' : (state.kidProfiles[entry.kidId] || {}).name || entry.kidId;
         const amtColor = entry.amount > 0 ? '#27AE60' : '#E74C3C';
         const amtSign = entry.amount > 0 ? '+' : '';
         html += `
           <div class="log-entry" data-kid="${entry.kidId}" style="background:var(--card);border-radius:10px;padding:10px 12px;margin-bottom:6px;border-right:3px solid ${color};display:flex;align-items:flex-start;gap:10px;">
             <div style="flex:1;">
-              <div style="font-weight:700;font-size:0.82rem;">${entry.action}</div>
-              <div style="font-size:0.7rem;color:var(--text2);margin-top:2px;">${entry.date} · ${entry.time} · <span style="color:${color}">${kidName}</span></div>
+              <div style="font-weight:700;font-size:0.82rem;">${esc(entry.action)}</div>
+              <div style="font-size:0.7rem;color:var(--text2);margin-top:2px;">${entry.date} · ${entry.time} · <span style="color:${color}">${esc(kidName)}</span></div>
               ${entry.balanceBefore !== undefined ? `<div style="font-size:0.68rem;color:var(--text2);">יתרה: ${entry.balanceBefore} ← ${entry.balanceAfter}</div>` : ''}
             </div>
             <div style="font-family:'Fredoka One',cursive;font-size:0.95rem;color:${amtColor};white-space:nowrap;">${amtSign}${entry.amount} שמי׳ז</div>
@@ -2691,46 +2695,6 @@ function renderSettingsTab() {
   }
 }
 
-function saveRewards() {
-  state.bonusTasks.forEach(t => {
-    const el = document.getElementById('sr-' + t.id);
-    if (el) t.reward = parseInt(el.value) || t.reward;
-  });
-  saveState();
-  alert('ערכים נשמרו! ✅');
-  renderSettingsTab();
-}
-
-function saveShopPrices() {
-  SHOP_CATEGORIES.forEach(cat => {
-    cat.items.forEach(item => {
-      const el = document.getElementById('shop-' + item.id);
-      if (el) item.cost = parseInt(el.value) || item.cost;
-    });
-  });
-  saveState();
-  alert('מחירי החנות עודכנו! ✅');
-  renderSettingsTab();
-}
-
-function saveGeneralSettings() {
-  const nisEl = document.getElementById('sr-nis-rate');
-  if (nisEl) state.nisRate = parseInt(nisEl.value) || NIS_RATE;
-  GROUPS.forEach(g => {
-    const el = document.getElementById('sr-group-' + g.id);
-    if (el) g.bonus = parseInt(el.value) || g.bonus;
-  });
-  // Family challenge
-  const fcReward = document.getElementById('sr-fc-reward');
-  const fcGoal = document.getElementById('sr-fc-goal');
-  if (fcReward) state.familyChallenge.reward = fcReward.value.trim() || state.familyChallenge.reward;
-  if (fcGoal) state.familyChallenge.goal = parseInt(fcGoal.value) || state.familyChallenge.goal;
-  saveState();
-  alert('הגדרות נשמרו! ✅');
-  renderSettingsTab();
-  renderTodayHeader();
-}
-
 function resetFamilyChallenge() {
   if (!confirm('לאפס את ספירת האתגר השבועי?')) return;
   const wk = getWeekKey();
@@ -2747,20 +2711,33 @@ function resetToday() {
   delete state.bonusChecks[today];
   delete state.weeklyChecks[today];
   delete state.groupBonusGiven[today];
+  delete state.dayComplete[today];
   saveState();
   renderAll();
 }
 
 function resetAll() {
   if (!confirm('⚠️ לאפס הכל לגמרי כולל יתרות? פעולה זו אינה הפיכה!')) return;
-  localStorage.removeItem('shami_v2');
-  state = defaultState();
+  if (!confirm('בטוח? כל היתרות, ההיסטוריה וההגדרות יימחקו בכל המכשירים.\n(גיבוי יומי נשמר בגוגל שיטס בלשונית "גיבוי יומי")')) return;
+  const pin = state.parentPinHash;
+  state = normalizeState(defaultState());
+  if (pin) state.parentPinHash = pin;
+  saveState();
   renderAll();
 }
 
 // ============================================================
 // CELEBRATIONS
 // ============================================================
+function celebrateCustom(emoji, title, sub, amountText, color) {
+  document.getElementById('cel-emoji').textContent = emoji;
+  document.getElementById('cel-title').textContent = title;
+  document.getElementById('cel-sub').textContent = sub;
+  document.getElementById('cel-amount').textContent = amountText;
+  document.getElementById('celebration').classList.add('show');
+  launchConfetti(color || '#F4C430');
+}
+
 function celebrate(kidId, task) {
   const kid = KIDS[kidId];
   const msgs = ['מדהים! 🌟', 'כל הכבוד! 💪', 'וואו! 🎉', 'אלוף/ה! 🏆'];
@@ -2806,309 +2783,6 @@ function launchConfetti(color) {
 // ============================================================
 // MANDATORY TASKS EDITOR
 // ============================================================
-function renderMandatoryEditor(el) {
-  const cm = state.customMandatory || { overrides: {}, hidden: [] };
-  const hidden = cm.hidden || [];
-  const overrides = cm.overrides || {};
-
-  const DAY_SETS = [
-    { key: 'weekdays', label: '📅 ימי חול', tasks: DEFAULT_MANDATORY },
-    { key: 'friday',   label: '🕍 שישי',    tasks: FRIDAY_MANDATORY },
-    { key: 'saturday', label: '☀️ שבת',     tasks: SATURDAY_MANDATORY },
-  ];
-
-  const GROUP_LABELS = { morning: '🌅 בוקר', afternoon: '🌤️ צהריים', evening: '🌙 ערב' };
-
-  let html = `<p style="font-size:0.8rem;color:var(--text2);margin-bottom:14px;">ערוך, הסתר ושחזר משימות חובה מובנות, והוסף משימות חדשות</p>`;
-
-  const customMandatoryTasks = cm.customTasks || [];
-
-  DAY_SETS.forEach(ds => {
-    html += `<div style="background:var(--card);border-radius:14px;padding:12px 14px;margin-bottom:16px;box-shadow:var(--shadow);border:1.5px solid var(--border);">
-      <div style="font-family:'Fredoka One',cursive;font-size:1rem;margin-bottom:10px;">${ds.label}</div>`;
-
-    // Group by time-of-day
-    ['morning','afternoon','evening'].forEach(grp => {
-      const grpTasks = ds.tasks.filter(t => t.group === grp);
-      if (!grpTasks.length) return;
-      html += `<div style="font-size:0.78rem;font-weight:700;color:var(--text2);margin:8px 0 4px;">${GROUP_LABELS[grp]}</div>`;
-      grpTasks.forEach(t => {
-        const isHidden = hidden.includes(t.id);
-        const ov = overrides[t.id] || {};
-        const displayName = ov.name || t.name;
-        const displayIcon = ov.icon || t.icon;
-        html += `
-          <div style="display:flex;align-items:center;gap:8px;padding:7px 4px;border-bottom:1px solid var(--border);opacity:${isHidden?'0.4':'1'};">
-            <input id="mi-icon-${t.id}" value="${displayIcon}" style="width:44px;padding:4px;border:1.5px solid var(--border);border-radius:8px;font-size:1rem;text-align:center;background:var(--card2);" />
-            <input id="mi-name-${t.id}" value="${displayName}" style="flex:1;padding:4px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;background:var(--card2);" />
-            <button onclick="saveMandatoryOverride('${t.id}')" style="background:var(--shami);color:white;border:none;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:0.75rem;font-family:'Heebo',sans-serif;font-weight:700;white-space:nowrap;">💾</button>
-            ${ov.name||ov.icon ? `<button onclick="resetMandatoryOverride('${t.id}')" title="שחזר מקור" style="background:#EBF5FB;border:1px solid #AED6F1;border-radius:8px;padding:5px 8px;cursor:pointer;font-size:0.72rem;color:#2980B9;">↩</button>` : ''}
-            <button onclick="toggleMandatoryHidden('${t.id}')" style="background:${isHidden?'#EBF5FB':'#FEE'};border:1px solid ${isHidden?'#AED6F1':'#FCC'};border-radius:8px;padding:5px 10px;cursor:pointer;font-size:0.72rem;color:${isHidden?'#2980B9':'#E74C3C'};white-space:nowrap;">${isHidden?'הצג':'הסתר'}</button>
-          </div>`;
-      });
-    });
-
-    // Custom tasks added for this dayKey
-    const dayCustom = customMandatoryTasks.filter(t => t.dayKey === ds.key);
-    if (dayCustom.length) {
-      html += `<div style="font-size:0.78rem;font-weight:700;color:var(--text2);margin:10px 0 4px;">➕ משימות שהוספת</div>`;
-      dayCustom.forEach(t => {
-        html += `
-          <div style="display:flex;align-items:center;gap:8px;padding:7px 4px;border-bottom:1px solid var(--border);">
-            <span style="font-size:1.1rem;width:32px;text-align:center;">${t.icon}</span>
-            <span style="flex:1;font-size:0.85rem;">${t.name}</span>
-            <span style="font-size:0.72rem;color:var(--text2);background:var(--card2);border-radius:6px;padding:2px 6px;">${GROUP_LABELS[t.group]||t.group}</span>
-            <button onclick="deleteMandatoryCustomTask('${t.id}')" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:0.72rem;color:#E74C3C;white-space:nowrap;">🗑️</button>
-          </div>`;
-      });
-    }
-
-    // Add new task form
-    html += `
-      <div style="margin-top:10px;padding-top:10px;border-top:1.5px dashed var(--border);">
-        <div style="font-size:0.78rem;font-weight:700;color:var(--shami);margin-bottom:6px;">+ הוסף משימה ל${ds.label.replace(/^[^\s]+\s/,'')}</div>
-        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
-          <input id="new-icon-${ds.key}" placeholder="🌟" style="width:44px;padding:4px;border:1.5px solid var(--border);border-radius:8px;font-size:1rem;text-align:center;background:var(--card2);" />
-          <input id="new-name-${ds.key}" placeholder="שם המשימה" style="flex:1;min-width:120px;padding:5px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;background:var(--card2);" />
-          <select id="new-group-${ds.key}" style="padding:5px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;background:var(--card2);font-family:'Heebo',sans-serif;">
-            <option value="morning">🌅 בוקר</option>
-            <option value="afternoon">🌤️ צהריים</option>
-            <option value="evening">🌙 ערב</option>
-          </select>
-          <button onclick="addMandatoryCustomTask('${ds.key}')" style="background:var(--shami);color:white;border:none;border-radius:8px;padding:6px 12px;cursor:pointer;font-size:0.82rem;font-family:'Heebo',sans-serif;font-weight:700;white-space:nowrap;">+ הוסף</button>
-        </div>
-      </div>`;
-
-    html += `</div>`;
-  });
-
-  // Summary of hidden tasks
-  if (hidden.length) {
-    html += `<div style="background:#FEF9E7;border:1.5px solid #F9E79F;border-radius:14px;padding:12px 14px;margin-bottom:12px;">
-      <div style="font-size:0.82rem;font-weight:700;color:#B7950B;margin-bottom:8px;">🙈 משימות מוסתרות (${hidden.length})</div>`;
-    const allTasks = [...DEFAULT_MANDATORY, ...FRIDAY_MANDATORY, ...SATURDAY_MANDATORY];
-    hidden.forEach(hid => {
-      const t = allTasks.find(x => x.id === hid);
-      if (!t) return;
-      html += `<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:0.8rem;">
-        <span>${t.icon}</span><span style="flex:1;">${t.name}</span>
-        <button onclick="toggleMandatoryHidden('${t.id}')" style="background:#EBF5FB;border:1px solid #AED6F1;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:0.72rem;color:#2980B9;">הצג</button>
-      </div>`;
-    });
-    html += `</div>`;
-  }
-
-  el.innerHTML = html;
-}
-
-function saveMandatoryOverride(taskId) {
-  if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [] };
-  const iconEl = document.getElementById('mi-icon-' + taskId);
-  const nameEl = document.getElementById('mi-name-' + taskId);
-  if (!iconEl || !nameEl) return;
-  const icon = iconEl.value.trim();
-  const name = nameEl.value.trim();
-  if (!name) return;
-  // Find original to check if anything actually changed
-  const allTasks = [...DEFAULT_MANDATORY, ...FRIDAY_MANDATORY, ...SATURDAY_MANDATORY];
-  const orig = allTasks.find(t => t.id === taskId);
-  if (orig && icon === orig.icon && name === orig.name) {
-    // No change from original — clear override if there was one
-    delete state.customMandatory.overrides[taskId];
-  } else {
-    state.customMandatory.overrides[taskId] = { icon, name };
-  }
-  saveState();
-  renderMandatoryEditor(document.getElementById('settings-tab-content'));
-}
-
-function resetMandatoryOverride(taskId) {
-  if (!state.customMandatory) return;
-  delete state.customMandatory.overrides[taskId];
-  saveState();
-  renderMandatoryEditor(document.getElementById('settings-tab-content'));
-}
-
-function toggleMandatoryHidden(taskId) {
-  if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [] };
-  const h = state.customMandatory.hidden;
-  const idx = h.indexOf(taskId);
-  if (idx === -1) h.push(taskId);
-  else h.splice(idx, 1);
-  saveState();
-  renderMandatoryEditor(document.getElementById('settings-tab-content'));
-}
-
-function addMandatoryCustomTask(dayKey) {
-  const iconEl = document.getElementById('new-icon-' + dayKey);
-  const nameEl = document.getElementById('new-name-' + dayKey);
-  const groupEl = document.getElementById('new-group-' + dayKey);
-  if (!iconEl || !nameEl || !groupEl) return;
-  const icon = iconEl.value.trim() || '✅';
-  const name = nameEl.value.trim();
-  if (!name) { nameEl.focus(); return; }
-  const group = groupEl.value;
-  if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [], customTasks: [] };
-  if (!state.customMandatory.customTasks) state.customMandatory.customTasks = [];
-  const id = 'cm_' + Date.now();
-  state.customMandatory.customTasks.push({ id, icon, name, group, dayKey });
-  saveState();
-  renderMandatoryEditor(document.getElementById('settings-tab-content'));
-}
-
-function deleteMandatoryCustomTask(taskId) {
-  if (!state.customMandatory || !state.customMandatory.customTasks) return;
-  state.customMandatory.customTasks = state.customMandatory.customTasks.filter(t => t.id !== taskId);
-  saveState();
-  renderMandatoryEditor(document.getElementById('settings-tab-content'));
-}
-
-function renderShopEditor(el) {
-  const cats = getShopCategories();
-  const cs = state.customShop;
-
-  let html = `<p style="font-size:0.8rem;color:var(--text2);margin-bottom:14px;">הוסף, ערוך והסר קטגוריות ופרסים בחנות</p>`;
-
-  cats.forEach(cat => {
-    const isBuiltin = SHOP_CATEGORIES.some(c => c.id === cat.id);
-    html += `
-      <div style="background:var(--card);border-radius:14px;padding:12px 14px;margin-bottom:14px;box-shadow:var(--shadow);border:1.5px solid var(--border);">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-          <span style="font-size:1.4rem;">${cat.emoji}</span>
-          <span style="font-family:'Fredoka One',cursive;font-size:1rem;flex:1;">${cat.label}</span>
-          <button onclick="removeShopCategory('${cat.id}',${!isBuiltin})" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:0.75rem;color:#E74C3C;">הסר קטגוריה</button>
-        </div>`;
-
-    if (!cat.items || !cat.items.length) {
-      html += `<div style="font-size:0.78rem;color:var(--text2);padding:6px 0;">אין פרסים בקטגוריה זו</div>`;
-    } else {
-      cat.items.forEach(item => {
-        const isBuiltinItem = SHOP_CATEGORIES.flatMap(c => c.items).some(i => i.id === item.id);
-        html += `
-          <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);">
-            <span style="font-size:1.2rem;min-width:28px;">${item.icon}</span>
-            <div style="flex:1;">
-              <div style="font-weight:700;font-size:0.82rem;">${item.name}</div>
-              <div style="font-size:0.7rem;color:var(--text2);">${item.desc || ''}</div>
-            </div>
-            <input type="number" value="${item.cost}" min="1" max="9999"
-              id="shopitem-${item.id}"
-              style="width:64px;padding:4px 6px;border:1.5px solid var(--border);border-radius:8px;font-family:'Fredoka One',cursive;font-size:0.9rem;text-align:center;background:var(--card2);"
-              onchange="saveShopItemCost('${item.id}',this.value)" />
-            <span style="font-size:0.7rem;color:var(--text2);">שמי׳ז</span>
-            <button onclick="removeShopItem('${item.id}',${!isBuiltinItem})" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:4px 8px;cursor:pointer;font-size:0.72rem;color:#E74C3C;flex-shrink:0;">✕</button>
-          </div>`;
-      });
-    }
-
-    html += `
-        <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;align-items:center;">
-          <input id="ni-icon-${cat.id}" placeholder="🎁" style="width:50px;padding:5px;border:1.5px solid var(--border);border-radius:8px;font-size:1rem;text-align:center;background:var(--card2);" />
-          <input id="ni-name-${cat.id}" placeholder="שם הפרס..." style="flex:1;min-width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;background:var(--card2);" />
-          <input id="ni-desc-${cat.id}" placeholder="תיאור..." style="flex:1;min-width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;background:var(--card2);" />
-          <input id="ni-cost-${cat.id}" type="number" placeholder="מחיר" style="width:64px;padding:5px;border:1.5px solid var(--border);border-radius:8px;font-size:0.82rem;text-align:center;background:var(--card2);" />
-          <button onclick="addShopItem('${cat.id}')" style="background:var(--shami);color:white;border:none;border-radius:8px;padding:6px 12px;cursor:pointer;font-family:'Heebo',sans-serif;font-weight:700;font-size:0.78rem;white-space:nowrap;">➕ הוסף</button>
-        </div>
-      </div>`;
-  });
-
-  html += `
-    <div style="background:#F0FBF4;border:1.5px solid #B7EAC8;border-radius:14px;padding:14px;margin-top:6px;">
-      <div style="font-family:'Fredoka One',cursive;font-size:0.95rem;margin-bottom:10px;">➕ קטגוריה חדשה</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-        <input id="nc-emoji" placeholder="🎁" style="width:52px;padding:6px;border:1.5px solid var(--border);border-radius:8px;font-size:1.1rem;text-align:center;background:white;" />
-        <input id="nc-label" placeholder="שם הקטגוריה..." style="flex:1;min-width:140px;padding:6px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:0.88rem;background:white;" />
-        <button onclick="addShopCategory()" style="background:#1E8449;color:white;border:none;border-radius:8px;padding:7px 16px;cursor:pointer;font-family:'Fredoka One',cursive;font-size:0.88rem;">הוסף</button>
-      </div>
-    </div>`;
-
-  el.innerHTML = html;
-}
-
-function addShopCategory() {
-  const emoji = (document.getElementById('nc-emoji').value.trim() || '🎁');
-  const label = document.getElementById('nc-label').value.trim();
-  if (!label) { alert('נא להזין שם לקטגוריה'); return; }
-  const id = 'cat-' + Date.now();
-  state.customShop.categories.push({ id, emoji, label, items: [] });
-  saveState();
-  renderSettingsTab();
-}
-
-function removeShopCategory(catId, isCustom) {
-  if (!confirm('להסיר קטגוריה זו?')) return;
-  if (isCustom) {
-    state.customShop.categories = state.customShop.categories.filter(c => c.id !== catId);
-  } else {
-    if (!state.customShop.removedBuiltins.includes(catId)) {
-      state.customShop.removedBuiltins.push(catId);
-    }
-  }
-  saveState();
-  renderSettingsTab();
-}
-
-function addShopItem(catId) {
-  const icon = (document.getElementById('ni-icon-' + catId).value.trim() || '🎁');
-  const name = (document.getElementById('ni-name-' + catId).value.trim());
-  const desc = (document.getElementById('ni-desc-' + catId).value.trim() || '');
-  const cost = parseInt(document.getElementById('ni-cost-' + catId).value) || 50;
-  if (!name) { alert('נא להזין שם לפרס'); return; }
-  const id = 'ci-' + Date.now();
-  const item = { id, icon, name, desc, cost };
-
-  const builtinCat = SHOP_CATEGORIES.find(c => c.id === catId);
-  if (builtinCat) {
-    if (!state.customShop.addedItems) state.customShop.addedItems = [];
-    state.customShop.addedItems.push({ ...item, catId });
-  } else {
-    const cat = state.customShop.categories.find(c => c.id === catId);
-    if (cat) cat.items.push(item);
-  }
-  saveState();
-  renderSettingsTab();
-  renderShop();
-}
-
-function removeShopItem(itemId, isCustom) {
-  if (isCustom) {
-    state.customShop.categories.forEach(cat => {
-      cat.items = cat.items.filter(i => i.id !== itemId);
-    });
-    if (state.customShop.addedItems) {
-      state.customShop.addedItems = state.customShop.addedItems.filter(i => i.id !== itemId);
-    }
-  } else {
-    if (!state.customShop.removedItems.includes(itemId)) {
-      state.customShop.removedItems.push(itemId);
-    }
-  }
-  saveState();
-  renderSettingsTab();
-  renderShop();
-}
-
-function saveShopItemCost(itemId, val) {
-  const cost = parseInt(val);
-  if (!cost || cost < 1) return;
-  const builtinItem = SHOP_CATEGORIES.flatMap(c => c.items).find(i => i.id === itemId);
-  if (builtinItem) {
-    if (!state.customShop.pricedItems) state.customShop.pricedItems = {};
-    state.customShop.pricedItems[itemId] = cost;
-  } else {
-    state.customShop.categories.forEach(cat => {
-      const item = cat.items.find(i => i.id === itemId);
-      if (item) item.cost = cost;
-    });
-    if (state.customShop.addedItems) {
-      const item = state.customShop.addedItems.find(i => i.id === itemId);
-      if (item) item.cost = cost;
-    }
-  }
-  saveState();
-  renderShop();
-}
-
 // ============================================================
 // SHOP
 // ============================================================
@@ -3128,19 +2802,19 @@ function renderShop() {
   let html = `
     <div class="shop-balance-bar">
       <div>
-        <div class="sbb-name">${kid.emoji} ${kid.name}</div>
+        <div class="sbb-name">${esc(kid.emoji)} ${esc(kid.name)}</div>
         <div class="sbb-label">היתרה שלך</div>
       </div>
       <div style="text-align:left;">
         <div class="sbb-balance">${kd.balance} שמי׳ז</div>
-        <div class="sbb-label">≈ ${Math.floor(kd.balance/NIS_RATE)} ₪</div>
+        <div class="sbb-label">≈ ${Math.floor(kd.balance/nisRate())} ₪</div>
       </div>
     </div>`;
 
   getShopCategories().forEach(cat => {
     html += `<div class="shop-cat-header">
-      <span class="shop-cat-emoji">${cat.emoji}</span>
-      <span class="shop-cat-label">${cat.label}</span>
+      <span class="shop-cat-emoji">${esc(cat.emoji)}</span>
+      <span class="shop-cat-label">${esc(cat.label)}</span>
     </div>
     <div class="shop-grid">`;
 
@@ -3149,9 +2823,9 @@ function renderShop() {
       html += `
         <div class="shop-card ${canAfford ? 'affordable' : 'unaffordable'}"
           onclick="${canAfford ? `openConfirm('${item.id}')` : 'showCantAfford()'}">
-          <span class="shop-item-icon">${item.icon}</span>
-          <div class="shop-item-name">${item.name}</div>
-          <div class="shop-item-desc">${item.desc}</div>
+          <span class="shop-item-icon">${esc(item.icon)}</span>
+          <div class="shop-item-name">${esc(item.name)}</div>
+          <div class="shop-item-desc">${esc(item.desc)}</div>
           <div class="shop-item-cost">💰 ${item.cost}</div>
           ${!canAfford ? `<div style="font-size:0.68rem;color:#E74C3C;margin-top:5px;">חסרים עוד ${item.cost - kd.balance}</div>` : ''}
         </div>`;
@@ -3211,6 +2885,10 @@ function showCantAfford() {
 // NAVIGATION
 // ============================================================
 function showPage(name, btn) {
+  if (name === 'settings' && !isParentUnlocked()) {
+    requireParent(() => showPage('settings', btn), 'הגדרות');
+    return;
+  }
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
@@ -3221,67 +2899,19 @@ function showPage(name, btn) {
   if (name === 'bonus-tasks') { renderKidSelector('bonus-kid-selector', selectedBonusKid, 'selectBonusKid'); renderBonusList(); }
   if (name === 'shop') { renderKidSelector('shop-kid-selector', selectedShopKid, 'selectShopKid'); renderShop(); }
   if (name === 'wallet') { renderKidSelector('wallet-kid-selector', selectedWalletKid, 'selectWalletKid'); renderWallet(); }
-  if (name === 'weekly') renderWeekly();
   if (name === 'settings') renderSettings();
 }
 
 // ============================================================
 // QUOTES MANAGEMENT
 // ============================================================
-function renderQuotesList() {
-  const el = document.getElementById('quotes-list');
-  if (!el) return;
-  const all = [
-    ...DEFAULT_QUOTES.map((q,i) => ({...q, isDefault: true, idx: i})),
-    ...(state.customQuotes || []).map((q,i) => ({...q, isDefault: false, idx: i}))
-  ];
-  el.innerHTML = all.map((q, i) => `
-    <div class="setting-row" style="align-items:flex-start;">
-      <div class="sr-icon">${q.isDefault ? '📖' : '✏️'}</div>
-      <div class="sr-info" style="flex:1;">
-        <div class="sr-name" style="font-weight:600;font-size:0.82rem;">"${q.text}"</div>
-        <div class="sr-sub">— ${q.author}</div>
-      </div>
-      ${!q.isDefault ? `<button onclick="removeQuote(${q.idx})" style="background:#FEE;border:1px solid #FCC;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:0.75rem;color:#E74C3C;flex-shrink:0;">הסר</button>` : ''}
-    </div>`).join('');
-}
-
-function addQuote() {
-  const text = document.getElementById('new-quote-text').value.trim();
-  const author = document.getElementById('new-quote-author').value.trim() || 'לא ידוע';
-  if (!text) return;
-  if (!state.customQuotes) state.customQuotes = [];
-if (!state.actionLog) state.actionLog = [];
-if (!state.customTasks) state.customTasks = [];
-if (!state.streaks) state.streaks = {};
-if (!state.streakBonusGiven) state.streakBonusGiven = {};
-if (!state.parentMessages) state.parentMessages = [];
-if (!state.oneTimeTasks) state.oneTimeTasks = [];
-if (!state.familyChallenge) state.familyChallenge = { goal: 30, reward: 'יציאה לפיצה 🍕', active: true };
-if (!state.familyChallengeCount) state.familyChallengeCount = {};
-if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [], customTasks: [] };
-if (!state.customMandatory.overrides) state.customMandatory.overrides = {};
-if (!state.customMandatory.hidden) state.customMandatory.hidden = [];
-if (!state.customMandatory.customTasks) state.customMandatory.customTasks = [];
-  state.customQuotes.push({ text, author });
-  saveState();
-  document.getElementById('new-quote-text').value = '';
-  document.getElementById('new-quote-author').value = '';
-  renderQuotesList();
-}
-
-function removeQuote(idx) {
-  if (!state.customQuotes) return;
-  state.customQuotes.splice(idx, 1);
-  saveState();
-  renderQuotesList();
-}
-
 // ============================================================
 // GRAPH PAGE
 // ============================================================
 function renderGraph() {
   const kidKeys = Object.keys(KIDS);
+  const kidHist = {};
+  kidKeys.forEach(k => { kidHist[k] = getHistory(k); });
   const days = 14;
   const labels = [];
   for (let i = days-1; i >= 0; i--) {
@@ -3293,9 +2923,8 @@ function renderGraph() {
   const datasets = kidKeys.map(k => {
     const kid = KIDS[k];
     const data = labels.map((_, i) => {
-      const d = new Date(); d.setDate(d.getDate()-(days-1-i));
-      const key = d.toISOString().slice(0,10);
-      return (state.history||[]).filter(h => h.kidId===k && h.date===key && h.amount>0).reduce((s,h)=>s+h.amount,0);
+      const key = dateKey(daysAgo(days-1-i));
+      return kidHist[k].filter(h => h.date===key && h.amount>0).reduce((s,h)=>s+h.amount,0);
     });
     return { name: kid.name, color: kid.color, emoji: kid.emoji, data };
   });
@@ -3332,104 +2961,64 @@ function renderGraph() {
 
   html += `</svg>
       <div style="display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;">
-        ${datasets.map(ds=>`<span style="font-size:0.8rem;color:${ds.color};font-weight:700;">${ds.emoji} ${ds.name}</span>`).join('')}
+        ${datasets.map(ds=>`<span style="font-size:0.8rem;color:${ds.color};font-weight:700;">${esc(ds.emoji)} ${esc(ds.name)}</span>`).join('')}
       </div>
     </div>`;
 
   // Per kid total summary cards
-  html += `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">`;
+  html += `<div style="display:grid;grid-template-columns:repeat(${Math.max(1, kidKeys.length)},1fr);gap:10px;margin-bottom:16px;">`;
   kidKeys.forEach(k => {
     const kid = KIDS[k]; const kd = state.kids[k];
-    const streak = state.streaks[k] || { count: 0 };
-    const weekEarned = (state.history||[]).filter(h=>h.kidId===k&&h.amount>0&&h.date>=new Date(Date.now()-7*86400000).toISOString().slice(0,10)).reduce((s,h)=>s+h.amount,0);
+    const streakCount = computeStreak(k);
+    const weekEarned = kidHist[k].filter(h=>h.amount>0&&h.date>=dateKey(daysAgo(7))).reduce((s,h)=>s+h.amount,0);
     html += `<div style="background:var(--card);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--shadow);border-top:3px solid ${kid.color}">
-      <div style="font-size:1.5rem">${kid.emoji}</div>
-      <div style="font-family:'Fredoka One',cursive;color:${kid.color};font-size:0.95rem">${kid.name}</div>
+      <div style="font-size:1.5rem">${esc(kid.emoji)}</div>
+      <div style="font-family:'Fredoka One',cursive;color:${kid.color};font-size:0.95rem">${esc(kid.name)}</div>
       <div style="font-family:'Fredoka One',cursive;font-size:1.4rem;color:#D35400">${kd.balance}</div>
       <div style="font-size:0.65rem;color:var(--text2)">יתרה</div>
-      <div style="font-size:0.8rem;margin-top:6px">🔥 ${streak.count} ימים</div>
+      <div style="font-size:0.8rem;margin-top:6px">🔥 ${streakCount} ימים</div>
       <div style="font-size:0.72rem;color:#27AE60">+${weekEarned} השבוע</div>
     </div>`;
   });
   html += `</div>`;
 
-  // One-time tasks section
-  html += `<div class="settings-title">⚡ משימות חד פעמיות</div>
-    <p style="font-size:0.8rem;color:var(--text2);margin-bottom:10px;">משימות מיוחדות שמוצגות פעם אחת בלבד</p>`;
-  const activeTasks = (state.oneTimeTasks||[]).filter(t=>!t.done);
-  if (activeTasks.length) {
-    html += `<div class="task-list">`;
-    activeTasks.forEach(t => {
-      html += `<div class="task-item bonus-item" onclick="completeOneTimeTask('${t.id}')">
-        <div class="task-icon">${t.icon||'⚡'}</div>
-        <div class="task-info">
-          <div class="task-name">${t.name}</div>
-          <div class="task-sub">${t.kidId==='all'?'לכולם':KIDS[t.kidId]?.name||''}</div>
-        </div>
-        <div class="task-reward reward-bonus">+${t.reward} 💰</div>
-      </div>`;
-    });
-    html += `</div>`;
-  } else {
-    html += `<div class="empty"><div class="empty-icon">✨</div>אין משימות חד פעמיות כרגע</div>`;
-  }
-
-  // Add one-time task form
-  html += `<div class="add-form" style="margin-top:14px;">
-    <div class="add-form-title">➕ הוסף משימה חד פעמית</div>
-    <div class="form-row">
-      <input class="f-input" id="ot-name" placeholder="שם המשימה..." />
-      <input class="f-input" id="ot-icon" placeholder="🎯" style="max-width:70px;" />
-    </div>
-    <div class="form-row">
-      <select class="f-input" id="ot-kid">
-        <option value="all">לכולם</option>
-        ${Object.entries(KIDS).map(([k,kid])=>`<option value="${k}">${kid.name}</option>`).join('')}
-      </select>
-      <input class="f-input" id="ot-reward" type="number" placeholder="שמי׳ז" />
-      <button class="btn-add" onclick="addOneTimeTask()">הוסף</button>
-    </div>
-  </div>`;
-
   document.getElementById('graph-content').innerHTML = html;
 }
 
-function addOneTimeTask() {
-  const name = document.getElementById('ot-name').value.trim();
-  const icon = document.getElementById('ot-icon').value.trim() || '⚡';
-  const reward = parseInt(document.getElementById('ot-reward').value) || 20;
-  const kidId = document.getElementById('ot-kid').value;
-  if (!name) return;
-  const id = 'ot-' + Date.now();
-  state.oneTimeTasks.push({ id, icon, name, reward, kidId, done: false });
-  saveState();
-  document.getElementById('ot-name').value = '';
-  document.getElementById('ot-icon').value = '';
-  document.getElementById('ot-reward').value = '';
-  renderGraph();
-}
-
 function completeOneTimeTask(id) {
-  const task = state.oneTimeTasks.find(t=>t.id===id);
-  if (!task) return;
+  const task = state.oneTimeTasks.find(t => t.id === id);
+  if (!task || task.done) return;
   task.done = true;
+  task.doneTs = Date.now();
   const kids = task.kidId === 'all' ? Object.keys(KIDS) : [task.kidId];
-  kids.forEach(k => earnShami(k, task.reward, task.icon + ' ' + task.name));
+  kids.forEach(k => earnShami(k, task.reward, task.icon + ' ' + task.name, 'ot|' + task.id));
   saveState();
-  const kid = KIDS[kids[0]];
-  celebrate(kid.name.length ? {name:task.kidId==='all'?'כולם':KIDS[task.kidId].name, color:'#F4C430', emoji:'⚡'} : kid, task);
+  const who = task.kidId === 'all' ? 'כולם' : (KIDS[task.kidId] ? KIDS[task.kidId].name : '');
+  const color = task.kidId !== 'all' && KIDS[task.kidId] ? KIDS[task.kidId].color : '#F4C430';
+  celebrateCustom(task.icon || '⚡', 'כל הכבוד ' + who + '!', task.name, '+' + task.reward + ' שטרות שמי׳ז 💰' + (kids.length > 1 ? ' לכל אחד' : ''), color);
   renderGraph();
+  updateUndoBtn();
 }
 
 // ============================================================
 // PARENT MESSAGES
 // ============================================================
+function esc(str) {
+  return String(str == null ? '' : str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
 function showParentMessages() {
-  // Mark all as read
-  (state.parentMessages||[]).forEach(m => m.read = true);
-  saveState();
+  const unread = (state.parentMessages||[]).filter(m => !m.read);
+  if (unread.length) {
+    unread.forEach(m => m.read = true);
+    saveState();
+  }
   renderTodayHeader();
   renderParentMsgList();
+  const sel = document.getElementById('parent-msg-target');
+  if (sel && !sel.options.length) {
+    sel.innerHTML = '<option value="all">לכולם</option>' + Object.entries(KIDS).map(([k, kid]) => `<option value="${k}">${esc(kid.name)}</option>`).join('');
+  }
   document.getElementById('parent-msg-modal').classList.add('show');
 }
 
@@ -3442,45 +3031,600 @@ function renderParentMsgList() {
   const el = document.getElementById('parent-msg-list');
   if (!el) return;
   if (!msgs.length) { el.innerHTML = '<div class="empty">עוד אין הודעות</div>'; return; }
-  el.innerHTML = msgs.map(m => `
+  el.innerHTML = msgs.map(m => {
+    const who = !m.target || m.target === 'all' ? 'לכולם' : 'ל' + (KIDS[m.target] ? KIDS[m.target].name : m.target);
+    return `
     <div style="background:${m.isBonus?'#D5F5E3':'var(--card2)'};border-radius:12px;padding:12px 14px;margin-bottom:8px;border-right:3px solid ${m.isBonus?'#2ECC71':'var(--gold)'};">
-      ${m.isBonus?`<div style="font-family:'Fredoka One',cursive;color:#27AE60;font-size:0.9rem;">🎁 בונוס: +${m.bonus} שמי׳ז לכולם!</div>`:''}
-      <div style="font-size:0.88rem;font-weight:600;">${m.text}</div>
+      ${m.isBonus?`<div style="font-family:'Fredoka One',cursive;color:#27AE60;font-size:0.9rem;">🎁 בונוס: +${m.bonus} שמי׳ז ${esc(who)}!</div>`:''}
+      <div style="font-size:0.88rem;font-weight:600;">${esc(m.text)}</div>
       <div style="font-size:0.7rem;color:var(--text2);margin-top:4px;">${m.date} · ${m.time}</div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function sendParentMessage() {
   const text = document.getElementById('parent-msg-input').value.trim();
-  if (!text) return;
-  const now = new Date();
-  const msg = {
-    text, read: false,
-    date: now.toLocaleDateString('he-IL'),
-    time: now.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'}),
-    isBonus: false
+  const amtEl = document.getElementById('parent-msg-bonus');
+  const bonus = amtEl ? (parseInt(amtEl.value) || 0) : 0;
+  const target = (document.getElementById('parent-msg-target') || {}).value || 'all';
+  if (!text && !bonus) return;
+  const send = () => {
+    const now = new Date();
+    const msg = {
+      id: 'pm' + now.getTime(),
+      ts: now.getTime(),
+      text: text || '🎁 בונוס מההורים',
+      read: false,
+      date: now.toLocaleDateString('he-IL'),
+      time: now.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'}),
+      isBonus: bonus > 0,
+    };
+    if (bonus > 0) {
+      msg.bonus = bonus;
+      msg.target = target;
+      const kids = target === 'all' ? Object.keys(KIDS) : [target];
+      kids.forEach(k => earnShami(k, bonus, '📨 ' + msg.text, 'msg|' + msg.id));
+    }
+    state.parentMessages.push(msg);
+    saveState();
+    document.getElementById('parent-msg-input').value = '';
+    if (amtEl) amtEl.value = '';
+    renderParentMsgList();
+    renderTodayHeader();
+    renderWallet();
+    updateUndoBtn();
   };
+  // בונוס = הוספת כסף → רק הורה. הודעה רגילה — פתוח לכולם.
+  if (bonus > 0) requireParent(send, 'בונוס בהודעה');
+  else send();
+}
 
-  // Check if includes bonus keyword
-  const bonusMatch = text.match(/(\d+)\s*שמי/);
-  if (bonusMatch) {
-    const bonus = parseInt(bonusMatch[1]);
-    msg.isBonus = true; msg.bonus = bonus;
-    Object.keys(KIDS).forEach(k => earnShami(k, bonus, '📨 ' + text));
-  }
+// ============================================================
+// UNIFIED EDITOR — חלון עריכה אחד לכל סוגי הפריטים
+// ============================================================
+// כל רשימה בהגדרות בנויה מאותן שורות; לחיצה על שורה פותחת את אותו חלון
+// עריכה. "שמור" שומר מיד ומסנכרן. הגדרות כלליות נשמרות ברגע השינוי.
+const DAY_LABELS = { weekdays: 'חול', friday: 'שישי', saturday: 'שבת' };
+const GROUP_LABELS = { morning: '🌅 בוקר', afternoon: '🏠 צהריים', evening: '🌙 ערב' };
+let editorState = null;      // { kind, id, isNew, obj }
+let taskEditorDay = 'weekdays';
 
-  state.parentMessages.push(msg);
+function newId(prefix) { return prefix + Date.now().toString(36) + Math.floor(Math.random() * 1296).toString(36); }
+function kidOptions() {
+  return [{ value: 'all', label: 'כל הילדים' }].concat(Object.entries(KIDS).map(([k, kid]) => ({ value: k, label: kid.emoji + ' ' + kid.name })));
+}
+function kidLabel(id) {
+  if (!id || id === 'all') return 'כולם';
+  const p = state.kidProfiles[id];
+  return p ? p.name : id;
+}
+function badge(text, cls) { return `<span class="er-badge ${cls || ''}">${text}</span>`; }
+function editRow(kind, id, icon, name, badges, dim) {
+  return `<div class="edit-row ${dim ? 'dim' : ''}" onclick="openEditor('${kind}','${id}')">
+    <span class="er-icon">${esc(icon || '•')}</span>
+    <span class="er-name">${esc(name)}</span>
+    <span class="er-badges">${badges || ''}</span>
+    <span class="er-edit">✏️</span>
+  </div>`;
+}
+function addRow(label, onclick) {
+  return `<button class="er-add" onclick="${onclick}">＋ ${label}</button>`;
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+// ---------- סוגי פריטים ----------
+const FIELD = {
+  icon:   { k: 'icon', label: 'אייקון', type: 'icon' },
+  name:   { k: 'name', label: 'שם', type: 'text', required: true },
+  reward: { k: 'reward', label: 'כמה שמי׳ז', type: 'number' },
+  kid:    { k: 'kidId', label: 'למי', type: 'select', options: () => kidOptions() },
+  days:   { k: 'days', label: 'באילו ימים', type: 'days' },
+};
+
+function findShopItem(id) {
+  for (const c of state.shop) { const i = c.items.find(x => x.id === id); if (i) return { cat: c, item: i }; }
+  return null;
+}
+
+const EDIT_KINDS = {
+  dayTask: {
+    title: 'משימה במסך "היום"',
+    fields: [
+      FIELD.icon, FIELD.name,
+      { k: 'type', label: 'סוג', type: 'select', options: () => [{ value: 'mandatory', label: 'חובה — נספרת להשלמת הקבוצה' }, { value: 'bonus', label: 'בונוס — רשות, משלמת בנפרד' }] },
+      { k: 'amount', label: 'כמה שמי׳ז', type: 'number', showIf: o => o.type === 'bonus' },
+      { k: 'group', label: 'חלק ביום', type: 'select', options: () => GROUPS.map(g => ({ value: g.id, label: g.emoji + ' ' + g.label })) },
+      FIELD.days, FIELD.kid,
+      { k: 'note', label: 'הערה (לא חובה)', type: 'text' },
+      { k: 'hidden', label: 'מוסתרת (לא מוצגת לילדים)', type: 'toggle' },
+    ],
+    get: id => clone(state.dayTasks.find(t => t.id === id)),
+    create: p => ({ id: newId('t'), icon: '✅', name: '', group: (p && p.group) || 'morning', days: [(p && p.day) || 'weekdays'], type: 'mandatory', amount: 0, kidId: 'all', hidden: false }),
+    save: (o, isNew) => {
+      o.amount = o.type === 'bonus' ? (Number(o.amount) || 0) : 0;
+      if (!o.note) delete o.note;
+      if (isNew) state.dayTasks.push(o);
+      else { const i = state.dayTasks.findIndex(t => t.id === o.id); state.dayTasks[i] = Object.assign(state.dayTasks[i], o); }
+    },
+    remove: id => { state.dayTasks = state.dayTasks.filter(t => t.id !== id); },
+  },
+  bonusTask: {
+    title: 'משימה בטאב "בונוס"',
+    fields: [
+      FIELD.icon, FIELD.name, FIELD.reward,
+      { k: 'category', label: 'קטגוריה', type: 'text', list: () => Array.from(new Set(state.bonusTasks.map(t => t.category || 'כללי'))) },
+      { k: 'assign', label: 'למי', type: 'select', options: () => kidOptions() },
+    ],
+    get: id => { const t = clone(state.bonusTasks.find(x => x.id === id)); t.assign = state.weeklyAssign[id] || 'all'; return t; },
+    create: () => ({ id: newId('b'), icon: '⭐', name: '', reward: 20, category: 'כללי', assign: 'all' }),
+    save: (o, isNew) => {
+      const assign = o.assign; delete o.assign;
+      o.reward = Number(o.reward) || 0;
+      o.category = o.category || 'כללי';
+      if (assign && assign !== 'all') state.weeklyAssign[o.id] = assign; else delete state.weeklyAssign[o.id];
+      if (isNew) state.bonusTasks.push(o);
+      else { const i = state.bonusTasks.findIndex(t => t.id === o.id); state.bonusTasks[i] = Object.assign(state.bonusTasks[i], o); }
+    },
+    remove: id => {
+      state.bonusTasks = state.bonusTasks.filter(t => t.id !== id);
+      delete state.weeklyAssign[id];
+      if (DEFAULT_BONUS_TASKS.some(d => d.id === id) && !state.removedBonusTasks.includes(id)) state.removedBonusTasks.push(id);
+    },
+  },
+  general: {
+    title: 'משימה כללית (🛒)',
+    fields: [FIELD.icon, FIELD.name, FIELD.reward, FIELD.days, FIELD.kid],
+    get: id => clone(state.weeklyGeneralTasks.find(t => t.id === id)),
+    create: () => ({ id: newId('w'), icon: '🛒', name: '', reward: 10, days: ['weekdays'], kidId: 'all' }),
+    save: (o, isNew) => {
+      o.reward = Number(o.reward) || 0;
+      if (isNew) state.weeklyGeneralTasks.push(o);
+      else { const i = state.weeklyGeneralTasks.findIndex(t => t.id === o.id); state.weeklyGeneralTasks[i] = Object.assign(state.weeklyGeneralTasks[i], o); }
+    },
+    remove: id => { state.weeklyGeneralTasks = state.weeklyGeneralTasks.filter(t => t.id !== id); },
+  },
+  oneTime: {
+    title: 'משימה חד-פעמית',
+    fields: [FIELD.icon, FIELD.name, FIELD.reward, FIELD.kid],
+    get: id => clone(state.oneTimeTasks.find(t => t.id === id)),
+    create: () => ({ id: newId('ot-'), icon: '⚡', name: '', reward: 20, kidId: 'all', done: false }),
+    save: (o, isNew) => {
+      o.reward = Number(o.reward) || 0;
+      if (isNew) state.oneTimeTasks.push(o);
+      else { const i = state.oneTimeTasks.findIndex(t => t.id === o.id); state.oneTimeTasks[i] = Object.assign(state.oneTimeTasks[i], o); }
+    },
+    remove: id => { state.oneTimeTasks = state.oneTimeTasks.filter(t => t.id !== id); },
+  },
+  shopItem: {
+    title: 'פרס בחנות',
+    fields: [
+      FIELD.icon, FIELD.name,
+      { k: 'desc', label: 'תיאור', type: 'text' },
+      { k: 'cost', label: 'מחיר בשמי׳ז', type: 'number' },
+      { k: 'catId', label: 'קטגוריה', type: 'select', options: () => state.shop.map(c => ({ value: c.id, label: c.emoji + ' ' + c.label })) },
+    ],
+    get: id => { const f = findShopItem(id); const o = clone(f.item); o.catId = f.cat.id; return o; },
+    create: p => ({ id: newId('si'), icon: '🎁', name: '', desc: '', cost: 50, catId: (p && p.catId) || (state.shop[0] && state.shop[0].id) }),
+    save: (o, isNew) => {
+      const catId = o.catId; delete o.catId;
+      o.cost = Math.max(1, Number(o.cost) || 1);
+      const target = state.shop.find(c => c.id === catId) || state.shop[0];
+      const f = isNew ? null : findShopItem(o.id);
+      if (f && f.cat === target) { Object.assign(f.item, o); return; }
+      if (f) f.cat.items = f.cat.items.filter(i => i.id !== o.id);
+      target.items.push(o);
+    },
+    remove: id => { state.shop.forEach(c => { c.items = c.items.filter(i => i.id !== id); }); },
+  },
+  shopCat: {
+    title: 'קטגוריה בחנות',
+    fields: [{ k: 'emoji', label: 'אייקון', type: 'icon' }, { k: 'label', label: 'שם הקטגוריה', type: 'text', required: true }],
+    get: id => { const c = state.shop.find(x => x.id === id); return { id: c.id, emoji: c.emoji, label: c.label }; },
+    create: () => ({ id: newId('cat'), emoji: '🎁', label: '' }),
+    save: (o, isNew) => {
+      if (isNew) state.shop.push({ id: o.id, emoji: o.emoji, label: o.label, items: [] });
+      else Object.assign(state.shop.find(c => c.id === o.id), { emoji: o.emoji, label: o.label });
+    },
+    remove: id => { state.shop = state.shop.filter(c => c.id !== id); },
+    confirmRemove: 'למחוק את הקטגוריה וכל הפרסים שבה?',
+  },
+  quote: {
+    title: 'ציטוט',
+    fields: [{ k: 'text', label: 'הציטוט', type: 'textarea', required: true }, { k: 'author', label: 'מאת', type: 'text' }],
+    get: id => clone(state.quotes.find(q => q.id === id)),
+    create: () => ({ id: newId('q'), text: '', author: '' }),
+    save: (o, isNew) => {
+      o.author = o.author || 'לא ידוע';
+      if (isNew) state.quotes.push(o);
+      else Object.assign(state.quotes.find(q => q.id === o.id), o);
+    },
+    remove: id => { state.quotes = state.quotes.filter(q => q.id !== id); },
+  },
+  kid: {
+    title: 'ילד/ה',
+    fields: [
+      { k: 'emoji', label: 'אימוג׳י', type: 'icon' },
+      { k: 'name', label: 'שם', type: 'text', required: true },
+      { k: 'color', label: 'צבע', type: 'color' },
+      { k: 'hidden', label: 'מוסתר/ת (לא מוצג באפליקציה, היתרה נשמרת)', type: 'toggle' },
+    ],
+    get: id => Object.assign({ id }, clone(state.kidProfiles[id])),
+    create: () => ({ id: newId('k'), emoji: '🙂', name: '', color: '#3498DB', hidden: false }),
+    save: (o, isNew) => {
+      const id = o.id; delete o.id;
+      if (o.hidden) {
+        const visible = Object.keys(state.kidProfiles).filter(k => k !== id && !state.kidProfiles[k].hidden);
+        if (!visible.length) { alert('חייב להישאר לפחות ילד אחד מוצג'); o.hidden = false; }
+      }
+      if (isNew) {
+        o.order = Math.max(-1, ...Object.values(state.kidProfiles).map(p => p.order || 0)) + 1;
+        state.kidProfiles[id] = o;
+        state.kids[id] = { balance: 0, totalEarned: 0 };
+      } else {
+        Object.assign(state.kidProfiles[id], o);
+      }
+      applyKidProfiles();
+    },
+    noDelete: true,
+  },
+};
+
+// ---------- החלון ----------
+function openEditor(kind, id, preset) {
+  requireParent(() => {
+    const K = EDIT_KINDS[kind];
+    const isNew = !id || id === 'null';
+    const obj = isNew ? K.create(preset) : K.get(id);
+    if (!obj) return;
+    editorState = { kind, id: obj.id, isNew, obj };
+    document.getElementById('edit-title').textContent = (isNew ? 'הוספת ' : 'עריכת ') + K.title;
+    document.getElementById('edit-delete').style.display = (isNew || K.noDelete) ? 'none' : 'block';
+    document.getElementById('edit-error').textContent = '';
+    renderEditorFields();
+    document.getElementById('edit-modal').classList.add('show');
+    setTimeout(() => { const f = document.querySelector('#edit-fields [data-k="name"], #edit-fields [data-k="label"], #edit-fields [data-k="text"]'); if (f && isNew) f.focus(); }, 60);
+  }, 'עריכה');
+}
+
+function renderEditorFields() {
+  const K = EDIT_KINDS[editorState.kind];
+  const o = editorState.obj;
+  const html = K.fields.filter(f => !f.showIf || f.showIf(o)).map(f => {
+    const v = o[f.k];
+    let input;
+    if (f.type === 'icon') input = `<input class="f-input ed-icon" data-k="${f.k}" value="${esc(v || '')}" maxlength="8" />`;
+    else if (f.type === 'text') input = `<input class="f-input" data-k="${f.k}" value="${esc(v || '')}" ${f.list ? `list="dl-${f.k}"` : ''} />` +
+      (f.list ? `<datalist id="dl-${f.k}">${f.list().map(x => `<option value="${esc(x)}">`).join('')}</datalist>` : '');
+    else if (f.type === 'textarea') input = `<textarea class="f-input" data-k="${f.k}" rows="3">${esc(v || '')}</textarea>`;
+    else if (f.type === 'number') input = `<input class="f-input" type="number" min="0" inputmode="numeric" data-k="${f.k}" value="${v === undefined ? '' : v}" />`;
+    else if (f.type === 'select') input = `<select class="f-input" data-k="${f.k}" onchange="editorFieldChanged()">${f.options().map(op => `<option value="${esc(op.value)}" ${String(op.value) === String(v) ? 'selected' : ''}>${esc(op.label)}</option>`).join('')}</select>`;
+    else if (f.type === 'days') input = `<div class="ed-days" data-k="${f.k}" data-type="days">${Object.keys(DAY_LABELS).map(d => `<label><input type="checkbox" value="${d}" ${(v || []).includes(d) ? 'checked' : ''}/> ${DAY_LABELS[d]}</label>`).join('')}</div>`;
+    else if (f.type === 'toggle') input = `<label class="ed-toggle"><input type="checkbox" data-k="${f.k}" data-type="toggle" ${v ? 'checked' : ''}/> ${f.label}</label>`;
+    else if (f.type === 'color') input = `<div class="ed-colors"><input type="color" data-k="${f.k}" value="${esc(v || '#3498DB')}" />${['#FF6B9D', '#9B59B6', '#00B4D8', '#2ECC71', '#F39C12', '#E74C3C', '#34495E'].map(c => `<button type="button" class="ed-swatch" style="background:${c}" onclick="document.querySelector('#edit-fields [data-k=${f.k}]').value='${c}'"></button>`).join('')}</div>`;
+    const label = f.type === 'toggle' ? '' : `<div class="ed-label">${f.label}</div>`;
+    return `<div class="ed-field">${label}${input}</div>`;
+  }).join('');
+  document.getElementById('edit-fields').innerHTML = html;
+}
+
+function readEditorFields() {
+  const o = editorState.obj;
+  document.querySelectorAll('#edit-fields [data-k]').forEach(el => {
+    const k = el.dataset.k;
+    if (el.dataset.type === 'days') o[k] = Array.from(el.querySelectorAll('input:checked')).map(x => x.value);
+    else if (el.dataset.type === 'toggle') o[k] = el.checked;
+    else if (el.type === 'number') o[k] = el.value === '' ? 0 : Number(el.value);
+    else o[k] = el.value.trim();
+  });
+  return o;
+}
+
+function editorFieldChanged() { readEditorFields(); renderEditorFields(); }
+
+function saveEditor() {
+  const K = EDIT_KINDS[editorState.kind];
+  const o = readEditorFields();
+  const err = document.getElementById('edit-error');
+  const missing = K.fields.find(f => f.required && !o[f.k]);
+  if (missing) { err.textContent = 'חסר: ' + missing.label; return; }
+  if (o.days !== undefined && Array.isArray(o.days) && !o.days.length) { err.textContent = 'בחרו לפחות יום אחד'; return; }
+  K.save(o, editorState.isNew);
   saveState();
-  document.getElementById('parent-msg-input').value = '';
-  renderParentMsgList();
+  closeEditor();
+  renderAll();
+  showToast('✓ נשמר');
+}
+
+function deleteFromEditor() {
+  const K = EDIT_KINDS[editorState.kind];
+  if (!confirm(K.confirmRemove || 'למחוק?')) return;
+  K.remove(editorState.id);
+  saveState();
+  closeEditor();
+  renderAll();
+  showToast('נמחק');
+}
+
+function closeEditor() {
+  document.getElementById('edit-modal').classList.remove('show');
+  editorState = null;
+}
+
+function openSettingsTab(tab) {
+  requireParent(() => { settingsTab = tab; showPage('settings'); }, 'עריכה');
+}
+
+// ---------- הגדרות ← משימות ----------
+function setTaskEditorDay(d) { taskEditorDay = d; renderSettingsTab(); }
+
+function renderTaskEditor(el) {
+  let html = `<p class="ed-intro">כל המשימות במקום אחד. לחיצה על משימה פותחת עריכה.</p>`;
+
+  html += `<div class="settings-title">📋 מסך "היום"</div><div class="ed-chips">` +
+    Object.keys(DAY_LABELS).map(d => `<button class="ed-chip ${taskEditorDay === d ? 'on' : ''}" onclick="setTaskEditorDay('${d}')">${DAY_LABELS[d]}</button>`).join('') + `</div>`;
+  GROUPS.forEach(g => {
+    const list = state.dayTasks.filter(t => t.group === g.id && (t.days || []).includes(taskEditorDay));
+    html += `<div class="ed-group">${GROUP_LABELS[g.id]} <span class="ed-group-sub">בונוס השלמה: ${groupBonusAmount(g.id)}</span></div>`;
+    list.forEach(t => {
+      const b = (t.type === 'bonus' ? badge('בונוס +' + t.amount, 'bonus') : badge('חובה', 'mand'))
+        + (t.kidId && t.kidId !== 'all' ? badge(kidLabel(t.kidId)) : '')
+        + ((t.days || []).length > 1 ? badge(t.days.map(d => DAY_LABELS[d]).join('·')) : '')
+        + (t.hidden ? badge('מוסתרת', 'hid') : '');
+      html += editRow('dayTask', t.id, t.icon, t.name, b, t.hidden);
+    });
+    html += addRow('הוסף משימה ל' + g.label, `openEditor('dayTask', null, {day:'${taskEditorDay}', group:'${g.id}'})`);
+  });
+
+  html += `<div class="settings-title" style="margin-top:22px;">⭐ טאב "בונוס"</div><p class="ed-intro">משימות שאפשר לעשות פעם ביום בכל יום.</p>`;
+  state.bonusTasks.forEach(t => {
+    const a = state.weeklyAssign[t.id];
+    html += editRow('bonusTask', t.id, t.icon, t.name, badge('+' + t.reward, 'bonus') + badge(esc(t.category || 'כללי')) + (a ? badge(kidLabel(a)) : ''));
+  });
+  html += addRow('הוסף משימת בונוס', `openEditor('bonusTask', null)`);
+
+  html += `<div class="settings-title" style="margin-top:22px;">🛒 משימות כלליות</div><p class="ed-intro">מופיעות בתחתית מסך "היום", פעם ביום.</p>`;
+  state.weeklyGeneralTasks.forEach(t => {
+    html += editRow('general', t.id, t.icon, t.name, badge('+' + t.reward, 'bonus') + badge((t.days || []).map(d => DAY_LABELS[d]).join('·')) + (t.kidId !== 'all' ? badge(kidLabel(t.kidId)) : ''));
+  });
+  html += addRow('הוסף משימה כללית', `openEditor('general', null)`);
+
+  html += `<div class="settings-title" style="margin-top:22px;">⚡ משימות חד-פעמיות</div><p class="ed-intro">מופיעות בראש מסך "היום" עד שמבצעים אותן.</p>`;
+  const active = state.oneTimeTasks.filter(t => !t.done);
+  if (!active.length) html += `<div class="ed-empty">אין משימות פתוחות</div>`;
+  active.forEach(t => { html += editRow('oneTime', t.id, t.icon, t.name, badge('+' + t.reward, 'bonus') + badge(kidLabel(t.kidId))); });
+  html += addRow('הוסף משימה חד-פעמית', `openEditor('oneTime', null)`);
+
+  el.innerHTML = html;
+}
+
+// ---------- הגדרות ← משפחה ----------
+function setSetting(path, raw, type) {
+  let v = raw;
+  if (type === 'number') {
+    v = parseInt(raw, 10);
+    if (isNaN(v) || v < 0) { renderSettingsTab(); return; }
+  } else {
+    v = String(raw).trim();
+    if (!v) { renderSettingsTab(); return; }
+  }
+  const parts = path.split('.');
+  let o = state;
+  for (let i = 0; i < parts.length - 1; i++) { if (!o[parts[i]]) o[parts[i]] = {}; o = o[parts[i]]; }
+  const prevCurrency = currencyName();
+  o[parts[parts.length - 1]] = v;
+  saveState();
+  showToast('✓ נשמר');
+  if (path === 'family.currency' && v !== prevCurrency) {
+    // שם המטבע מופיע בכל מקום — טוענים מחדש כדי לעדכן הכל
+    Promise.resolve(pushNow()).finally(() => location.reload());
+    return;
+  }
   renderTodayHeader();
-  renderWallet();
+  applyBranding();
+}
+
+function settingInput(path, value, type, extra) {
+  return `<input class="sr-val ${type === 'text' ? 'sr-text' : ''}" ${type === 'number' ? 'type="number" min="0" inputmode="numeric"' : ''} value="${esc(value)}" onchange="setSetting('${path}', this.value, '${type}')" ${extra || ''} />`;
+}
+function settingRow(icon, name, sub, input) {
+  return `<div class="setting-row"><div class="sr-icon">${icon}</div><div class="sr-info"><div class="sr-name">${esc(name)}</div>${sub ? `<div class="sr-sub">${sub}</div>` : ''}</div>${input}</div>`;
+}
+
+function renderFamilySettings(el) {
+  let html = `<p class="ed-intro">שינויים כאן נשמרים מיד.</p>`;
+  html += `<div class="settings-title">👨‍👩‍👧 המשפחה</div>`;
+  html += settingRow('🏠', 'שם המשפחה', 'מופיע בברכה: "בוקר טוב למשפחת…"', settingInput('family.name', familyName(), 'text'));
+  html += settingRow('💰', 'שם המטבע', 'מופיע בכל האפליקציה', settingInput('family.currency', currencyName(), 'text'));
+
+  html += `<div class="settings-title" style="margin-top:18px;">👧 הילדים</div>`;
+  Object.keys(state.kidProfiles)
+    .sort((a, b) => (state.kidProfiles[a].order || 0) - (state.kidProfiles[b].order || 0))
+    .forEach(k => {
+      const p = state.kidProfiles[k];
+      html += editRow('kid', k, p.emoji, p.name,
+        `<span class="er-dot" style="background:${esc(p.color)}"></span>` + badge(state.kids[k].balance + ' שמי׳ז') + (p.hidden ? badge('מוסתר/ת', 'hid') : ''), p.hidden);
+    });
+  html += addRow('הוסף ילד/ה', `openEditor('kid', null)`);
+
+  html += `<div class="settings-title" style="margin-top:18px;">💵 המרה לכסף</div>`;
+  html += settingRow('₪', 'כמה שמי׳ז שווים 1 ₪?', '', settingInput('nisRate', nisRate(), 'number'));
+
+  html += `<div class="settings-title" style="margin-top:18px;">🎯 בונוסים</div>`;
+  GROUPS.forEach(g => {
+    html += settingRow(g.emoji, 'השלמת כל משימות ה' + g.label, '', settingInput('settings.groupBonus.' + g.id, groupBonusAmount(g.id), 'number'));
+  });
+  html += settingRow('🔥', 'רצף: כל כמה ימים בונוס', 'ימים רצופים שבהם הושלמו כל משימות החובה', settingInput('settings.streakTarget', streakTarget(), 'number', 'min="1"'));
+  html += settingRow('🎁', 'רצף: גובה הבונוס', '', settingInput('settings.streakBonus', streakBonusAmount(), 'number'));
+
+  html += `<div class="settings-title" style="margin-top:18px;">🏆 אתגר משפחתי שבועי</div>`;
+  html += settingRow('🎯', 'הפרס', 'מה מקבלים כשמגיעים ליעד?', settingInput('familyChallenge.reward', state.familyChallenge.reward, 'text'));
+  html += settingRow('🔢', 'יעד שבועי', 'כמה קבוצות משימות צריך להשלים יחד', settingInput('familyChallenge.goal', state.familyChallenge.goal, 'number', 'min="1"'));
+  html += settingRow('📊', 'התקדמות השבוע', getFamilyChallengeCount() + ' / ' + state.familyChallenge.goal,
+    `<button class="sr-btn" onclick="resetFamilyChallenge()">אפס</button>`);
+
+  html += `<div class="settings-title" style="margin-top:18px;">🔒 קוד הורה</div>`;
+  html += settingRow('🔑', 'החלפת קוד', 'הקוד החדש יעבוד בכל המכשירים', `<button class="sr-btn" onclick="changePin()">החלף</button>`);
+  el.innerHTML = html;
+}
+
+function changePin() {
+  openPinModal('set', 'קוד חדש', () => showToast('✓ הקוד הוחלף'));
+}
+
+// ---------- הגדרות ← חנות ----------
+function renderShopEditor(el) {
+  let html = `<p class="ed-intro">לחיצה על פרס או על קטגוריה פותחת עריכה.</p>`;
+  state.shop.forEach(c => {
+    html += `<div class="ed-shopcat">` + editRow('shopCat', c.id, c.emoji, c.label, badge(c.items.length + ' פרסים'));
+    c.items.forEach(i => { html += editRow('shopItem', i.id, i.icon, i.name, badge(i.cost + ' שמי׳ז', 'bonus')); });
+    html += addRow('הוסף פרס ל' + esc(c.label), `openEditor('shopItem', null, {catId:'${c.id}'})`) + `</div>`;
+  });
+  html += addRow('קטגוריה חדשה', `openEditor('shopCat', null)`);
+  el.innerHTML = html;
+}
+
+// ---------- הגדרות ← ציטוטים ----------
+function renderQuoteEditor(el) {
+  let html = `<p class="ed-intro">בכל יום מוצג במסך הבית ציטוט אחר מהרשימה.</p>`;
+  state.quotes.forEach(q => { html += editRow('quote', q.id, '💬', q.text, badge(esc(q.author || ''))); });
+  html += addRow('הוסף ציטוט', `openEditor('quote', null)`);
+  el.innerHTML = html;
+}
+
+// ---------- מיתוג: שם המטבע ושם המשפחה ----------
+const BRAND_TOKEN = 'שמי׳ז';
+function brandText(str) {
+  const c = currencyName();
+  return (!str || c === BRAND_TOKEN || str.indexOf(BRAND_TOKEN) === -1) ? str : str.split(BRAND_TOKEN).join(c);
+}
+function brandNode(root) {
+  if (currencyName() === BRAND_TOKEN || !root) return;
+  if (root.nodeType === 3) { if (root.nodeValue.indexOf(BRAND_TOKEN) !== -1) root.nodeValue = brandText(root.nodeValue); return; }
+  if (root.nodeType !== 1) return;
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let n;
+  while ((n = w.nextNode())) { if (n.nodeValue.indexOf(BRAND_TOKEN) !== -1) n.nodeValue = brandText(n.nodeValue); }
+  [root].concat(Array.from(root.querySelectorAll('[placeholder],[title]'))).forEach(e => {
+    ['placeholder', 'title'].forEach(a => { const v = e.getAttribute && e.getAttribute(a); if (v && v.indexOf(BRAND_TOKEN) !== -1) e.setAttribute(a, brandText(v)); });
+  });
+}
+function applyBranding() {
+  document.title = 'מערכת ' + currencyName() + ' 💰';
+  brandNode(document.body);
+}
+['alert', 'confirm', 'prompt'].forEach(fn => {
+  const orig = window[fn].bind(window);
+  window[fn] = (msg, def) => orig(brandText(msg), def);
+});
+new MutationObserver(muts => {
+  if (currencyName() === BRAND_TOKEN) return;
+  muts.forEach(m => {
+    if (m.type === 'characterData') brandNode(m.target);
+    else m.addedNodes.forEach(brandNode);
+  });
+}).observe(document.body, { childList: true, subtree: true, characterData: true });
+
+// ============================================================
+// PARENT MODE (PIN)
+// ============================================================
+// הקוד נשמר (מוצפן) בנתונים המשותפים — אותו קוד בכל המכשירים.
+// מצב הורה נשאר פתוח 5 דקות מהפעולה האחרונה בהגדרות, או עד לחיצה על 🔓.
+const PARENT_UNLOCK_MS = 5 * 60 * 1000;
+let parentUntil = 0;
+let pinPending = null;
+let pinMode = 'enter';
+
+function pinHash(pin) { return 'h1:' + hashStr('shamiz-pin:' + pin) + hashStr(pin + ':shamiz'); }
+function isParentUnlocked() { return Date.now() < parentUntil; }
+
+function requireParent(action, reason) {
+  if (isParentUnlocked()) {
+    parentUntil = Date.now() + PARENT_UNLOCK_MS;
+    updateLockBtn();
+    action();
+    return;
+  }
+  openPinModal(state.parentPinHash ? 'enter' : 'set', reason, action);
+}
+
+function openPinModal(mode, reason, action) {
+  pinPending = action;
+  pinMode = mode;
+  document.getElementById('pin-title').textContent = pinMode === 'set' ? 'יצירת קוד הורה' : 'קוד הורה';
+  document.getElementById('pin-sub').textContent = pinMode === 'set'
+    ? (reason ? reason + ' — ' : '') + 'בחרו קוד של 4 ספרות. הוא ישמש בכל המכשירים.'
+    : (reason ? reason + ' — ' : '') + 'הקלידו את קוד ההורה';
+  const i1 = document.getElementById('pin-input'), i2 = document.getElementById('pin-input2');
+  i1.value = ''; i2.value = '';
+  i2.style.display = pinMode === 'set' ? 'block' : 'none';
+  document.getElementById('pin-error').textContent = '';
+  document.getElementById('pin-modal').classList.add('show');
+  setTimeout(() => i1.focus(), 50);
+}
+
+function submitPin() {
+  const i1 = document.getElementById('pin-input'), i2 = document.getElementById('pin-input2');
+  const err = document.getElementById('pin-error');
+  const v1 = i1.value.trim(), v2 = i2.value.trim();
+  if (!/^\d{4}$/.test(v1)) { err.textContent = 'הקוד צריך להיות 4 ספרות'; return; }
+  if (pinMode === 'set') {
+    if (v1 !== v2) { err.textContent = 'הקודים לא תואמים'; i2.value = ''; i2.focus(); return; }
+    state.parentPinHash = pinHash(v1);
+    saveState();
+  } else if (pinHash(v1) !== state.parentPinHash) {
+    err.textContent = 'קוד שגוי';
+    i1.value = '';
+    i1.focus();
+    return;
+  }
+  parentUntil = Date.now() + PARENT_UNLOCK_MS;
+  const act = pinPending;
+  pinPending = null;
+  document.getElementById('pin-modal').classList.remove('show');
+  updateLockBtn();
+  if (act) act();
+}
+
+function closePin() {
+  pinPending = null;
+  document.getElementById('pin-modal').classList.remove('show');
+}
+
+function lockParent() {
+  parentUntil = 0;
+  updateLockBtn();
+  if (document.getElementById('page-settings').classList.contains('active')) showPage('today');
+}
+
+function toggleParentLock() {
+  if (isParentUnlocked()) lockParent();
+  else requireParent(() => {}, 'כניסה למצב הורה');
+}
+
+function updateLockBtn() {
+  const b = document.getElementById('lock-btn');
+  if (!b) return;
+  const u = isParentUnlocked();
+  b.textContent = u ? '🔓' : '🔒';
+  b.title = u ? 'מצב הורה פתוח — לחצו לנעילה' : 'כניסה למצב הורה';
+  b.classList.toggle('unlocked', u);
 }
 
 // ============================================================
 // INIT
 // ============================================================
 function renderAll() {
+  applyKidProfiles();
+  if (!KIDS[selectedBonusKid]) selectedBonusKid = firstKid();
+  if (!KIDS[selectedWalletKid]) selectedWalletKid = firstKid();
+  if (!KIDS[selectedShopKid]) selectedShopKid = firstKid();
   renderToday();
   renderGraph();
   renderKidSelector('bonus-kid-selector', selectedBonusKid, 'selectBonusKid');
@@ -3489,11 +3633,11 @@ function renderAll() {
   renderShop();
   renderKidSelector('wallet-kid-selector', selectedWalletKid, 'selectWalletKid');
   renderWallet();
-  renderWeekly();
   renderSettings();
   updateUndoBtn();
+  updateLockBtn();
+  applyBranding();
 }
-
 
 // Date display
 function updateDate() {
@@ -3501,48 +3645,49 @@ function updateDate() {
   const days = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
   document.getElementById('date-display').textContent = `יום ${days[now.getDay()]}, ${now.toLocaleDateString('he-IL')}`;
 }
+
+let _renderedDay = todayKey();
 updateDate();
 setInterval(updateDate, 60000);
-setInterval(() => { if (document.getElementById('page-today').classList.contains('active')) renderTodayHeader(); }, 30000);
+setInterval(() => {
+  // אם האפליקציה נשארה פתוחה אחרי חצות — מרעננים ליום החדש
+  if (todayKey() !== _renderedDay) { _renderedDay = todayKey(); renderAll(); return; }
+  if (document.getElementById('page-today').classList.contains('active')) renderTodayHeader();
+}, 30000);
 
-// אתחול async — טוען מהענן אם יש SCRIPT_URL
-(async () => {
-  if (SCRIPT_URL) {
-    const cloudState = await loadStateFromCloud();
-    if (cloudState) {
-      // מיזוג: אותו תהליך migration שרץ על ה-state המקומי
-      state = cloudState;
-      Object.keys(KIDS).forEach(k => {
-        if (!state.kids[k]) state.kids[k] = { balance: 0, totalEarned: 0 };
-      });
-      if (!state.customShop) state.customShop = { categories: [], removedBuiltins: [], removedItems: [] };
-      if (!state.customShop.categories) state.customShop.categories = [];
-      if (!state.customShop.removedBuiltins) state.customShop.removedBuiltins = [];
-      if (!state.customShop.removedItems) state.customShop.removedItems = [];
-      if (!state.actionLog) state.actionLog = [];
-      if (!state.customTasks) state.customTasks = [];
-      if (!state.streaks) state.streaks = {};
-      if (!state.streakBonusGiven) state.streakBonusGiven = {};
-      if (!state.parentMessages) state.parentMessages = [];
-      if (!state.oneTimeTasks) state.oneTimeTasks = [];
-      if (!state.familyChallenge) state.familyChallenge = { goal: 30, reward: 'יציאה לפיצה 🍕', active: true };
-      if (!state.familyChallengeCount) state.familyChallengeCount = {};
-      if (!state.taskChecks) state.taskChecks = {};
-      if (!state.bonusChecks) state.bonusChecks = {};
-      if (!state.weeklyChecks) state.weeklyChecks = {};
-      if (!state.groupBonusGiven) state.groupBonusGiven = {};
-      if (!state.bonusTasks) state.bonusTasks = DEFAULT_BONUS_TASKS.map(t => ({ ...t, reward: t.defaultReward }));
-      if (!state.weeklyGeneralTasks) state.weeklyGeneralTasks = DEFAULT_WEEKLY_GENERAL.map(t => ({ ...t }));
-      if (!state.weeklyAssign) state.weeklyAssign = {};
-      if (!state.customQuotes) state.customQuotes = [];
-      if (!state.customMandatory) state.customMandatory = { overrides: {}, hidden: [], customTasks: [] };
-      if (!state.customMandatory.overrides) state.customMandatory.overrides = {};
-      if (!state.customMandatory.hidden) state.customMandatory.hidden = [];
-      if (!state.customMandatory.customTasks) state.customMandatory.customTasks = [];
-    }
+// נעילה אוטומטית של מצב הורה
+setInterval(() => { if (parentUntil && !isParentUnlocked()) lockParent(); }, 10000);
+document.addEventListener('click', e => {
+  if (isParentUnlocked() && e.target.closest && e.target.closest('#page-settings')) parentUntil = Date.now() + PARENT_UNLOCK_MS;
+}, true);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('pin-modal').classList.contains('show')) submitPin();
+});
+document.addEventListener('focusout', () => {
+  setTimeout(() => {
+    const ae = document.activeElement;
+    if (SYNC.pendingRender && !(ae && ['INPUT', 'TEXTAREA', 'SELECT'].includes(ae.tagName))) refreshUI();
+  }, 300);
+});
+
+// שכחתם את הקוד? פתחו את האתר עם ‎?resetpin‎ בסוף הכתובת
+if (/[?&]resetpin\b/.test(location.search)) {
+  if (confirm('לאפס את קוד ההורה? בכניסה הבאה להגדרות תתבקשו לבחור קוד חדש.')) {
+    delete state.parentPinHash;
+    saveState();
   }
-  renderAll();
-})();
+  try { history.replaceState(null, '', location.pathname); } catch (e) {}
+}
+
+// מציגים מיד את מה ששמור במכשיר, ואז מסנכרנים מול הענן ברקע
+renderAll();
+if (SCRIPT_URL) {
+  pullNow(true);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) pullNow(); });
+  window.addEventListener('focus', () => pullNow());
+  window.addEventListener('online', () => { if (isDirty()) pushNow(); else pullNow(); });
+  setInterval(() => { if (!document.hidden) pullNow(); }, 120000);
+}
 </script>
 </body>
 </html>
